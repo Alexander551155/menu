@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>Sektstand Rechner</title>
+
+  <style>
+    :root {
+      --bg: #f4f1e8;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #6f6f6f;
+      --line: #e5e1d8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #111;
+      color: white;
+      padding: 14px;
+      box-shadow: 0 3px 14px rgba(0,0,0,.22);
+    }
+
+    .header-inner {
+      max-width: 980px;
+      margin: auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      opacity: .75;
+    }
+
+    main {
+      max-width: 980px;
+      margin: auto;
+      padding: 12px 10px 210px;
+    }
+
+    .top-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:active {
+      transform: scale(.985);
+    }
+
+    .pfand-add,
+    .pfand-return {
+      min-height: 52px;
+      font-size: 16px;
+    }
+
+    .pfand-add {
+      background: #fff1c8;
+    }
+
+    .pfand-return {
+      background: #e7f5ea;
+    }
+
+    .section-title {
+      margin: 18px 2px 8px;
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+
+    .item-name {
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 850;
+      min-height: 34px;
+    }
+
+    .item-sub {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      min-height: 26px;
+    }
+
+    .price-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .price-buttons.one {
+      grid-template-columns: 1fr;
+    }
+
+    .price-btn {
+      min-height: 58px;
+      padding: 6px 4px;
+      background: #eee;
+      color: #111;
+      font-size: 14px;
+    }
+
+    .price-btn small {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* UNTERE SUMMENLEISTE */
+
+    .footer-cart {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      background: white;
+      border-top: 1px solid #d8d8d8;
+      box-shadow: 0 -7px 22px rgba(0,0,0,.16);
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: auto;
+      padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    }
+
+    .sum-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .count {
+      background: #111;
+      color: white;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .sum-label {
+      font-weight: 800;
+    }
+
+    .total {
+      margin-left: auto;
+      font-size: 30px;
+      font-weight: 950;
+    }
+
+    .cart-lines {
+      max-height: 82px;
+      overflow: auto;
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px dashed #d9d9d9;
+    }
+
+    .cart-line {
+      display: grid;
+      grid-template-columns: 32px 1fr auto 32px;
+      gap: 5px;
+      align-items: center;
+      padding: 3px 0;
+      font-size: 12px;
+    }
+
+    .cart-line .desc {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mini-btn {
+      width: 32px;
+      height: 30px;
+      background: #eee;
+      font-size: 17px;
+      padding: 0;
+    }
+
+    .reset-btn {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 7px;
+      background: #111;
+      color: white;
+      font-size: 16px;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>🥂 Sektstand Rechner</h1>
+    <div class="subtitle">
+      Getränk antippen → Summe wird automatisch berechnet
+    </div>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- PFAND -->
+
+  <div class="top-actions">
+
+    <button
+      class="pfand-add"
+      onclick="addItem('Pfand', 3)">
+      + 3,00 € Pfand
+    </button>
+
+    <button
+      class="pfand-return"
+      onclick="addItem('Pfandrückgabe', -3)">
+      − 3,00 € Rückgabe
+    </button>
+
+  </div>
+
+
+  <!-- SEKT -->
+
+  <div class="section-title">🥂 Sekt</div>
+  <div class="grid" id="sekt-grid"></div>
+
+
+  <!-- WEIN -->
+
+  <div class="section-title">🍷 Wein</div>
+  <div class="grid" id="wein-grid"></div>
+
+
+  <!-- SOFTDRINKS -->
+
+  <div class="section-title">🥤 Schorle & Wasser</div>
+  <div class="grid" id="soft-grid"></div>
+
+
+  <!-- APERITIF -->
+
+  <div class="section-title">🍹 Aperitif & Longdrinks</div>
+  <div class="grid" id="bar-grid"></div>
+
+
+  <!-- SNACK -->
+
+  <div class="section-title">🥨 Snack</div>
+  <div class="grid" id="snack-grid"></div>
+
+
+  <div class="note">
+    Pfand: 3,00 € pro Glas / pro Flasche.
+    Pfand wird nur gerechnet, wenn du oben auf
+    „+ 3,00 € Pfand“ tippst.
+  </div>
+
+</main>
+
+
+<!-- SUMME UNTEN -->
+
+<div class="footer-cart">
+
+  <div class="footer-inner">
+
+    <div class="sum-row">
+
+      <span class="count" id="count">
+        0 Artikel
+      </span>
+
+      <span class="sum-label">
+        Summe
+      </span>
+
+      <span class="total" id="total">
+        0,00 €
+      </span>
+
+    </div>
+
+
+    <div
+      class="cart-lines"
+      id="cart-lines">
+    </div>
+
+
+    <button
+      class="reset-btn"
+      onclick="resetCart()">
+
+      NEUER GAST / AUF 0
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   MENÜ + PREISE
+   ========================= */
+
+const menu = {
+
+  /* SEKT */
+
+  sekt: [
+
+    {
+      name: "Fürst von Metternich Riesling",
+      sub: "Sekt",
+      prices: [
+        { label: "0,1 l", price: 5.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    },
+
+    {
+      name: "Fürst von Metternich Rosé",
+      sub: "Sekt",
+      prices: [
+        { label: "0,1 l", price: 5.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    },
+
+    {
+      name: "Fürst von Metternich Chardonnay",
+      sub: "Sekt",
+      prices: [
+        { label: "0,1 l", price: 5.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    }
+
+  ],
+
+
+  /* WEINE */
+
+  wein: [
+
+    {
+      name: "Nr. 1 Riesling „Hofgut Laubenheimer Höhe“, trocken",
+      sub: "Weingut Kühling-Gillot",
+      prices: [
+        { label: "0,1 l", price: 4.00 },
+        { label: "0,2 l", price: 7.00 },
+        { label: "0,75 l", price: 24.50 }
+      ]
+    },
+
+    {
+      name: "Nr. 2 Riesling Gelblack, trocken",
+      sub: "Schloss Johannisberg",
+      prices: [
+        { label: "0,1 l", price: 4.50 },
+        { label: "0,2 l", price: 8.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    },
+
+    {
+      name: "Nr. 3 Riesling Gelblack, feinherb",
+      sub: "Schloss Johannisberg",
+      prices: [
+        { label: "0,1 l", price: 4.50 },
+        { label: "0,2 l", price: 8.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    },
+
+    {
+      name: "Nr. 4 Weißburgunder, trocken",
+      sub: "Weingut Wittmann",
+      prices: [
+        { label: "0,1 l", price: 4.50 },
+        { label: "0,2 l", price: 8.00 },
+        { label: "0,75 l", price: 28.00 }
+      ]
+    },
+
+    {
+      name: "Nr. 5 Grauburgunder Réserve, trocken",
+      sub: "Weingut Full",
+      prices: [
+        { label: "0,1 l", price: 3.50 },
+        { label: "0,2 l", price: 6.50 },
+        { label: "0,75 l", price: 22.00 }
+      ]
+    },
+
+    {
+      name: "Nr. 6 Chardonnay, trocken",
+      sub: "Weingut Spieß",
+      prices: [
+        { label: "0,1 l", price: 3.50 },
+        { label: "0,2 l", price: 6.50 },
+        { label: "0,75 l", price: 22.00 }
+      ]
+    },
+
+    {
+      name: "Nr. 7 Rosé „HASE“, trocken",
+      sub: "Weingut Kühling-Gillot",
+      prices: [
+        { label: "0,1 l", price: 3.50 },
+        { label: "0,2 l", price: 6.50 },
+        { label: "0,75 l", price: 22.00 }
+      ]
+    }
+
+  ],
+
+
+  /* SCHORLE / WASSER / SOFTDRINKS */
+
+  soft: [
+
+    {
+      name: "Weinschorle",
+      sub: "0,4 l",
+      prices: [
+        { label: "0,4 l", price: 4.50 }
+      ]
+    },
+
+    {
+      name: "Roséschorle",
+      sub: "0,4 l",
+      prices: [
+        { label: "0,4 l", price: 4.50 }
+      ]
+    },
+
+    {
+      name: "Gerolsteiner Mineralwasser still",
+      sub: "0,5 l",
+      prices: [
+        { label: "0,5 l", price: 4.50 }
+      ]
+    },
+
+    {
+      name: "Gerolsteiner Mineralwasser medium",
+      sub: "0,5 l",
+      prices: [
+        { label: "0,5 l", price: 4.50 }
+      ]
+    },
+
+    {
+      name: "Traubensaftschorle",
+      sub: "Weingut Stenner · Flasche 0,33 l",
+      prices: [
+        { label: "0,33 l", price: 3.50 }
+      ]
+    },
+
+    {
+      name: "Pepsi",
+      sub: "Flasche 0,33 l",
+      prices: [
+        { label: "0,33 l", price: 4.00 }
+      ]
+    },
+
+    {
+      name: "Pepsi Max",
+      sub: "Flasche 0,33 l",
+      prices: [
+        { label: "0,33 l", price: 4.00 }
+      ]
+    },
+
+    {
+      name: "SchwipSchwap Orange",
+      sub: "Flasche 0,33 l",
+      prices: [
+        { label: "0,33 l", price: 4.00 }
+      ]
+    }
+
+  ],
+
+
+  /* APERITIF / LONGDRINKS */
+
+  bar: [
+
+    {
+      name: "Aperol Spritz",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Hugo",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Mionetto Aperitivo",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Solare Spritz",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Aperol Spritz alkoholfrei",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Hugo alkoholfrei",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Mionetto Aperitivo alkoholfrei",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Solare Spritz alkoholfrei",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 7.50 }
+      ]
+    },
+
+    {
+      name: "Gin Tonic",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 8.50 }
+      ]
+    },
+
+    {
+      name: "Wodka Lemon",
+      sub: "Glas",
+      prices: [
+        { label: "Glas", price: 8.50 }
+      ]
+    }
+
+  ],
+
+
+  /* SNACK */
+
+  snack: [
+
+    {
+      name: "Brezel",
+      sub: "",
+      prices: [
+        { label: "1 Stück", price: 2.50 }
+      ]
+    }
+
+  ]
+
+};
+
+
+/* =========================
+   RECHNER
+   ========================= */
+
+let cart = [];
+
+
+/* EURO FORMATIEREN */
+
+function euro(value) {
+
+  return Number(value).toLocaleString(
+    "de-DE",
+    {
+      style: "currency",
+      currency: "EUR"
+    }
+  );
+
+}
+
+
+/* MENÜ AUFBAUEN */
+
+function renderSection(elementId, items) {
+
+  const element =
+    document.getElementById(elementId);
+
+  element.innerHTML =
+    items.map(item => {
+
+      const oneClass =
+        item.prices.length === 1
+        ? " one"
+        : "";
+
+      const buttons =
+        item.prices.map(price => {
+
+          const cartName =
+            `${item.name} · ${price.label}`;
+
+          return `
+            <button
+              class="price-btn"
+              onclick='addItem(
+                ${JSON.stringify(cartName)},
+                ${price.price}
+              )'>
+
+              ${price.label}
+
+              <small>
+                ${euro(price.price)}
+              </small>
+
+            </button>
+          `;
+
+        }).join("");
+
+
+      return `
+
+        <div class="card">
+
+          <div class="item-name">
+            ${item.name}
+          </div>
+
+          <div class="item-sub">
+            ${item.sub || "&nbsp;"}
+          </div>
+
+          <div class="price-buttons${oneClass}">
+            ${buttons}
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* ARTIKEL HINZUFÜGEN */
+
+function addItem(name, price) {
+
+  const existing =
+    cart.find(item =>
+      item.name === name &&
+      item.price === price
+    );
+
+
+  if (existing) {
+
+    existing.qty += 1;
+
+  } else {
+
+    cart.push({
+      name: name,
+      price: price,
+      qty: 1
+    });
+
+  }
+
+
+  if (navigator.vibrate) {
+    navigator.vibrate(15);
+  }
+
+
+  renderCart();
+
+}
+
+
+/* MENGE + / - */
+
+function changeQty(index, amount) {
+
+  cart[index].qty += amount;
+
+
+  if (cart[index].qty <= 0) {
+
+    cart.splice(index, 1);
+
+  }
+
+
+  renderCart();
+
+}
+
+
+/* GESAMTSUMME */
+
+function getTotal() {
+
+  const value =
+    cart.reduce(
+      (sum, item) =>
+        sum + item.price * item.qty,
+      0
+    );
+
+
+  return Math.round(value * 100) / 100;
+
+}
+
+
+/* ANZAHL ARTIKEL */
+
+function getCount() {
+
+  return cart.reduce(
+    (sum, item) =>
+      sum + item.qty,
+    0
+  );
+
+}
+
+
+/* WARENKORB ANZEIGEN */
+
+function renderCart() {
+
+  document.getElementById("count")
+    .textContent =
+      `${getCount()} Artikel`;
+
+
+  document.getElementById("total")
+    .textContent =
+      euro(getTotal());
+
+
+  document.getElementById("cart-lines")
+    .innerHTML =
+
+      cart.map((item, index) => `
+
+        <div class="cart-line">
+
+          <button
+            class="mini-btn"
+            onclick="changeQty(${index}, -1)">
+            −
+          </button>
+
+
+          <span class="desc">
+            ${item.qty}× ${item.name}
+          </span>
+
+
+          <strong>
+            ${euro(item.qty * item.price)}
+          </strong>
+
+
+          <button
+            class="mini-btn"
+            onclick="changeQty(${index}, 1)">
+            +
+          </button>
+
+        </div>
+
+      `).join("");
+
+}
+
+
+/* NEUER GAST */
+
+function resetCart() {
+
+  cart = [];
+
+  renderCart();
+
+}
+
+
+/* =========================
+   APP STARTEN
+   ========================= */
+
+renderSection(
+  "sekt-grid",
+  menu.sekt
+);
+
+renderSection(
+  "wein-grid",
+  menu.wein
+);
+
+renderSection(
+  "soft-grid",
+  menu.soft
+);
+
+renderSection(
+  "bar-grid",
+  menu.bar
+);
+
+renderSection(
+  "snack-grid",
+  menu.snack
+);
+
+renderCart();
+
+</script>
+
+</body>
+</html>
