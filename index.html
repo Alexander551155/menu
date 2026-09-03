@@ -1,940 +1,1659 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#111111">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta charset="utf-8">
 
-  <title>Sektstand Rechner</title>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+>
 
-  <style>
-    :root {
-      --bg: #f4f1e8;
-      --card: #ffffff;
-      --text: #111111;
-      --muted: #6f6f6f;
-      --line: #e5e1d8;
-    }
+<meta name="theme-color" content="#111111">
 
-    * {
-      box-sizing: border-box;
-    }
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
 
-    html {
-      -webkit-text-size-adjust: 100%;
-      touch-action: manipulation;
-    }
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+<meta
+  name="apple-mobile-web-app-title"
+  content="Sektstand"
+>
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: #111;
-      color: white;
-      padding: 14px;
-      box-shadow: 0 3px 14px rgba(0,0,0,.22);
-    }
+<title>Sektstand Rechner</title>
 
-    .header-inner {
-      max-width: 980px;
-      margin: auto;
-    }
+<style>
 
-    h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+:root {
+  --bg:#f5f1e8;
+  --card:#ffffff;
+  --ink:#111111;
+  --muted:#777;
+  --line:#ded9cf;
+}
 
-    .subtitle {
-      margin-top: 4px;
-      font-size: 12px;
-      opacity: .75;
-    }
+* {
+  box-sizing:border-box;
+}
 
-    main {
-      max-width: 980px;
-      margin: auto;
-      padding: 12px 10px 210px;
-    }
+html,
+body {
+  margin:0;
+  min-height:100%;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 
-    .top-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
+  background:var(--bg);
+  color:var(--ink);
 
-    button {
-      border: 0;
-      border-radius: 12px;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
+  -webkit-text-size-adjust:100%;
+  touch-action:manipulation;
+}
 
-    button:active {
-      transform: scale(.985);
-    }
+body {
+  padding-top:env(safe-area-inset-top);
+}
 
-    .pfand-add,
-    .pfand-return {
-      min-height: 52px;
-      font-size: 16px;
-    }
+button {
+  font:inherit;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
 
-    .pfand-add {
-      background: #fff1c8;
-    }
 
-    .pfand-return {
-      background: #e7f5ea;
-    }
+/* =========================
+   KOPF
+   ========================= */
 
-    .section-title {
-      margin: 18px 2px 8px;
-      font-size: 19px;
-      font-weight: 900;
-    }
+header {
+  position:sticky;
+  top:0;
+  z-index:20;
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 8px;
-    }
+  background:#111;
+  color:#fff;
 
-    .card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.04);
-    }
+  padding:10px 14px;
 
-    .item-name {
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 850;
-      min-height: 34px;
-    }
+  min-height:58px;
 
-    .item-sub {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-      min-height: 26px;
-    }
+  display:flex;
+  align-items:center;
 
-    .price-buttons {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 6px;
-      margin-top: 8px;
-    }
+  box-shadow:0 2px 10px #0002;
+}
 
-    .price-buttons.one {
-      grid-template-columns: 1fr;
-    }
+.title {
+  font-size:23px;
+  font-weight:950;
+  line-height:1;
+}
 
-    .price-btn {
-      min-height: 58px;
-      padding: 6px 4px;
-      background: #eee;
-      color: #111;
-      font-size: 14px;
-    }
+.hint {
+  font-size:12px;
+  opacity:.7;
+  margin-top:4px;
+}
 
-    .price-btn small {
-      display: block;
-      margin-top: 4px;
-      font-size: 12px;
-      color: #555;
-    }
 
-    /* UNTERE SUMMENLEISTE */
+/* =========================
+   HAUPTBEREICH
+   ========================= */
 
-    .footer-cart {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 30;
-      background: white;
-      border-top: 1px solid #d8d8d8;
-      box-shadow: 0 -7px 22px rgba(0,0,0,.16);
-    }
+main {
+  max-width:900px;
+  margin:0 auto;
 
-    .footer-inner {
-      max-width: 980px;
-      margin: auto;
-      padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
-    }
+  padding:
+    10px
+    10px
+    calc(150px + env(safe-area-inset-bottom));
+}
 
-    .sum-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
 
-    .count {
-      background: #111;
-      color: white;
-      border-radius: 999px;
-      padding: 5px 9px;
-      font-size: 12px;
-      font-weight: 850;
-    }
+/* =========================
+   PFAND
+   ========================= */
 
-    .sum-label {
-      font-weight: 800;
-    }
+.pfand {
+  display:grid;
 
-    .total {
-      margin-left: auto;
-      font-size: 30px;
-      font-weight: 950;
-    }
+  grid-template-columns:
+    1fr 1fr;
 
-    .cart-lines {
-      max-height: 82px;
-      overflow: auto;
-      margin-top: 6px;
-      padding-top: 5px;
-      border-top: 1px dashed #d9d9d9;
-    }
+  gap:8px;
 
-    .cart-line {
-      display: grid;
-      grid-template-columns: 32px 1fr auto 32px;
-      gap: 5px;
-      align-items: center;
-      padding: 3px 0;
-      font-size: 12px;
-    }
+  margin-bottom:12px;
+}
 
-    .cart-line .desc {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+.pfand button {
+  border:0;
 
-    .mini-btn {
-      width: 32px;
-      height: 30px;
-      background: #eee;
-      font-size: 17px;
-      padding: 0;
-    }
+  border-radius:14px;
 
-    .reset-btn {
-      width: 100%;
-      min-height: 48px;
-      margin-top: 7px;
-      background: #111;
-      color: white;
-      font-size: 16px;
-    }
+  min-height:58px;
 
-    .note {
-      margin-top: 14px;
-      font-size: 12px;
-      color: #666;
-    }
+  font-weight:950;
+  font-size:17px;
+}
 
-    @media (min-width: 720px) {
-      .grid {
-        grid-template-columns: repeat(3, minmax(0,1fr));
-      }
-    }
-  </style>
+.pfand .add {
+  background:#ffeab1;
+}
+
+.pfand .back {
+  background:#dff4e5;
+}
+
+
+/* =========================
+   KATEGORIEN
+   ========================= */
+
+.section-title {
+  font-size:22px;
+  font-weight:950;
+
+  margin:
+    16px
+    2px
+    8px;
+}
+
+
+/* =========================
+   ARTIKEL
+   ========================= */
+
+.menu {
+  display:grid;
+
+  grid-template-columns:1fr;
+
+  gap:8px;
+}
+
+.item {
+  background:#fff;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:15px;
+
+  padding:10px;
+
+  box-shadow:
+    0 2px 7px
+    #0000000c;
+}
+
+.item-name {
+  font-size:18px;
+  font-weight:900;
+
+  line-height:1.15;
+
+  margin-bottom:8px;
+}
+
+
+/* =========================
+   PREISTASTEN
+   ========================= */
+
+.options {
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      var(--cols,1),
+      1fr
+    );
+
+  gap:7px;
+}
+
+.option {
+  position:relative;
+
+  border:0;
+
+  border-radius:13px;
+
+  min-height:62px;
+
+  padding:7px 6px;
+
+  background:#ececec;
+
+  color:#111;
+
+  font-weight:950;
+}
+
+.option:active {
+  transform:scale(.985);
+}
+
+.option .size {
+  display:block;
+
+  font-size:16px;
+}
+
+.option .price {
+  display:block;
+
+  margin-top:3px;
+
+  font-size:18px;
+}
+
+
+/* =========================
+   QUANTITY / MENGE
+   ========================= */
+
+.option .qty {
+
+  display:none;
+
+  position:absolute;
+
+  top:-7px;
+  right:-7px;
+
+  min-width:28px;
+
+  height:28px;
+
+  padding:0 7px;
+
+  border-radius:999px;
+
+  align-items:center;
+  justify-content:center;
+
+  background:#111;
+
+  color:#fff;
+
+  border:
+    2px solid
+    #fff;
+
+  font-size:14px;
+
+  font-weight:950;
+}
+
+.option.selected .qty {
+  display:flex;
+}
+
+.option.selected {
+  outline:
+    3px solid
+    #111;
+
+  background:#f7f7f7;
+}
+
+
+/* =========================
+   SUMME UNTEN
+   ========================= */
+
+.bottom {
+
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  z-index:30;
+
+  background:#fff;
+
+  border-top:
+    1px solid
+    #d5d5d5;
+
+  box-shadow:
+    0 -7px 24px
+    #0002;
+}
+
+.bottom-inner {
+
+  max-width:900px;
+
+  margin:auto;
+
+  padding:
+    9px
+    10px
+    calc(
+      9px +
+      env(safe-area-inset-bottom)
+    );
+}
+
+.sumrow {
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+.count {
+
+  background:#111;
+
+  color:#fff;
+
+  border-radius:999px;
+
+  padding:6px 10px;
+
+  font-size:13px;
+
+  font-weight:900;
+}
+
+.sumlabel {
+
+  font-size:18px;
+
+  font-weight:900;
+}
+
+.total {
+
+  margin-left:auto;
+
+  font-size:34px;
+
+  font-weight:1000;
+
+  letter-spacing:-1px;
+}
+
+
+/* =========================
+   UNTEN TASTEN
+   ========================= */
+
+.controls {
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:8px;
+
+  margin-top:8px;
+}
+
+.controls button {
+
+  border:0;
+
+  border-radius:13px;
+
+  min-height:48px;
+
+  font-weight:950;
+
+  font-size:16px;
+}
+
+.undo {
+
+  background:#eee;
+}
+
+.reset {
+
+  background:#111;
+
+  color:#fff;
+}
+
+
+/* TABLET */
+
+@media(min-width:700px) {
+
+  .menu {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
+
 <header>
-  <div class="header-inner">
-    <h1>🥂 Sektstand Rechner</h1>
-    <div class="subtitle">
-      Getränk antippen → Summe wird automatisch berechnet
+
+  <div>
+
+    <div class="title">
+      🥂 Sektstand
     </div>
+
+    <div class="hint">
+      Antippen = Menge +1
+    </div>
+
   </div>
+
 </header>
+
 
 
 <main>
 
-  <!-- PFAND -->
 
-  <div class="top-actions">
+<!-- PFAND -->
 
-    <button
-      class="pfand-add"
-      onclick="addItem('Pfand', 3)">
-      + 3,00 € Pfand
-    </button>
+<div class="pfand">
 
-    <button
-      class="pfand-return"
-      onclick="addItem('Pfandrückgabe', -3)">
-      − 3,00 € Rückgabe
-    </button>
+  <button
+    class="add"
+    onclick="
+      add(
+        'Pfand',
+        3,
+        'pfand-plus'
+      )
+    "
+  >
 
-  </div>
+    + 3 € Pfand
 
-
-  <!-- SEKT -->
-
-  <div class="section-title">🥂 Sekt</div>
-  <div class="grid" id="sekt-grid"></div>
+  </button>
 
 
-  <!-- WEIN -->
+  <button
+    class="back"
+    onclick="
+      add(
+        'Pfandrückgabe',
+        -3,
+        'pfand-minus'
+      )
+    "
+  >
 
-  <div class="section-title">🍷 Wein</div>
-  <div class="grid" id="wein-grid"></div>
+    − 3 € Rückgabe
 
+  </button>
 
-  <!-- SOFTDRINKS -->
-
-  <div class="section-title">🥤 Schorle & Wasser</div>
-  <div class="grid" id="soft-grid"></div>
-
-
-  <!-- APERITIF -->
-
-  <div class="section-title">🍹 Aperitif & Longdrinks</div>
-  <div class="grid" id="bar-grid"></div>
-
-
-  <!-- SNACK -->
-
-  <div class="section-title">🥨 Snack</div>
-  <div class="grid" id="snack-grid"></div>
+</div>
 
 
-  <div class="note">
-    Pfand: 3,00 € pro Glas / pro Flasche.
-    Pfand wird nur gerechnet, wenn du oben auf
-    „+ 3,00 € Pfand“ tippst.
-  </div>
+
+<!-- HIER WIRD DAS MENÜ EINGEFÜGT -->
+
+<div id="app"></div>
+
 
 </main>
 
 
+
 <!-- SUMME UNTEN -->
 
-<div class="footer-cart">
+<div class="bottom">
 
-  <div class="footer-inner">
+  <div class="bottom-inner">
 
-    <div class="sum-row">
 
-      <span class="count" id="count">
+    <div class="sumrow">
+
+
+      <span
+        class="count"
+        id="count"
+      >
+
         0 Artikel
+
       </span>
 
-      <span class="sum-label">
+
+      <span class="sumlabel">
+
         Summe
+
       </span>
 
-      <span class="total" id="total">
+
+      <span
+        class="total"
+        id="total"
+      >
+
         0,00 €
+
       </span>
 
+
     </div>
 
 
-    <div
-      class="cart-lines"
-      id="cart-lines">
+
+    <div class="controls">
+
+
+      <button
+        class="undo"
+        onclick="undo()"
+      >
+
+        ↶ Rückgängig
+
+      </button>
+
+
+      <button
+        class="reset"
+        onclick="resetCart()"
+      >
+
+        NEUER GAST
+
+      </button>
+
+
     </div>
 
-
-    <button
-      class="reset-btn"
-      onclick="resetCart()">
-
-      NEUER GAST / AUF 0
-
-    </button>
 
   </div>
 
 </div>
 
 
+
 <script>
 
-/* =========================
-   MENÜ + PREISE
-   ========================= */
+/* =========================================
+   MENÜ
+   ========================================= */
 
-const menu = {
+const sections = [
 
-  /* SEKT */
 
-  sekt: [
+/* =====================
+   SEKT
+   ===================== */
+
+{
+
+  title:"🥂 Sekt",
+
+  items:[
+
 
     {
-      name: "Fürst von Metternich Riesling",
-      sub: "Sekt",
-      prices: [
-        { label: "0,1 l", price: 5.00 },
-        { label: "0,75 l", price: 28.00 }
+
+      name:
+        "Fürst von Metternich Riesling",
+
+      opts:[
+
+        ["0,1 l",5],
+
+        ["0,75 l",28]
+
       ]
+
     },
 
-    {
-      name: "Fürst von Metternich Rosé",
-      sub: "Sekt",
-      prices: [
-        { label: "0,1 l", price: 5.00 },
-        { label: "0,75 l", price: 28.00 }
-      ]
-    },
 
     {
-      name: "Fürst von Metternich Chardonnay",
-      sub: "Sekt",
-      prices: [
-        { label: "0,1 l", price: 5.00 },
-        { label: "0,75 l", price: 28.00 }
+
+      name:
+        "Fürst von Metternich Rosé",
+
+      opts:[
+
+        ["0,1 l",5],
+
+        ["0,75 l",28]
+
       ]
+
+    },
+
+
+    {
+
+      name:
+        "Fürst von Metternich Chardonnay",
+
+      opts:[
+
+        ["0,1 l",5],
+
+        ["0,75 l",28]
+
+      ]
+
     }
 
-  ],
-
-
-  /* WEINE */
-
-  wein: [
-
-    {
-      name: "Nr. 1 Riesling „Hofgut Laubenheimer Höhe“, trocken",
-      sub: "Weingut Kühling-Gillot",
-      prices: [
-        { label: "0,1 l", price: 4.00 },
-        { label: "0,2 l", price: 7.00 },
-        { label: "0,75 l", price: 24.50 }
-      ]
-    },
-
-    {
-      name: "Nr. 2 Riesling Gelblack, trocken",
-      sub: "Schloss Johannisberg",
-      prices: [
-        { label: "0,1 l", price: 4.50 },
-        { label: "0,2 l", price: 8.00 },
-        { label: "0,75 l", price: 28.00 }
-      ]
-    },
-
-    {
-      name: "Nr. 3 Riesling Gelblack, feinherb",
-      sub: "Schloss Johannisberg",
-      prices: [
-        { label: "0,1 l", price: 4.50 },
-        { label: "0,2 l", price: 8.00 },
-        { label: "0,75 l", price: 28.00 }
-      ]
-    },
-
-    {
-      name: "Nr. 4 Weißburgunder, trocken",
-      sub: "Weingut Wittmann",
-      prices: [
-        { label: "0,1 l", price: 4.50 },
-        { label: "0,2 l", price: 8.00 },
-        { label: "0,75 l", price: 28.00 }
-      ]
-    },
-
-    {
-      name: "Nr. 5 Grauburgunder Réserve, trocken",
-      sub: "Weingut Full",
-      prices: [
-        { label: "0,1 l", price: 3.50 },
-        { label: "0,2 l", price: 6.50 },
-        { label: "0,75 l", price: 22.00 }
-      ]
-    },
-
-    {
-      name: "Nr. 6 Chardonnay, trocken",
-      sub: "Weingut Spieß",
-      prices: [
-        { label: "0,1 l", price: 3.50 },
-        { label: "0,2 l", price: 6.50 },
-        { label: "0,75 l", price: 22.00 }
-      ]
-    },
-
-    {
-      name: "Nr. 7 Rosé „HASE“, trocken",
-      sub: "Weingut Kühling-Gillot",
-      prices: [
-        { label: "0,1 l", price: 3.50 },
-        { label: "0,2 l", price: 6.50 },
-        { label: "0,75 l", price: 22.00 }
-      ]
-    }
-
-  ],
-
-
-  /* SCHORLE / WASSER / SOFTDRINKS */
-
-  soft: [
-
-    {
-      name: "Weinschorle",
-      sub: "0,4 l",
-      prices: [
-        { label: "0,4 l", price: 4.50 }
-      ]
-    },
-
-    {
-      name: "Roséschorle",
-      sub: "0,4 l",
-      prices: [
-        { label: "0,4 l", price: 4.50 }
-      ]
-    },
-
-    {
-      name: "Gerolsteiner Mineralwasser still",
-      sub: "0,5 l",
-      prices: [
-        { label: "0,5 l", price: 4.50 }
-      ]
-    },
-
-    {
-      name: "Gerolsteiner Mineralwasser medium",
-      sub: "0,5 l",
-      prices: [
-        { label: "0,5 l", price: 4.50 }
-      ]
-    },
-
-    {
-      name: "Traubensaftschorle",
-      sub: "Weingut Stenner · Flasche 0,33 l",
-      prices: [
-        { label: "0,33 l", price: 3.50 }
-      ]
-    },
-
-    {
-      name: "Pepsi",
-      sub: "Flasche 0,33 l",
-      prices: [
-        { label: "0,33 l", price: 4.00 }
-      ]
-    },
-
-    {
-      name: "Pepsi Max",
-      sub: "Flasche 0,33 l",
-      prices: [
-        { label: "0,33 l", price: 4.00 }
-      ]
-    },
-
-    {
-      name: "SchwipSchwap Orange",
-      sub: "Flasche 0,33 l",
-      prices: [
-        { label: "0,33 l", price: 4.00 }
-      ]
-    }
-
-  ],
-
-
-  /* APERITIF / LONGDRINKS */
-
-  bar: [
-
-    {
-      name: "Aperol Spritz",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Hugo",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Mionetto Aperitivo",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Solare Spritz",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Aperol Spritz alkoholfrei",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Hugo alkoholfrei",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Mionetto Aperitivo alkoholfrei",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Solare Spritz alkoholfrei",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 7.50 }
-      ]
-    },
-
-    {
-      name: "Gin Tonic",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 8.50 }
-      ]
-    },
-
-    {
-      name: "Wodka Lemon",
-      sub: "Glas",
-      prices: [
-        { label: "Glas", price: 8.50 }
-      ]
-    }
-
-  ],
-
-
-  /* SNACK */
-
-  snack: [
-
-    {
-      name: "Brezel",
-      sub: "",
-      prices: [
-        { label: "1 Stück", price: 2.50 }
-      ]
-    }
 
   ]
 
-};
+},
 
 
-/* =========================
-   RECHNER
-   ========================= */
 
-let cart = [];
+/* =====================
+   WEIN
+   ===================== */
+
+{
+
+  title:"🍷 Wein",
+
+  items:[
 
 
-/* EURO FORMATIEREN */
-
-function euro(value) {
-
-  return Number(value).toLocaleString(
-    "de-DE",
     {
-      style: "currency",
-      currency: "EUR"
+
+      name:
+        "Nr. 1 Riesling „Hofgut Laubenheimer Höhe“, trocken",
+
+      opts:[
+
+        ["0,1 l",4],
+
+        ["0,2 l",7],
+
+        ["0,75 l",24.5]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 2 Riesling Gelblack, trocken",
+
+      opts:[
+
+        ["0,1 l",4.5],
+
+        ["0,2 l",8],
+
+        ["0,75 l",28]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 3 Riesling Gelblack, feinherb",
+
+      opts:[
+
+        ["0,1 l",4.5],
+
+        ["0,2 l",8],
+
+        ["0,75 l",28]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 4 Weißburgunder, trocken",
+
+      opts:[
+
+        ["0,1 l",4.5],
+
+        ["0,2 l",8],
+
+        ["0,75 l",28]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 5 Grauburgunder Réserve, trocken",
+
+      opts:[
+
+        ["0,1 l",3.5],
+
+        ["0,2 l",6.5],
+
+        ["0,75 l",22]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 6 Chardonnay, trocken",
+
+      opts:[
+
+        ["0,1 l",3.5],
+
+        ["0,2 l",6.5],
+
+        ["0,75 l",22]
+
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Nr. 7 Rosé „HASE“, trocken",
+
+      opts:[
+
+        ["0,1 l",3.5],
+
+        ["0,2 l",6.5],
+
+        ["0,75 l",22]
+
+      ]
+
     }
+
+
+  ]
+
+},
+
+
+
+/* =====================
+   SCHORLE / WASSER
+   ===================== */
+
+{
+
+  title:"🥤 Schorle & alkoholfrei",
+
+  items:[
+
+
+    {
+
+      name:"Weinschorle",
+
+      opts:[
+        ["0,4 l",4.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Roséschorle",
+
+      opts:[
+        ["0,4 l",4.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Gerolsteiner still",
+
+      opts:[
+        ["0,5 l",4.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Gerolsteiner medium",
+
+      opts:[
+        ["0,5 l",4.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Traubensaftschorle",
+
+      opts:[
+        ["0,33 l",3.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Pepsi",
+
+      opts:[
+        ["0,33 l",4]
+      ]
+
+    },
+
+
+    {
+
+      name:"Pepsi Max",
+
+      opts:[
+        ["0,33 l",4]
+      ]
+
+    },
+
+
+    {
+
+      name:"SchwipSchwap Orange",
+
+      opts:[
+        ["0,33 l",4]
+      ]
+
+    }
+
+
+  ]
+
+},
+
+
+
+/* =====================
+   APERITIF
+   ===================== */
+
+{
+
+  title:"🍹 Aperitif & Longdrinks",
+
+  items:[
+
+
+    {
+
+      name:"Aperol Spritz",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Hugo",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Mionetto Aperitivo",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Solare Spritz",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Aperol Spritz alkoholfrei",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Hugo alkoholfrei",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Mionetto Aperitivo alkoholfrei",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:
+        "Solare Spritz alkoholfrei",
+
+      opts:[
+        ["Glas",7.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Gin Tonic",
+
+      opts:[
+        ["Glas",8.5]
+      ]
+
+    },
+
+
+    {
+
+      name:"Wodka Lemon",
+
+      opts:[
+        ["Glas",8.5]
+      ]
+
+    }
+
+
+  ]
+
+},
+
+
+
+/* =====================
+   SNACK
+   ===================== */
+
+{
+
+  title:"🥨 Snack",
+
+  items:[
+
+
+    {
+
+      name:"Brezel",
+
+      opts:[
+        ["1 Stück",2.5]
+      ]
+
+    }
+
+
+  ]
+
+}
+
+
+];
+
+
+
+/* =========================================
+   WARENKORB
+   ========================================= */
+
+let cart = {};
+
+let history = [];
+
+
+
+/* EURO */
+
+const eur = number =>
+
+  Number(number).toLocaleString(
+
+    "de-DE",
+
+    {
+
+      style:"currency",
+
+      currency:"EUR"
+
+    }
+
   );
 
-}
 
 
-/* MENÜ AUFBAUEN */
+/* SCHLÜSSEL */
 
-function renderSection(elementId, items) {
+function keyFor(
+  name,
+  size
+) {
 
-  const element =
-    document.getElementById(elementId);
-
-  element.innerHTML =
-    items.map(item => {
-
-      const oneClass =
-        item.prices.length === 1
-        ? " one"
-        : "";
-
-      const buttons =
-        item.prices.map(price => {
-
-          const cartName =
-            `${item.name} · ${price.label}`;
-
-          return `
-            <button
-              class="price-btn"
-              onclick='addItem(
-                ${JSON.stringify(cartName)},
-                ${price.price}
-              )'>
-
-              ${price.label}
-
-              <small>
-                ${euro(price.price)}
-              </small>
-
-            </button>
-          `;
-
-        }).join("");
-
-
-      return `
-
-        <div class="card">
-
-          <div class="item-name">
-            ${item.name}
-          </div>
-
-          <div class="item-sub">
-            ${item.sub || "&nbsp;"}
-          </div>
-
-          <div class="price-buttons${oneClass}">
-            ${buttons}
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+  return name + "||" + size;
 
 }
 
 
-/* ARTIKEL HINZUFÜGEN */
 
-function addItem(name, price) {
+/* HTML ID ERSTELLEN */
 
-  const existing =
-    cart.find(item =>
-      item.name === name &&
-      item.price === price
+function safeId(text) {
+
+  return "q-" +
+
+    btoa(
+
+      unescape(
+
+        encodeURIComponent(text)
+
+      )
+
+    )
+
+    .replace(
+
+      /[^a-zA-Z0-9]/g,
+
+      ""
+
+    )
+
+    .slice(0,40);
+
+}
+
+
+
+/* =========================================
+   MENÜ ANZEIGEN
+   ========================================= */
+
+function renderMenu() {
+
+
+  const root =
+
+    document.getElementById(
+      "app"
     );
 
 
-  if (existing) {
+  root.innerHTML =
 
-    existing.qty += 1;
+    sections.map(
 
-  } else {
+      section => `
 
-    cart.push({
-      name: name,
-      price: price,
-      qty: 1
-    });
+
+      <section>
+
+
+        <div class="section-title">
+
+          ${section.title}
+
+        </div>
+
+
+        <div class="menu">
+
+
+          ${
+
+            section.items.map(
+
+              item => `
+
+
+              <div class="item">
+
+
+                <div class="item-name">
+
+                  ${item.name}
+
+                </div>
+
+
+                <div
+                  class="options"
+
+                  style="
+                    --cols:
+                    ${Math.min(
+                      item.opts.length,
+                      3
+                    )}
+                  "
+                >
+
+
+                ${
+
+                  item.opts.map(
+
+                    ([size,price]) => {
+
+
+                      const key =
+
+                        keyFor(
+                          item.name,
+                          size
+                        );
+
+
+                      const id =
+
+                        safeId(key);
+
+
+                      return `
+
+
+                      <button
+
+                        class="option"
+
+                        id="${id}"
+
+                        onclick='
+
+                          add(
+
+                            ${JSON.stringify(
+                              item.name +
+                              " · " +
+                              size
+                            )},
+
+                            ${price},
+
+                            ${JSON.stringify(
+                              key
+                            )}
+
+                          )
+
+                        '
+                      >
+
+
+                        <span class="qty">
+
+                          0
+
+                        </span>
+
+
+                        <span class="size">
+
+                          ${size}
+
+                        </span>
+
+
+                        <span class="price">
+
+                          ${eur(price)}
+
+                        </span>
+
+
+                      </button>
+
+
+                      `;
+
+
+                    }
+
+                  ).join("")
+
+                }
+
+
+                </div>
+
+
+              </div>
+
+
+              `
+
+            ).join("")
+
+          }
+
+
+        </div>
+
+
+      </section>
+
+
+      `
+
+    ).join("");
+
+}
+
+
+
+/* =========================================
+   VERLAUF SPEICHERN
+   ========================================= */
+
+function snapshot() {
+
+
+  history.push(
+
+    JSON.stringify(cart)
+
+  );
+
+
+  if (
+    history.length > 30
+  ) {
+
+    history.shift();
+
+  }
+
+}
+
+
+
+/* =========================================
+   ARTIKEL HINZUFÜGEN
+   ========================================= */
+
+function add(
+  name,
+  price,
+  key
+) {
+
+
+  snapshot();
+
+
+  if (
+    !cart[key]
+  ) {
+
+
+    cart[key] = {
+
+      name:name,
+
+      price:price,
+
+      qty:0
+
+    };
+
 
   }
 
 
-  if (navigator.vibrate) {
+  cart[key].qty++;
+
+
+  update();
+
+
+  if (
+    navigator.vibrate
+  ) {
+
     navigator.vibrate(15);
-  }
-
-
-  renderCart();
-
-}
-
-
-/* MENGE + / - */
-
-function changeQty(index, amount) {
-
-  cart[index].qty += amount;
-
-
-  if (cart[index].qty <= 0) {
-
-    cart.splice(index, 1);
 
   }
 
-
-  renderCart();
-
 }
 
 
-/* GESAMTSUMME */
 
-function getTotal() {
+/* =========================================
+   RÜCKGÄNGIG
+   ========================================= */
 
-  const value =
-    cart.reduce(
-      (sum, item) =>
-        sum + item.price * item.qty,
-      0
-    );
+function undo() {
 
 
-  return Math.round(value * 100) / 100;
+  if (
+    !history.length
+  ) {
 
-}
+    return;
+
+  }
 
 
-/* ANZAHL ARTIKEL */
+  cart = JSON.parse(
 
-function getCount() {
+    history.pop()
 
-  return cart.reduce(
-    (sum, item) =>
-      sum + item.qty,
-    0
   );
 
-}
 
-
-/* WARENKORB ANZEIGEN */
-
-function renderCart() {
-
-  document.getElementById("count")
-    .textContent =
-      `${getCount()} Artikel`;
-
-
-  document.getElementById("total")
-    .textContent =
-      euro(getTotal());
-
-
-  document.getElementById("cart-lines")
-    .innerHTML =
-
-      cart.map((item, index) => `
-
-        <div class="cart-line">
-
-          <button
-            class="mini-btn"
-            onclick="changeQty(${index}, -1)">
-            −
-          </button>
-
-
-          <span class="desc">
-            ${item.qty}× ${item.name}
-          </span>
-
-
-          <strong>
-            ${euro(item.qty * item.price)}
-          </strong>
-
-
-          <button
-            class="mini-btn"
-            onclick="changeQty(${index}, 1)">
-            +
-          </button>
-
-        </div>
-
-      `).join("");
+  update();
 
 }
 
 
-/* NEUER GAST */
+
+/* =========================================
+   NEUER GAST
+   ========================================= */
 
 function resetCart() {
 
-  cart = [];
 
-  renderCart();
+  if (
+    Object.keys(cart).length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  snapshot();
+
+
+  cart = {};
+
+
+  update();
 
 }
 
 
-/* =========================
-   APP STARTEN
-   ========================= */
 
-renderSection(
-  "sekt-grid",
-  menu.sekt
-);
+/* =========================================
+   SUMME + QUANTITY AKTUALISIEREN
+   ========================================= */
 
-renderSection(
-  "wein-grid",
-  menu.wein
-);
+function update() {
 
-renderSection(
-  "soft-grid",
-  menu.soft
-);
 
-renderSection(
-  "bar-grid",
-  menu.bar
-);
+  let count = 0;
 
-renderSection(
-  "snack-grid",
-  menu.snack
-);
+  let total = 0;
 
-renderCart();
+
+
+  /* ALLE QUANTITY MARKIERUNGEN ZURÜCKSETZEN */
+
+
+  document
+
+    .querySelectorAll(
+      ".option"
+    )
+
+    .forEach(
+
+      button => {
+
+
+        button.classList.remove(
+          "selected"
+        );
+
+
+        const quantity =
+
+          button.querySelector(
+            ".qty"
+          );
+
+
+        if (
+          quantity
+        ) {
+
+          quantity.textContent =
+            "0";
+
+        }
+
+
+      }
+
+    );
+
+
+
+  /* WARENKORB DURCHGEHEN */
+
+
+  for (
+
+    const [
+      key,
+      item
+    ]
+
+    of Object.entries(cart)
+
+  ) {
+
+
+    if (
+      item.qty <= 0
+    ) {
+
+      continue;
+
+    }
+
+
+    count +=
+      item.qty;
+
+
+    total +=
+
+      item.qty *
+      item.price;
+
+
+
+    /* QUANTITY AM ARTIKEL ZEIGEN */
+
+
+    if (
+
+      key !==
+      "pfand-plus"
+
+      &&
+
+      key !==
+      "pfand-minus"
+
+    ) {
+
+
+      const button =
+
+        document.getElementById(
+
+          safeId(key)
+
+        );
+
+
+      if (
+        button
+      ) {
+
+
+        button.classList.add(
+          "selected"
+        );
+
+
+        button
+          .querySelector(
+            ".qty"
+          )
+          .textContent =
+            item.qty;
+
+
+      }
+
+
+    }
+
+
+  }
+
+
+
+  /* ARTIKELANZAHL */
+
+
+  document
+    .getElementById(
+      "count"
+    )
+    .textContent =
+
+      count +
+      " Artikel";
+
+
+
+  /* GESAMTSUMME */
+
+
+  document
+    .getElementById(
+      "total"
+    )
+    .textContent =
+
+      eur(
+
+        Math.round(
+          total * 100
+        ) / 100
+
+      );
+
+}
+
+
+
+/* =========================================
+   START
+   ========================================= */
+
+renderMenu();
+
+update();
 
 </script>
+
 
 </body>
 </html>
