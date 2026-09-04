@@ -2,54 +2,82 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#17130f">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+>
+
+<meta name="theme-color" content="#4b4d4b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Sektstand">
 <meta name="mobile-web-app-capable" content="yes">
+
 <title>Sektstand Rechner</title>
 
 <style>
 :root{
-  --bg:#f3efe6;
-  --card:#fffdf8;
-  --ink:#17130f;
-  --muted:#6f675d;
-  --line:#ddd4c6;
-  --gold:#c7a15b;
-  --dark:#17130f;
+  --bg:#f6f4f1;
+  --card:#ffffff;
+  --ink:#2d2f2d;
+  --muted:#777a77;
+  --line:#dedbd6;
+
+  --anthrazit:#555855;
+  --anthrazit-dark:#3f4140;
+  --anthrazit-soft:#6a6d6a;
+
+  --pink:#a84f79;
+  --pink-dark:#8f4167;
+  --pink-soft:#f0e2e9;
+
+  --green:#23864e;
+  --gold:#cbb88e;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html,
+body{
   margin:0;
   min-height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
   background:var(--bg);
   color:var(--ink);
+
   -webkit-text-size-adjust:100%;
-  touch-action:manipulation
+  touch-action:manipulation;
 }
 
 body{
-  padding-top:env(safe-area-inset-top)
+  padding-top:env(safe-area-inset-top);
 }
 
-button,input{
-  font:inherit
+button,
+input{
+  font:inherit;
 }
 
 button{
   -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation
+  touch-action:manipulation;
 }
 
 
-/* =========================
+/* =========================================================
    KOPF
-   ========================= */
+   ========================================================= */
 
 header{
   position:sticky;
@@ -59,8 +87,8 @@ header{
   background:
     linear-gradient(
       135deg,
-      #15110d,
-      #2b2118
+      var(--anthrazit),
+      var(--anthrazit-dark)
     );
 
   color:#fff;
@@ -71,8 +99,8 @@ header{
     7px;
 
   border-bottom:
-    2px solid
-    var(--gold);
+    3px solid
+    var(--pink);
 
   box-shadow:
     0 2px 10px
@@ -88,9 +116,11 @@ header{
 
 .brand-small{
   font-size:8px;
-  font-weight:900;
-  letter-spacing:1.3px;
-  color:#d7bc85;
+  font-weight:950;
+  letter-spacing:1.4px;
+
+  color:#f2dce7;
+
   margin-bottom:2px;
 }
 
@@ -102,14 +132,14 @@ header{
 
 .hint{
   font-size:10px;
-  color:#d9c9aa;
+  color:#eeeeee;
   margin-top:3px;
 }
 
 
-/* =========================
+/* =========================================================
    PFAND
-   ========================= */
+   ========================================================= */
 
 .pfand-mini{
   display:flex;
@@ -119,24 +149,35 @@ header{
 .pfand-mini button{
   border:0;
   border-radius:10px;
+
   min-height:38px;
-  padding:0 10px;
+
+  padding:
+    0
+    10px;
+
   font-weight:950;
   font-size:13px;
+
+  box-shadow:
+    0 2px 5px
+    #0002;
 }
 
 .pfand-plus{
-  background:#ffe7a3;
+  background:#f6dfb2;
+  color:#2b2b2b;
 }
 
 .pfand-minus{
-  background:#daf0df;
+  background:#dcefe2;
+  color:#20452b;
 }
 
 
-/* =========================
+/* =========================================================
    KATEGORIEN
-   ========================= */
+   ========================================================= */
 
 .tabs{
   position:sticky;
@@ -153,17 +194,20 @@ header{
     6px
     7px;
 
-  background:#f3efe6ef;
+  background:#f6f4f1ee;
 
-  backdrop-filter:blur(8px);
+  backdrop-filter:
+    blur(9px);
 
   border-bottom:
     1px solid
-    #ddd6ca;
+    #ddd9d3;
 }
 
 .tab{
-  border:0;
+  border:
+    1px solid
+    #e3dfda;
 
   border-radius:10px;
 
@@ -171,33 +215,41 @@ header{
 
   background:#fff;
 
-  font-size:12px;
+  color:var(--anthrazit-dark);
 
-  font-weight:900;
+  font-size:12px;
+  font-weight:950;
 
   padding:4px;
 }
 
 .tab.active{
-  background:#17130f;
+  background:
+    linear-gradient(
+      180deg,
+      #666966,
+      #4a4c4a
+    );
 
   color:#fff;
 
-  outline:
+  border:
     2px solid
-    var(--gold);
+    var(--pink);
+
+  box-shadow:
+    0 2px 6px
+    #0002;
 }
 
 
-/* =========================
-   INHALT
-   ========================= */
+/* =========================================================
+   HAUPTBEREICH
+   ========================================================= */
 
 main{
   max-width:760px;
-
-  margin:
-    0 auto;
+  margin:0 auto;
 
   padding:
     6px
@@ -217,10 +269,9 @@ main{
 }
 
 
-/* =========================
-   FAVORITE LOGO
-   NUR IM SEKT-BEREICH
-   ========================= */
+/* =========================================================
+   FAVORITE LOGO IM SEKT-BEREICH
+   ========================================================= */
 
 #sekt{
   position:relative;
@@ -232,7 +283,7 @@ main{
   position:absolute;
 
   inset:
-    58px
+    60px
     0
     0
     0;
@@ -240,7 +291,7 @@ main{
   background:
     url("favorite-logo.png")
     center 42%
-    / 82% auto
+    / 78% auto
     no-repeat;
 
   opacity:.035;
@@ -255,38 +306,33 @@ main{
   z-index:1;
 }
 
-
-/* Logo oben bei Sekt */
-
 .sekt-brand{
-  height:56px;
+  min-height:58px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   margin:
     0
     0
-    6px;
+    7px;
 
   padding:
-    5px
+    7px
     12px;
-
-  border-radius:12px;
 
   border:
     1px solid
-    #d9c9ad;
+    #d6d2cc;
+
+  border-radius:13px;
 
   background:
     linear-gradient(
       135deg,
-      #17130f,
-      #2c2118
+      #676a67,
+      #4d4f4d
     );
 
   box-shadow:
@@ -297,21 +343,58 @@ main{
 }
 
 .sekt-brand img{
-  max-width:74%;
+  display:block;
 
-  max-height:45px;
+  max-width:78%;
+  max-height:48px;
 
   width:auto;
-
   height:auto;
 
   object-fit:contain;
+
+  filter:
+    brightness(1.65)
+    contrast(.92);
+}
+
+.logo-fallback{
+  display:none;
+
+  color:#fff;
+
+  text-align:center;
+
+  font-weight:950;
+
+  line-height:1;
+}
+
+.logo-fallback strong{
+  display:block;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:24px;
+}
+
+.logo-fallback span{
+  display:block;
+
+  margin-top:3px;
+
+  font-size:13px;
+
+  color:#e6d5de;
 }
 
 
-/* =========================
+/* =========================================================
    PRODUKTKARTEN
-   ========================= */
+   ========================================================= */
 
 .grid{
   display:grid;
@@ -324,7 +407,12 @@ main{
 
 .item{
   background:
-    var(--card);
+    rgba(
+      255,
+      255,
+      255,
+      .97
+    );
 
   border:
     1px solid
@@ -335,8 +423,8 @@ main{
   padding:7px;
 
   box-shadow:
-    0 1px 4px
-    #0000000b;
+    0 1px 5px
+    #00000012;
 }
 
 .item.full{
@@ -346,8 +434,7 @@ main{
 
 .item-name{
   font-size:14px;
-
-  font-weight:900;
+  font-weight:950;
 
   line-height:1.08;
 
@@ -359,8 +446,7 @@ main{
 .item-sub{
   font-size:10px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   line-height:1.1;
 
@@ -370,9 +456,9 @@ main{
 }
 
 
-/* =========================
-   PREISTASTEN
-   ========================= */
+/* =========================================================
+   PREISBUTTONS
+   ========================================================= */
 
 .options{
   display:grid;
@@ -389,26 +475,33 @@ main{
 .option{
   position:relative;
 
-  border:0;
+  border:
+    1px solid
+    #e2e2e2;
 
   border-radius:10px;
 
-  min-height:48px;
+  min-height:49px;
 
   padding:
     5px
     3px;
 
-  background:#ececec;
+  background:
+    linear-gradient(
+      180deg,
+      #f2f2f2,
+      #e9e9e9
+    );
 
-  color:#111;
+  color:#202020;
 
   font-weight:950;
 }
 
 .option:active{
   transform:
-    scale(.985);
+    scale(.98);
 }
 
 .option .size{
@@ -426,22 +519,20 @@ main{
 }
 
 
-/* =========================
+/* =========================================================
    MENGE
-   ========================= */
+   ========================================================= */
 
 .option .qty{
   display:none;
 
   position:absolute;
 
-  top:-6px;
+  top:-7px;
+  right:-7px;
 
-  right:-6px;
-
-  min-width:24px;
-
-  height:24px;
+  min-width:25px;
+  height:25px;
 
   padding:
     0
@@ -450,10 +541,10 @@ main{
   border-radius:999px;
 
   align-items:center;
-
   justify-content:center;
 
-  background:#111;
+  background:
+    var(--pink);
 
   color:#fff;
 
@@ -461,21 +552,27 @@ main{
     2px solid
     #fff;
 
-  font-size:12px;
+  box-shadow:
+    0 2px 5px
+    #0003;
 
+  font-size:12px;
   font-weight:950;
+
+  z-index:3;
 }
 
 .option.selected{
   outline:
     2px solid
-    #17130f;
+    var(--anthrazit-dark);
 
-  background:#fff8e8;
+  background:
+    #fff7fb;
 
   box-shadow:
     0 0 0 2px
-    #c7a15b55;
+    #a84f7930;
 }
 
 .option.selected .qty{
@@ -483,9 +580,9 @@ main{
 }
 
 
-/* =========================
-   EINZELARTIKEL
-   ========================= */
+/* =========================================================
+   SOFT / APERITIF / SNACK
+   ========================================================= */
 
 .single-grid{
   display:grid;
@@ -497,8 +594,7 @@ main{
 }
 
 .single-card{
-  background:
-    var(--card);
+  background:#fff;
 
   border:
     1px solid
@@ -507,12 +603,15 @@ main{
   border-radius:12px;
 
   padding:7px;
+
+  box-shadow:
+    0 1px 5px
+    #00000010;
 }
 
 .single-name{
   font-size:13px;
-
-  font-weight:900;
+  font-weight:950;
 
   line-height:1.05;
 
@@ -521,31 +620,28 @@ main{
 
 .single-card .option{
   width:100%;
-
   margin-top:5px;
 }
 
 
-/* =========================
+/* =========================================================
    SUMME UNTEN
-   ========================= */
+   ========================================================= */
 
 .bottom{
   position:fixed;
 
   left:0;
-
   right:0;
-
   bottom:0;
 
   z-index:50;
 
-  background:#fffdf8;
+  background:#fff;
 
   border-top:
-    2px solid
-    var(--gold);
+    3px solid
+    var(--pink);
 
   box-shadow:
     0 -7px 22px
@@ -568,14 +664,13 @@ main{
 
 .sumrow{
   display:flex;
-
   align-items:center;
-
   gap:7px;
 }
 
 .count{
-  background:#17130f;
+  background:
+    var(--anthrazit);
 
   color:#fff;
 
@@ -586,30 +681,30 @@ main{
     8px;
 
   font-size:11px;
-
   font-weight:900;
 }
 
 .sumlabel{
   font-size:16px;
-
-  font-weight:900;
+  font-weight:950;
 }
 
 .total{
   margin-left:auto;
 
   font-size:30px;
-
   font-weight:1000;
 
   letter-spacing:-1px;
+
+  color:
+    var(--anthrazit-dark);
 }
 
 
-/* =========================
+/* =========================================================
    BUTTONS UNTEN
-   ========================= */
+   ========================================================= */
 
 .controls{
   display:grid;
@@ -637,30 +732,36 @@ main{
 }
 
 .undo{
-  background:#eee;
+  background:#eeeeee;
+  color:#353535;
 }
 
 .cash{
   background:
     linear-gradient(
       180deg,
-      #218b50,
-      #14683a
+      #2a9659,
+      #207746
     );
 
   color:#fff;
 }
 
 .reset{
-  background:#17130f;
+  background:
+    linear-gradient(
+      180deg,
+      #666966,
+      #4a4c4a
+    );
 
   color:#fff;
 }
 
 
-/* =========================
+/* =========================================================
    BARZAHLUNG
-   ========================= */
+   ========================================================= */
 
 dialog{
   border:0;
@@ -688,8 +789,7 @@ dialog::backdrop{
 
 .modal{
   padding:16px;
-
-  background:#fffdf8;
+  background:#fff;
 }
 
 .modal h2{
@@ -698,23 +798,24 @@ dialog::backdrop{
     0
     8px;
 
+  color:
+    var(--anthrazit-dark);
+
   font-size:23px;
 }
 
 .to-pay-label{
   font-size:13px;
-
   color:#666;
 }
 
 .to-pay{
   font-size:36px;
-
   font-weight:1000;
+
+  color:
+    var(--anthrazit-dark);
 }
-
-
-/* Schnellbeträge */
 
 .quick-cash{
   display:grid;
@@ -736,23 +837,22 @@ dialog::backdrop{
 .quick-cash button{
   min-height:48px;
 
-  border:0;
+  border:
+    1px solid
+    #dedede;
 
   border-radius:10px;
 
-  background:#eee;
+  background:
+    #f3f3f3;
 
   font-weight:950;
 }
-
-
-/* Gast gibt */
 
 .cash-label{
   display:block;
 
   font-size:13px;
-
   font-weight:800;
 
   margin-bottom:4px;
@@ -770,7 +870,6 @@ dialog::backdrop{
   border-radius:11px;
 
   font-size:26px;
-
   font-weight:900;
 
   outline:none;
@@ -778,16 +877,13 @@ dialog::backdrop{
 
 #cashInput:focus{
   border-color:
-    var(--gold);
+    var(--pink);
 }
-
-
-/* Rückgeld */
 
 .change-box{
   margin-top:10px;
 
-  background:#f1f1f1;
+  background:#f3f1f2;
 
   border-radius:12px;
 
@@ -796,18 +892,13 @@ dialog::backdrop{
 
 .change-label{
   font-size:13px;
-
   color:#666;
 }
 
 .change{
   font-size:34px;
-
   font-weight:1000;
 }
-
-
-/* Barzahlung Buttons */
 
 .modal-buttons{
   display:grid;
@@ -837,15 +928,16 @@ dialog::backdrop{
 }
 
 .paid{
-  background:#17130f;
+  background:
+    var(--anthrazit);
 
   color:#fff;
 }
 
 
-/* =========================
+/* =========================================================
    KLEINE HANDYS
-   ========================= */
+   ========================================================= */
 
 @media(max-width:380px){
 
@@ -882,15 +974,14 @@ dialog::backdrop{
   }
 
   .sekt-brand{
-    height:50px;
+    min-height:52px;
   }
 
   .sekt-brand img{
-    max-height:39px;
+    max-height:42px;
   }
 
 }
-
 </style>
 </head>
 
@@ -923,13 +1014,7 @@ dialog::backdrop{
 
       <button
         class="pfand-plus"
-        onclick="
-          add(
-            'Pfand',
-            3,
-            'pfand-plus'
-          )
-        "
+        onclick="add('Pfand',3,'pfand-plus')"
       >
         +3 €
       </button>
@@ -937,13 +1022,7 @@ dialog::backdrop{
 
       <button
         class="pfand-minus"
-        onclick="
-          add(
-            'Pfandrückgabe',
-            -3,
-            'pfand-minus'
-          )
-        "
+        onclick="add('Pfandrückgabe',-3,'pfand-minus')"
       >
         −3 €
       </button>
@@ -956,20 +1035,11 @@ dialog::backdrop{
 
 
 
-<!-- =========================
-     KATEGORIEN
-     ========================= -->
-
 <nav class="tabs">
 
   <button
     class="tab active"
-    onclick="
-      showTab(
-        'sekt',
-        this
-      )
-    "
+    onclick="showTab('sekt',this)"
   >
     🥂 Sekt
   </button>
@@ -977,12 +1047,7 @@ dialog::backdrop{
 
   <button
     class="tab"
-    onclick="
-      showTab(
-        'wein',
-        this
-      )
-    "
+    onclick="showTab('wein',this)"
   >
     🍷 Wein
   </button>
@@ -990,12 +1055,7 @@ dialog::backdrop{
 
   <button
     class="tab"
-    onclick="
-      showTab(
-        'soft',
-        this
-      )
-    "
+    onclick="showTab('soft',this)"
   >
     🥤 Soft
   </button>
@@ -1003,12 +1063,7 @@ dialog::backdrop{
 
   <button
     class="tab"
-    onclick="
-      showTab(
-        'aperitif',
-        this
-      )
-    "
+    onclick="showTab('aperitif',this)"
   >
     🍹 Aperitif
   </button>
@@ -1016,12 +1071,7 @@ dialog::backdrop{
 
   <button
     class="tab"
-    onclick="
-      showTab(
-        'snack',
-        this
-      )
-    "
+    onclick="showTab('snack',this)"
   >
     🥨 Snack
   </button>
@@ -1060,10 +1110,6 @@ dialog::backdrop{
 </main>
 
 
-
-<!-- =========================
-     SUMME UNTEN
-     ========================= -->
 
 <div class="bottom">
 
@@ -1127,10 +1173,6 @@ dialog::backdrop{
 
 
 
-<!-- =========================
-     BARZAHLUNG
-     ========================= -->
-
 <dialog id="cashDialog">
 
   <div class="modal">
@@ -1183,6 +1225,7 @@ dialog::backdrop{
         Rückgeld
       </div>
 
+
       <div
         class="change"
         id="change"
@@ -1197,9 +1240,7 @@ dialog::backdrop{
 
       <button
         class="cancel"
-        onclick="
-          cashDialog.close()
-        "
+        onclick="cashDialog.close()"
       >
         Abbrechen
       </button>
@@ -1207,9 +1248,7 @@ dialog::backdrop{
 
       <button
         class="paid"
-        onclick="
-          finishSale()
-        "
+        onclick="finishSale()"
       >
         BEZAHLT / NEUER GAST
       </button>
@@ -1224,309 +1263,277 @@ dialog::backdrop{
 
 <script>
 
-
-/* =========================
-   PRODUKTE
-   ========================= */
-
 const data = {
 
-
-/* SEKT */
-
-sekt:[
-
-  {
-    name:
-      "Fürst von Metternich Riesling",
-
-    opts:[
-      ["0,1 l",5],
-      ["0,75 l",28]
-    ]
-  },
-
-
-  {
-    name:
-      "Fürst von Metternich Rosé",
-
-    opts:[
-      ["0,1 l",5],
-      ["0,75 l",28]
-    ]
-  },
-
-
-  {
-    name:
-      "Fürst von Metternich Chardonnay",
-
-    opts:[
-      ["0,1 l",5],
-      ["0,75 l",28]
-    ]
-  }
-
-],
-
-
-
-/* WEIN */
-
-wein:[
-
-  {
-    name:
-      "Nr. 1 Riesling Hofgut Laubenheimer Höhe",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",4],
-      ["0,2",7],
-      ["0,75",24.5]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 2 Riesling Gelblack",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",4.5],
-      ["0,2",8],
-      ["0,75",28]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 3 Riesling Gelblack",
-
-    sub:
-      "feinherb",
-
-    opts:[
-      ["0,1",4.5],
-      ["0,2",8],
-      ["0,75",28]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 4 Weißburgunder",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",4.5],
-      ["0,2",8],
-      ["0,75",28]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 5 Grauburgunder Réserve",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",3.5],
-      ["0,2",6.5],
-      ["0,75",22]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 6 Chardonnay",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",3.5],
-      ["0,2",6.5],
-      ["0,75",22]
-    ]
-  },
-
-
-  {
-    name:
-      "Nr. 7 Rosé HASE",
-
-    sub:
-      "trocken",
-
-    opts:[
-      ["0,1",3.5],
-      ["0,2",6.5],
-      ["0,75",22]
-    ]
-  }
-
-],
-
-
-
-/* SOFT */
-
-soft:[
-
-  {
-    name:"Weinschorle",
-    size:"0,4 l",
-    price:4.5
-  },
-
-  {
-    name:"Roséschorle",
-    size:"0,4 l",
-    price:4.5
-  },
-
-  {
-    name:"Gerolsteiner still",
-    size:"0,5 l",
-    price:4.5
-  },
-
-  {
-    name:"Gerolsteiner medium",
-    size:"0,5 l",
-    price:4.5
-  },
-
-  {
-    name:"Traubensaftschorle",
-    size:"0,33 l",
-    price:3.5
-  },
-
-  {
-    name:"Pepsi",
-    size:"0,33 l",
-    price:4
-  },
-
-  {
-    name:"Pepsi Max",
-    size:"0,33 l",
-    price:4
-  },
-
-  {
-    name:"SchwipSchwap Orange",
-    size:"0,33 l",
-    price:4
-  }
-
-],
-
-
-
-/* APERITIF */
-
-aperitif:[
-
-  {
-    name:"Aperol Spritz",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Hugo",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Mionetto Aperitivo",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Solare Spritz",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Aperol Spritz alkoholfrei",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Hugo alkoholfrei",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Mionetto Aperitivo alkoholfrei",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Solare Spritz alkoholfrei",
-    size:"Glas",
-    price:7.5
-  },
-
-  {
-    name:"Gin Tonic",
-    size:"Glas",
-    price:8.5
-  },
-
-  {
-    name:"Wodka Lemon",
-    size:"Glas",
-    price:8.5
-  }
-
-],
-
-
-
-/* SNACK */
-
-snack:[
-
-  {
-    name:"Brezel",
-    size:"1 Stück",
-    price:2.5
-  }
-
-]
+  sekt:[
+
+    {
+      name:
+        "Fürst von Metternich Riesling",
+
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
+      ]
+    },
+
+    {
+      name:
+        "Fürst von Metternich Rosé",
+
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
+      ]
+    },
+
+    {
+      name:
+        "Fürst von Metternich Chardonnay",
+
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
+      ]
+    }
+
+  ],
+
+
+  wein:[
+
+    {
+      name:
+        "Nr. 1 Riesling Hofgut Laubenheimer Höhe",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",4],
+        ["0,2",7],
+        ["0,75",24.5]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 2 Riesling Gelblack",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 3 Riesling Gelblack",
+
+      sub:
+        "feinherb",
+
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 4 Weißburgunder",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 5 Grauburgunder Réserve",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 6 Chardonnay",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
+      ]
+    },
+
+    {
+      name:
+        "Nr. 7 Rosé HASE",
+
+      sub:
+        "trocken",
+
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
+      ]
+    }
+
+  ],
+
+
+  soft:[
+
+    {
+      name:"Weinschorle",
+      size:"0,4 l",
+      price:4.5
+    },
+
+    {
+      name:"Roséschorle",
+      size:"0,4 l",
+      price:4.5
+    },
+
+    {
+      name:"Gerolsteiner still",
+      size:"0,5 l",
+      price:4.5
+    },
+
+    {
+      name:"Gerolsteiner medium",
+      size:"0,5 l",
+      price:4.5
+    },
+
+    {
+      name:"Traubensaftschorle",
+      size:"0,33 l",
+      price:3.5
+    },
+
+    {
+      name:"Pepsi",
+      size:"0,33 l",
+      price:4
+    },
+
+    {
+      name:"Pepsi Max",
+      size:"0,33 l",
+      price:4
+    },
+
+    {
+      name:"SchwipSchwap Orange",
+      size:"0,33 l",
+      price:4
+    }
+
+  ],
+
+
+  aperitif:[
+
+    {
+      name:"Aperol Spritz",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Hugo",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Mionetto Aperitivo",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Solare Spritz",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Aperol Spritz alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Hugo alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Mionetto Aperitivo alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Solare Spritz alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Gin Tonic",
+      size:"Glas",
+      price:8.5
+    },
+
+    {
+      name:"Wodka Lemon",
+      size:"Glas",
+      price:8.5
+    }
+
+  ],
+
+
+  snack:[
+
+    {
+      name:"Brezel",
+      size:"1 Stück",
+      price:2.5
+    }
+
+  ]
 
 };
 
 
-
-/* =========================
-   WARENKORB
-   ========================= */
 
 let cart = {};
 
@@ -1534,11 +1541,22 @@ let history = [];
 
 
 
-/* EURO FORMAT */
+function eur(number){
 
-const eur = number =>
+  const cleanNumber =
+    Number(number);
 
-  Number(number).toLocaleString(
+
+  if(
+    !Number.isFinite(cleanNumber)
+  ){
+
+    return "0,00 €";
+
+  }
+
+
+  return cleanNumber.toLocaleString(
 
     "de-DE",
 
@@ -1549,83 +1567,58 @@ const eur = number =>
 
   );
 
+}
 
 
-/* PRODUKT SCHLÜSSEL */
 
 function keyFor(
   name,
   size
 ){
 
-  return name +
+  return String(name) +
     "||" +
-    size;
+    String(size);
 
 }
 
 
 
-/* =========================
-   EINDEUTIGE ID
-   ========================= */
-
-/*
-Wichtig:
-Dadurch erscheint die Mengen-Markierung
-wirklich auf genau 0,1 / 0,2 / 0,75,
-wo du gedrückt hast.
-*/
-
 function safeId(text){
 
-  let hash = 0;
+  const value =
+    String(text);
+
+
+  let hash =
+    2166136261;
 
 
   for(
     let i = 0;
-    i < text.length;
+    i < value.length;
     i++
   ){
 
+    hash ^=
+      value.charCodeAt(i);
+
+
     hash =
-
-      ((hash << 5) - hash) +
-
-      text.charCodeAt(i);
-
-
-    hash |= 0;
+      Math.imul(
+        hash,
+        16777619
+      );
 
   }
 
 
-  return
-
-    "q-" +
-
-    Math.abs(hash) +
-
-    "-" +
-
-    encodeURIComponent(text)
-
-      .replace(
-        /[^a-zA-Z0-9]/g,
-        ""
-      )
-
-      .slice(
-        -20
-      );
+  return "q-" +
+    (hash >>> 0).toString(36);
 
 }
 
 
-
-/* =========================
-   SEKT UND WEIN
-   ========================= */
 
 function renderMulti(
   id,
@@ -1637,169 +1630,165 @@ function renderMulti(
     .innerHTML =
 
 
-    `<div class="grid">` +
+      `<div class="grid">` +
 
 
-    items.map(
+      items.map(
 
-      item => {
-
-
-        const full =
-
-          item.opts.length === 3
-
-          ? " full"
-
-          : "";
+        item => {
 
 
-        return `
+          const full =
+
+            item.opts.length === 3
+
+            ? " full"
+
+            : "";
 
 
-          <div class="item${full}">
+          return `
 
 
-            <div class="item-name">
-
-              ${item.name}
-
-            </div>
+            <div class="item${full}">
 
 
-            ${
+              <div class="item-name">
 
-              item.sub
+                ${item.name}
 
-              ? `
-
-                <div class="item-sub">
-
-                  ${item.sub}
-
-                </div>
-
-              `
-
-              : ""
-
-            }
-
-
-            <div
-
-              class="options"
-
-              style="
-                --cols:
-                ${item.opts.length}
-              "
-            >
+              </div>
 
 
               ${
 
-                item.opts.map(
+                item.sub
 
-                  ([size,price]) => {
+                ? `
 
+                  <div class="item-sub">
 
-                    const key =
+                    ${item.sub}
 
-                      keyFor(
-                        item.name,
-                        size
-                      );
+                  </div>
 
+                `
 
-                    return `
-
-
-                      <button
-
-                        class="option"
-
-                        id="${safeId(key)}"
-
-                        onclick='
-
-                          add(
-
-                            ${JSON.stringify(
-                              item.name +
-                              " · " +
-                              size
-                            )},
-
-                            ${price},
-
-                            ${JSON.stringify(
-                              key
-                            )}
-
-                          )
-
-                        '
-                      >
-
-
-                        <span class="qty">
-
-                          0
-
-                        </span>
-
-
-                        <span class="size">
-
-                          ${size}
-
-                        </span>
-
-
-                        <span class="price">
-
-                          ${eur(price)}
-
-                        </span>
-
-
-                      </button>
-
-
-                    `;
-
-
-                  }
-
-                ).join("")
+                : ""
 
               }
+
+
+              <div
+
+                class="options"
+
+                style="
+                  --cols:
+                  ${item.opts.length}
+                "
+              >
+
+
+                ${
+
+                  item.opts.map(
+
+                    ([size,price]) => {
+
+
+                      const key =
+
+                        keyFor(
+                          item.name,
+                          size
+                        );
+
+
+                      return `
+
+
+                        <button
+
+                          class="option"
+
+                          id="${safeId(key)}"
+
+                          onclick='
+
+                            add(
+
+                              ${JSON.stringify(
+                                item.name +
+                                " · " +
+                                size
+                              )},
+
+                              ${Number(price)},
+
+                              ${JSON.stringify(
+                                key
+                              )}
+
+                            )
+
+                          '
+                        >
+
+
+                          <span class="qty">
+
+                            0
+
+                          </span>
+
+
+                          <span class="size">
+
+                            ${size}
+
+                          </span>
+
+
+                          <span class="price">
+
+                            ${eur(price)}
+
+                          </span>
+
+
+                        </button>
+
+
+                      `;
+
+
+                    }
+
+                  ).join("")
+
+                }
+
+
+              </div>
 
 
             </div>
 
 
-          </div>
+          `;
 
 
-        `;
+        }
+
+      ).join("") +
 
 
-      }
-
-    ).join("") +
-
-
-    `</div>`;
+      `</div>`;
 
 }
 
 
-
-/* =========================
-   EINZELARTIKEL
-   ========================= */
 
 function renderSingle(
   id,
@@ -1811,112 +1800,107 @@ function renderSingle(
     .innerHTML =
 
 
-    `<div class="single-grid">` +
+      `<div class="single-grid">` +
 
 
-    items.map(
+      items.map(
 
-      item => {
-
-
-        const key =
-
-          keyFor(
-            item.name,
-            item.size
-          );
+        item => {
 
 
-        return `
+          const key =
+
+            keyFor(
+              item.name,
+              item.size
+            );
 
 
-          <div class="single-card">
+          return `
 
 
-            <div class="single-name">
+            <div class="single-card">
 
-              ${item.name}
+
+              <div class="single-name">
+
+                ${item.name}
+
+              </div>
+
+
+              <button
+
+                class="option"
+
+                id="${safeId(key)}"
+
+                onclick='
+
+                  add(
+
+                    ${JSON.stringify(
+                      item.name +
+                      " · " +
+                      item.size
+                    )},
+
+                    ${Number(item.price)},
+
+                    ${JSON.stringify(
+                      key
+                    )}
+
+                  )
+
+                '
+              >
+
+
+                <span class="qty">
+
+                  0
+
+                </span>
+
+
+                <span class="size">
+
+                  ${item.size}
+
+                </span>
+
+
+                <span class="price">
+
+                  ${eur(
+                    item.price
+                  )}
+
+                </span>
+
+
+              </button>
+
 
             </div>
 
 
-            <button
-
-              class="option"
-
-              id="${safeId(key)}"
-
-              onclick='
-
-                add(
-
-                  ${JSON.stringify(
-                    item.name +
-                    " · " +
-                    item.size
-                  )},
-
-                  ${item.price},
-
-                  ${JSON.stringify(
-                    key
-                  )}
-
-                )
-
-              '
-            >
+          `;
 
 
-              <span class="qty">
+        }
 
-                0
-
-              </span>
+      ).join("") +
 
 
-              <span class="size">
-
-                ${item.size}
-
-              </span>
-
-
-              <span class="price">
-
-                ${eur(
-                  item.price
-                )}
-
-              </span>
-
-
-            </button>
-
-
-          </div>
-
-
-        `;
-
-
-      }
-
-    ).join("") +
-
-
-    `</div>`;
+      `</div>`;
 
 }
 
 
 
-/* =========================
-   MENÜ AUFBAUEN
-   ========================= */
-
 function renderAll(){
-
 
   renderMulti(
     "sekt",
@@ -1924,14 +1908,10 @@ function renderAll(){
   );
 
 
-  /* FAVORITE LOGO NUR BEI SEKT */
-
   document
-
     .getElementById(
       "sekt"
     )
-
     .insertAdjacentHTML(
 
       "afterbegin",
@@ -1946,14 +1926,31 @@ function renderAll(){
 
             alt="FAVORITE Parkhotel Mainz"
 
+            onerror="
+              this.style.display='none';
+              this.nextElementSibling.style.display='block';
+            "
+
           >
+
+
+          <div class="logo-fallback">
+
+            <strong>
+              FAVORITE
+            </strong>
+
+            <span>
+              parkhotel
+            </span>
+
+          </div>
 
         </div>
 
       `
 
     );
-
 
 
   renderMulti(
@@ -1982,10 +1979,6 @@ function renderAll(){
 }
 
 
-
-/* =========================
-   KATEGORIE WECHSELN
-   ========================= */
 
 function showTab(
   id,
@@ -2047,18 +2040,13 @@ function showTab(
 
     top:0,
 
-    behavior:
-      "instant"
+    behavior:"auto"
 
   });
 
 }
 
 
-
-/* =========================
-   VERLAUF
-   ========================= */
 
 function snapshot(){
 
@@ -2072,7 +2060,7 @@ function snapshot(){
 
 
   if(
-    history.length > 40
+    history.length > 50
   ){
 
     history.shift();
@@ -2083,15 +2071,26 @@ function snapshot(){
 
 
 
-/* =========================
-   ARTIKEL HINZUFÜGEN
-   ========================= */
-
 function add(
   name,
   price,
   key
 ){
+
+  const cleanPrice =
+    Number(price);
+
+
+  if(
+    !Number.isFinite(
+      cleanPrice
+    )
+  ){
+
+    return;
+
+  }
+
 
   snapshot();
 
@@ -2103,10 +2102,10 @@ function add(
     cart[key] = {
 
       name:
-        name,
+        String(name),
 
       price:
-        price,
+        cleanPrice,
 
       qty:
         0
@@ -2116,7 +2115,11 @@ function add(
   }
 
 
-  cart[key].qty++;
+  cart[key].qty =
+
+    Number(
+      cart[key].qty
+    ) + 1;
 
 
   update();
@@ -2135,10 +2138,6 @@ function add(
 }
 
 
-
-/* =========================
-   ZURÜCK
-   ========================= */
 
 function undo(){
 
@@ -2166,10 +2165,6 @@ function undo(){
 
 
 
-/* =========================
-   NEUER GAST
-   ========================= */
-
 function resetCart(){
 
   cart = {};
@@ -2183,13 +2178,10 @@ function resetCart(){
 
 
 
-/* =========================
-   SUMME
-   ========================= */
-
 function getTotal(){
 
-  let total = 0;
+  let total =
+    0;
 
 
   for(
@@ -2202,11 +2194,33 @@ function getTotal(){
 
   ){
 
-    total +=
+    const price =
+      Number(item.price);
 
-      item.price *
 
-      item.qty;
+    const qty =
+      Number(item.qty);
+
+
+    if(
+      Number.isFinite(price)
+      &&
+      Number.isFinite(qty)
+    ){
+
+      total +=
+        price * qty;
+
+    }
+
+  }
+
+
+  if(
+    !Number.isFinite(total)
+  ){
+
+    return 0;
 
   }
 
@@ -2214,22 +2228,17 @@ function getTotal(){
   return
 
     Math.round(
-
       total * 100
-
     ) / 100;
 
 }
 
 
 
-/* =========================
-   ARTIKELANZAHL
-   ========================= */
-
 function getCount(){
 
-  let count = 0;
+  let count =
+    0;
 
 
   for(
@@ -2242,8 +2251,18 @@ function getCount(){
 
   ){
 
-    count +=
-      item.qty;
+    const qty =
+      Number(item.qty);
+
+
+    if(
+      Number.isFinite(qty)
+    ){
+
+      count +=
+        qty;
+
+    }
 
   }
 
@@ -2253,10 +2272,6 @@ function getCount(){
 }
 
 
-
-/* =========================
-   ANZEIGE
-   ========================= */
 
 function update(){
 
@@ -2312,8 +2327,14 @@ function update(){
 
   ){
 
+    const qty =
+      Number(item.qty);
+
+
     if(
-      item.qty <= 0
+      !Number.isFinite(qty)
+      ||
+      qty <= 0
     ){
 
       continue;
@@ -2355,13 +2376,21 @@ function update(){
           );
 
 
-        button
-          .querySelector(
-            ".qty"
-          )
-          .textContent =
+        const badge =
 
-            item.qty;
+          button.querySelector(
+            ".qty"
+          );
+
+
+        if(
+          badge
+        ){
+
+          badge.textContent =
+            qty;
+
+        }
 
       }
 
@@ -2395,10 +2424,6 @@ function update(){
 }
 
 
-
-/* =========================
-   BARZAHLUNG ÖFFNEN
-   ========================= */
 
 function openCash(){
 
@@ -2454,7 +2479,7 @@ function openCash(){
     .style
     .color =
 
-      "#111";
+      "#3f4140";
 
 
   createQuickCash(
@@ -2462,19 +2487,24 @@ function openCash(){
   );
 
 
-  cashDialog
+  document
+    .getElementById(
+      "cashDialog"
+    )
     .showModal();
 
 
   setTimeout(
 
-    () =>
+    () => {
 
       document
         .getElementById(
           "cashInput"
         )
-        .focus(),
+        .focus();
+
+    },
 
     100
 
@@ -2484,14 +2514,9 @@ function openCash(){
 
 
 
-/* =========================
-   SCHNELLBETRÄGE
-   ========================= */
-
 function createQuickCash(total){
 
   const standard =
-
     [
       5,
       10,
@@ -2525,9 +2550,10 @@ function createQuickCash(total){
 
     buttons =
 
-      standard.slice(
-        -4
-      );
+      standard
+        .slice(
+          -4
+        );
 
   }
 
@@ -2543,16 +2569,9 @@ function createQuickCash(total){
         amount => `
 
           <button
-
-            onclick="
-              setCash(
-                ${amount}
-              )
-            "
+            onclick="setCash(${amount})"
           >
-
             ${amount} €
-
           </button>
 
         `
@@ -2563,10 +2582,6 @@ function createQuickCash(total){
 
 
 
-/* =========================
-   GELDBETRAG SETZEN
-   ========================= */
-
 function setCash(amount){
 
   document
@@ -2574,7 +2589,6 @@ function setCash(amount){
       "cashInput"
     )
     .value =
-
       amount;
 
 
@@ -2584,37 +2598,40 @@ function setCash(amount){
 
 
 
-/* =========================
-   KOMMA / PUNKT
-   ========================= */
-
 function parseCashValue(value){
 
-  return Number(
+  const parsed =
 
-    String(value)
+    Number(
 
-      .trim()
+      String(value)
 
-      .replace(
-        /\s/g,
-        ""
-      )
+        .trim()
 
-      .replace(
-        ",",
-        "."
-      )
+        .replace(
+          /\s/g,
+          ""
+        )
 
-  ) || 0;
+        .replace(
+          ",",
+          "."
+        )
+
+    );
+
+
+  return
+
+    Number.isFinite(parsed)
+
+    ? parsed
+
+    : 0;
 
 }
 
 
-
-/* =========================
-   RÜCKGELD
-   ========================= */
 
 function calculateChange(){
 
@@ -2671,7 +2688,7 @@ function calculateChange(){
       .style
       .color =
 
-        "#17683a";
+        "#23864e";
 
   }
 
@@ -2695,17 +2712,13 @@ function calculateChange(){
       .style
       .color =
 
-        "#b21f24";
+        "#a84f79";
 
   }
 
 }
 
 
-
-/* =========================
-   BEZAHLT
-   ========================= */
 
 function finishSale(){
 
@@ -2739,7 +2752,11 @@ function finishSale(){
   }
 
 
-  cashDialog.close();
+  document
+    .getElementById(
+      "cashDialog"
+    )
+    .close();
 
 
   resetCart();
@@ -2747,10 +2764,6 @@ function finishSale(){
 }
 
 
-
-/* =========================
-   START
-   ========================= */
 
 renderAll();
 
