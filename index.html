@@ -1,425 +1,816 @@
 <!doctype html>
 <html lang="de">
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#111111">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+>
+
+<meta name="theme-color" content="#1a1510">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Sektstand">
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+>
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="Sektstand"
+>
+
 <meta name="mobile-web-app-capable" content="yes">
+
 <title>Sektstand Rechner</title>
 
+
 <style>
+
+/* ========================================
+   FARBEN
+   ======================================== */
+
 :root{
-  --bg:#f3efe6;
-  --card:#fff;
-  --ink:#111;
-  --muted:#6d6d6d;
-  --line:#ddd6ca;
-  --green:#168a45;
+
+  --bg:#f4efe5;
+
+  --card:#fffdf8;
+
+  --ink:#17130f;
+
+  --muted:#756b5e;
+
+  --line:#ddd2c1;
+
+  --gold:#c8a55e;
+
+  --gold-dark:#a8843f;
+
+  --dark:#1a1510;
+
+  --dark2:#2a2118;
+
+  --green:#167540;
+
 }
 
-*{box-sizing:border-box}
 
-html,body{
+/* ========================================
+   GRUNDLAGE
+   ======================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+
+html,
+body{
+
   margin:0;
+
   min-height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
   background:var(--bg);
+
   color:var(--ink);
+
   -webkit-text-size-adjust:100%;
-  touch-action:manipulation
+
+  touch-action:manipulation;
+
 }
+
 
 body{
-  padding-top:env(safe-area-inset-top)
+
+  padding-top:
+    env(safe-area-inset-top);
+
 }
 
-button,input{
-  font:inherit
+
+button,
+input{
+
+  font:inherit;
+
 }
+
 
 button{
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  touch-action:
+    manipulation;
+
 }
 
 
-/* KOPF */
+
+/* ========================================
+   KOPF
+   ======================================== */
 
 header{
+
   position:sticky;
+
   top:0;
+
   z-index:40;
-  background:#111;
+
+  background:
+    linear-gradient(
+      135deg,
+      #16120d,
+      #2b2218
+    );
+
   color:#fff;
-  padding:8px 10px 7px;
-  box-shadow:0 2px 10px #0002
+
+  padding:
+    9px
+    10px
+    8px;
+
+  border-bottom:
+    2px solid
+    var(--gold);
+
+  box-shadow:
+    0 3px 14px
+    #0005;
+
 }
+
 
 .headrow{
+
   display:flex;
+
   align-items:center;
-  justify-content:space-between;
-  gap:8px
+
+  justify-content:
+    space-between;
+
+  gap:10px;
+
 }
+
+
+.brand-small{
+
+  font-size:9px;
+
+  font-weight:850;
+
+  letter-spacing:
+    1.5px;
+
+  color:#d9c18d;
+
+  margin-bottom:3px;
+
+}
+
 
 .title{
-  font-size:20px;
+
+  font-size:21px;
+
   font-weight:950;
-  line-height:1
+
+  line-height:1;
+
+  color:#fff;
+
 }
 
-.hint{
-  font-size:11px;
-  opacity:.7;
-  margin-top:3px
+
+.subtitle{
+
+  font-size:12px;
+
+  font-weight:700;
+
+  color:#d8c7a8;
+
+  margin-top:3px;
+
 }
 
 
-/* PFAND OBEN */
+/* ========================================
+   PFAND OBEN
+   ======================================== */
 
 .pfand-mini{
+
   display:flex;
-  gap:6px
+
+  gap:6px;
+
 }
+
 
 .pfand-mini button{
-  border:0;
-  border-radius:10px;
-  min-height:38px;
-  padding:0 10px;
-  font-weight:950;
-  font-size:13px
-}
 
-.pfand-plus{
-  background:#ffe7a3
-}
+  border:
+    1px solid
+    #ffffff22;
 
-.pfand-minus{
-  background:#daf0df
-}
-
-
-/* KATEGORIEN */
-
-.tabs{
-  position:sticky;
-  top:55px;
-  z-index:35;
-
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-
-  gap:5px;
-
-  padding:6px 6px 7px;
-
-  background:#f3efe6eF;
-
-  backdrop-filter:blur(8px);
-
-  border-bottom:1px solid #ddd6ca
-}
-
-.tab{
-  border:0;
-  border-radius:10px;
+  border-radius:11px;
 
   min-height:40px;
 
-  background:#fff;
-
-  font-size:12px;
-  font-weight:900;
-
-  padding:4px
-}
-
-.tab.active{
-  background:#111;
-  color:#fff
-}
-
-
-/* INHALT */
-
-main{
-  max-width:760px;
-  margin:0 auto;
-
   padding:
-    6px
-    7px
-    calc(
-      132px +
-      env(safe-area-inset-bottom)
-    )
-}
+    0
+    11px;
 
-.section{
-  display:none
-}
+  font-weight:950;
 
-.section.active{
-  display:block
+  font-size:13px;
+
+  box-shadow:
+    inset 0 1px 0
+    #ffffff44;
+
 }
 
 
-/* MEHRERE ARTIKEL */
+.pfand-plus{
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px
-}
+  background:
+    linear-gradient(
+      180deg,
+      #f5dd94,
+      #d5b153
+    );
 
-.item{
-  background:var(--card);
+  color:#21180c;
 
-  border:1px solid var(--line);
-
-  border-radius:12px;
-
-  padding:7px;
-
-  box-shadow:0 1px 4px #0000000b
-}
-
-.item.full{
-  grid-column:1/-1
-}
-
-.item-name{
-  font-size:14px;
-  font-weight:900;
-
-  line-height:1.08;
-
-  margin-bottom:6px;
-
-  min-height:30px
-}
-
-.item-sub{
-  font-size:10px;
-  color:var(--muted);
-
-  line-height:1.1;
-
-  margin-top:-2px;
-  margin-bottom:5px
 }
 
 
-/* PREISE */
+.pfand-minus{
 
-.options{
+  background:
+    linear-gradient(
+      180deg,
+      #e5f4e6,
+      #c4dfc8
+    );
+
+  color:#16371e;
+
+}
+
+
+
+/* ========================================
+   KATEGORIEN
+   ======================================== */
+
+.tabs{
+
+  position:sticky;
+
+  top:70px;
+
+  z-index:35;
+
   display:grid;
 
   grid-template-columns:
     repeat(
-      var(--cols,1),
+      5,
       1fr
     );
 
-  gap:5px
-}
+  gap:5px;
 
-.option{
-  position:relative;
+  padding:
+    6px
+    6px
+    7px;
 
-  border:0;
+  background:
+    #f4efe5ef;
 
-  border-radius:10px;
+  backdrop-filter:
+    blur(10px);
 
-  min-height:48px;
+  border-bottom:
+    1px solid
+    #d8cdbd;
 
-  padding:5px 3px;
-
-  background:#ececec;
-
-  color:#111;
-
-  font-weight:950
-}
-
-.option:active{
-  transform:scale(.985)
-}
-
-.option .size{
-  display:block;
-  font-size:12px
-}
-
-.option .price{
-  display:block;
-  font-size:16px;
-  margin-top:2px
 }
 
 
-/* MENGE */
+.tab{
 
-.option .qty{
-  display:none;
+  border:
+    1px solid
+    #e0d7ca;
 
-  position:absolute;
+  border-radius:11px;
 
-  top:-6px;
-  right:-6px;
+  min-height:42px;
 
-  min-width:24px;
-  height:24px;
+  background:#fff;
 
-  padding:0 6px;
+  color:#1680d8;
 
-  border-radius:999px;
+  font-size:12px;
 
-  align-items:center;
-  justify-content:center;
+  font-weight:900;
 
-  background:#111;
+  padding:
+    4px
+    2px;
+
+}
+
+
+.tab.active{
+
+  background:
+    linear-gradient(
+      180deg,
+      #272017,
+      #17130f
+    );
 
   color:#fff;
 
-  border:2px solid #fff;
+  border:
+    2px solid
+    var(--gold);
 
-  font-size:12px;
-  font-weight:950
-}
-
-.option.selected{
-  outline:2px solid #111;
-  background:#f7f7f7
-}
-
-.option.selected .qty{
-  display:flex
 }
 
 
-/* EINZELARTIKEL */
 
-.single-grid{
+/* ========================================
+   HAUPTBEREICH
+   ======================================== */
+
+main{
+
+  max-width:760px;
+
+  margin:
+    0 auto;
+
+  padding:
+
+    6px
+
+    7px
+
+    calc(
+      132px +
+      env(safe-area-inset-bottom)
+    );
+
+}
+
+
+.section{
+
+  display:none;
+
+}
+
+
+.section.active{
+
+  display:block;
+
+}
+
+
+
+/* ========================================
+   SEKT / WEIN KARTEN
+   ======================================== */
+
+.grid{
+
   display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap:6px
+  gap:6px;
+
 }
 
-.single-card{
-  background:#fff;
 
-  border:1px solid var(--line);
+.item{
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:13px;
+
+  padding:7px;
+
+  box-shadow:
+
+    0 2px 6px
+    #00000010;
+
+}
+
+
+.item.full{
+
+  grid-column:
+    1/-1;
+
+}
+
+
+.item-name{
+
+  font-size:14px;
+
+  font-weight:950;
+
+  line-height:1.08;
+
+  margin-bottom:6px;
+
+  min-height:30px;
+
+}
+
+
+.item-sub{
+
+  font-size:10px;
+
+  color:var(--muted);
+
+  line-height:1.1;
+
+  margin-top:-2px;
+
+  margin-bottom:5px;
+
+}
+
+
+
+/* ========================================
+   PREIS BUTTONS
+   ======================================== */
+
+.options{
+
+  display:grid;
+
+  grid-template-columns:
+
+    repeat(
+      var(--cols,1),
+      1fr
+    );
+
+  gap:5px;
+
+}
+
+
+.option{
+
+  position:relative;
+
+  border:
+    1px solid
+    #e3ddd4;
+
+  border-radius:10px;
+
+  min-height:49px;
+
+  padding:
+    5px
+    3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f0eeee,
+      #e8e6e3
+    );
+
+  color:#111;
+
+  font-weight:950;
+
+}
+
+
+.option:active{
+
+  transform:
+    scale(.985);
+
+}
+
+
+.option .size{
+
+  display:block;
+
+  font-size:12px;
+
+}
+
+
+.option .price{
+
+  display:block;
+
+  font-size:16px;
+
+  margin-top:2px;
+
+}
+
+
+
+/* ========================================
+   MENGEN BADGE
+   ======================================== */
+
+.option .qty{
+
+  display:none;
+
+  position:absolute;
+
+  top:-7px;
+
+  right:-7px;
+
+  min-width:25px;
+
+  height:25px;
+
+  padding:
+    0
+    6px;
+
+  border-radius:
+    999px;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+    #111;
+
+  color:#fff;
+
+  border:
+    2px solid
+    #fff;
+
+  font-size:12px;
+
+  font-weight:950;
+
+}
+
+
+.option.selected{
+
+  outline:
+    3px solid
+    var(--dark);
+
+  background:
+    #fff8e8;
+
+}
+
+
+.option.selected .qty{
+
+  display:flex;
+
+}
+
+
+
+/* ========================================
+   SOFT / APERITIF / SNACK
+   ======================================== */
+
+.single-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:6px;
+
+}
+
+
+.single-card{
+
+  background:#fffdf8;
+
+  border:
+    1px solid
+    var(--line);
 
   border-radius:12px;
 
-  padding:7px
+  padding:7px;
+
 }
 
+
 .single-name{
+
   font-size:13px;
-  font-weight:900;
+
+  font-weight:950;
 
   line-height:1.05;
 
-  min-height:30px
+  min-height:30px;
+
 }
+
 
 .single-card .option{
+
   width:100%;
-  margin-top:5px
+
+  margin-top:5px;
+
 }
 
 
-/* SUMME UNTEN */
+
+/* ========================================
+   UNTERE SUMMENLEISTE
+   ======================================== */
 
 .bottom{
+
   position:fixed;
 
   left:0;
+
   right:0;
+
   bottom:0;
 
   z-index:50;
 
-  background:#fff;
+  background:
+    #fffdf8;
 
-  border-top:1px solid #d5d5d5;
+  border-top:
+    2px solid
+    var(--gold);
 
-  box-shadow:0 -7px 22px #0002
+  box-shadow:
+    0 -8px 25px
+    #0002;
+
 }
 
+
 .bottom-inner{
+
   max-width:760px;
 
   margin:auto;
 
   padding:
+
     7px
+
     8px
+
     calc(
       7px +
       env(safe-area-inset-bottom)
-    )
+    );
+
 }
+
 
 .sumrow{
+
   display:flex;
+
   align-items:center;
-  gap:7px
+
+  gap:7px;
+
 }
 
+
 .count{
-  background:#111;
+
+  background:
+    #17130f;
 
   color:#fff;
 
-  border-radius:999px;
+  border-radius:
+    999px;
 
-  padding:5px 8px;
+  padding:
+    5px
+    8px;
 
   font-size:11px;
-  font-weight:900
+
+  font-weight:900;
+
 }
+
 
 .sumlabel{
+
   font-size:16px;
-  font-weight:900
+
+  font-weight:900;
+
 }
 
+
 .total{
+
   margin-left:auto;
 
   font-size:30px;
+
   font-weight:1000;
 
-  letter-spacing:-1px
+  letter-spacing:
+    -1px;
+
 }
 
 
-/* BUTTONS UNTEN */
+
+/* ========================================
+   BUTTONS UNTEN
+   ======================================== */
 
 .controls{
+
   display:grid;
 
   grid-template-columns:
+
     .85fr
+
     1fr
+
     1fr;
 
   gap:6px;
 
-  margin-top:6px
+  margin-top:6px;
+
 }
 
+
 .controls button{
+
   border:0;
 
   border-radius:11px;
@@ -428,108 +819,193 @@ main{
 
   font-weight:950;
 
-  font-size:13px
+  font-size:13px;
+
 }
+
 
 .undo{
-  background:#eee
+
+  background:
+    #ece9e4;
+
 }
+
 
 .cash{
-  background:#16a34a;
-  color:#fff
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #218d50,
+      #146837
+    );
+
+  color:#fff;
+
 }
+
 
 .reset{
-  background:#111;
-  color:#fff
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #2a231c,
+      #111
+    );
+
+  color:#fff;
+
 }
 
 
-/* BARZAHLUNG */
+
+/* ========================================
+   BARZAHLUNGSFENSTER
+   ======================================== */
 
 dialog{
+
   border:0;
+
   padding:0;
 
   border-radius:18px;
 
   width:
+
     min(
       480px,
-      calc(100% - 20px)
+      calc(
+        100% - 20px
+      )
     );
 
   box-shadow:
+
     0 25px 80px
-    #0007
+    #0007;
+
 }
+
 
 dialog::backdrop{
-  background:#0009
+
+  background:
+    #0009;
+
 }
+
 
 .modal{
-  padding:16px
+
+  padding:16px;
+
+  background:
+    #fffdf8;
+
 }
+
 
 .modal h2{
-  margin:0 0 8px;
-  font-size:23px
+
+  margin:
+    0
+    0
+    8px;
+
+  font-size:23px;
+
 }
+
 
 .to-pay-label{
+
   font-size:13px;
-  color:#666
+
+  color:#666;
+
 }
+
 
 .to-pay{
+
   font-size:36px;
-  font-weight:1000
+
+  font-weight:1000;
+
 }
 
 
-/* SCHNELLBETRÄGE */
+
+/* ========================================
+   SCHNELL GELD BUTTONS
+   ======================================== */
 
 .quick-cash{
+
   display:grid;
 
   grid-template-columns:
-    repeat(4,1fr);
+    repeat(
+      4,
+      1fr
+    );
 
   gap:6px;
 
   margin:
+
     12px
+
     0
-    10px
+
+    10px;
+
 }
 
+
 .quick-cash button{
+
   min-height:48px;
 
-  border:0;
+  border:
+    1px solid
+    #ddd5c8;
 
   border-radius:10px;
 
-  background:#eee;
+  background:
+    #f1ede5;
 
-  font-weight:950
+  font-weight:950;
+
 }
 
 
-/* GELD EINGABE */
+
+/* ========================================
+   GAST GIBT
+   ======================================== */
 
 .cash-label{
+
   display:block;
 
   font-size:13px;
+
   font-weight:800;
 
-  margin-bottom:4px
+  margin-bottom:4px;
+
 }
 
+
 #cashInput{
+
   width:100%;
 
   padding:11px;
@@ -541,42 +1017,72 @@ dialog::backdrop{
   border-radius:11px;
 
   font-size:26px;
+
   font-weight:900;
 
-  outline:none
+  outline:none;
+
+  background:#fff;
+
 }
+
 
 #cashInput:focus{
-  border-color:#111
+
+  border-color:
+    var(--gold-dark);
+
 }
 
 
-/* RÜCKGELD */
+
+/* ========================================
+   RÜCKGELD
+   ======================================== */
 
 .change-box{
+
   margin-top:10px;
 
-  background:#f1f1f1;
+  background:
+    #f2eee7;
+
+  border:
+    1px solid
+    #e1d8cb;
 
   border-radius:12px;
 
-  padding:10px
+  padding:10px;
+
 }
+
 
 .change-label{
+
   font-size:13px;
-  color:#666
+
+  color:#666;
+
 }
+
 
 .change{
+
   font-size:34px;
-  font-weight:1000
+
+  font-weight:1000;
+
 }
 
 
-/* BARZAHLUNG BUTTONS */
+
+/* ========================================
+   MODAL BUTTONS
+   ======================================== */
 
 .modal-buttons{
+
   display:grid;
 
   grid-template-columns:
@@ -584,10 +1090,13 @@ dialog::backdrop{
 
   gap:7px;
 
-  margin-top:12px
+  margin-top:12px;
+
 }
 
+
 .modal-buttons button{
+
   min-height:50px;
 
   border:0;
@@ -596,103 +1105,203 @@ dialog::backdrop{
 
   font-weight:950;
 
-  font-size:14px
+  font-size:14px;
+
 }
+
 
 .cancel{
-  background:#eee
+
+  background:
+    #ece9e4;
+
 }
+
 
 .paid{
-  background:#111;
-  color:#fff
+
+  background:
+    linear-gradient(
+      180deg,
+      #2a231c,
+      #111
+    );
+
+  color:#fff;
+
 }
 
 
-/* KLEINE HANDYS */
 
-@media(max-width:380px){
+/* ========================================
+   KLEINE HANDYS
+   ======================================== */
+
+@media(
+  max-width:380px
+){
+
+  .brand-small{
+
+    font-size:8px;
+
+  }
+
 
   .title{
-    font-size:18px
+
+    font-size:18px;
+
   }
+
+
+  .subtitle{
+
+    font-size:10px;
+
+  }
+
 
   .pfand-mini button{
-    padding:0 8px;
-    font-size:12px
+
+    padding:
+      0
+      8px;
+
+    font-size:12px;
+
   }
+
 
   .tabs{
-    top:53px
+
+    top:68px;
+
   }
+
 
   .tab{
-    font-size:11px
+
+    font-size:11px;
+
   }
+
 
   .item-name{
-    font-size:13px
+
+    font-size:13px;
+
   }
 
+
   .option .price{
-    font-size:15px
+
+    font-size:15px;
+
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+
+<!-- ========================================
+     KOPF
+     ======================================== -->
 
 <header>
 
   <div class="headrow">
 
+
     <div>
 
-      <div class="title">
-        🥂 Sektstand
+
+      <div class="brand-small">
+
+        FAVORITE PARKHOTEL MAINZ
+
       </div>
 
-      <div class="hint">
-        Antippen = Menge +1
+
+      <div class="title">
+
+        Fürst von Metternich
+
       </div>
+
+
+      <div class="subtitle">
+
+        🥂 Sektstand
+
+      </div>
+
 
     </div>
+
 
 
     <div class="pfand-mini">
 
+
       <button
+
         class="pfand-plus"
+
         onclick="
+
           add(
+
             'Pfand',
+
             3,
+
             'pfand-plus'
+
           )
+
         "
       >
+
         +3 €
+
       </button>
+
 
 
       <button
+
         class="pfand-minus"
+
         onclick="
+
           add(
+
             'Pfandrückgabe',
+
             -3,
+
             'pfand-minus'
+
           )
+
         "
       >
+
         −3 €
+
       </button>
+
 
     </div>
+
 
   </div>
 
@@ -700,12 +1309,17 @@ dialog::backdrop{
 
 
 
-<!-- KATEGORIEN -->
+<!-- ========================================
+     KATEGORIEN
+     ======================================== -->
 
 <nav class="tabs">
 
+
   <button
+
     class="tab active"
+
     onclick="
       showTab(
         'sekt',
@@ -713,12 +1327,17 @@ dialog::backdrop{
       )
     "
   >
+
     🥂 Sekt
+
   </button>
 
 
+
   <button
+
     class="tab"
+
     onclick="
       showTab(
         'wein',
@@ -726,12 +1345,17 @@ dialog::backdrop{
       )
     "
   >
+
     🍷 Wein
+
   </button>
 
 
+
   <button
+
     class="tab"
+
     onclick="
       showTab(
         'soft',
@@ -739,12 +1363,17 @@ dialog::backdrop{
       )
     "
   >
+
     🥤 Soft
+
   </button>
 
 
+
   <button
+
     class="tab"
+
     onclick="
       showTab(
         'aperitif',
@@ -752,12 +1381,17 @@ dialog::backdrop{
       )
     "
   >
+
     🍹 Aperitif
+
   </button>
 
 
+
   <button
+
     class="tab"
+
     onclick="
       showTab(
         'snack',
@@ -765,76 +1399,123 @@ dialog::backdrop{
       )
     "
   >
+
     🥨 Snack
+
   </button>
+
 
 </nav>
 
 
 
+<!-- ========================================
+     INHALT
+     ======================================== -->
+
 <main>
 
+
   <section
+
     id="sekt"
+
     class="section active"
+
   ></section>
 
 
+
   <section
+
     id="wein"
+
     class="section"
+
   ></section>
 
 
+
   <section
+
     id="soft"
+
     class="section"
+
   ></section>
 
 
+
   <section
+
     id="aperitif"
+
     class="section"
+
   ></section>
+
 
 
   <section
+
     id="snack"
+
     class="section"
+
   ></section>
+
 
 </main>
 
 
 
-<!-- SUMME UNTEN -->
+<!-- ========================================
+     SUMME UNTEN
+     ======================================== -->
 
 <div class="bottom">
+
 
   <div class="bottom-inner">
 
 
     <div class="sumrow">
 
+
       <span
+
         class="count"
+
         id="count"
+
       >
+
         0 Artikel
+
       </span>
+
 
 
       <span class="sumlabel">
+
         Summe
+
       </span>
+
 
 
       <span
+
         class="total"
+
         id="total"
+
       >
+
         0,00 €
+
       </span>
+
 
     </div>
 
@@ -844,26 +1525,46 @@ dialog::backdrop{
 
 
       <button
+
         class="undo"
-        onclick="undo()"
+
+        onclick="
+          undo()
+        "
       >
+
         ↶ Zurück
+
       </button>
 
 
+
       <button
+
         class="cash"
-        onclick="openCash()"
+
+        onclick="
+          openCash()
+        "
       >
+
         💶 BAR
+
       </button>
 
 
+
       <button
+
         class="reset"
-        onclick="resetCart()"
+
+        onclick="
+          resetCart()
+        "
       >
+
         NEUER GAST
+
       </button>
 
 
@@ -872,96 +1573,152 @@ dialog::backdrop{
 
   </div>
 
+
 </div>
 
 
 
-<!-- BARZAHLUNG -->
+<!-- ========================================
+     BARZAHLUNG
+     ======================================== -->
 
 <dialog id="cashDialog">
+
 
   <div class="modal">
 
 
     <h2>
+
       💶 Barzahlung
+
     </h2>
 
 
+
     <div class="to-pay-label">
+
       Gast muss zahlen
+
     </div>
 
 
+
     <div
+
       class="to-pay"
+
       id="cashTotal"
+
     >
+
       0,00 €
+
     </div>
 
 
+
     <div
+
       class="quick-cash"
+
       id="quickCash"
+
     ></div>
 
 
+
     <label
+
       class="cash-label"
+
       for="cashInput"
+
     >
+
       Gast gibt:
+
     </label>
 
 
+
     <input
+
       id="cashInput"
+
       type="text"
+
       inputmode="decimal"
+
       autocomplete="off"
+
       placeholder="z. B. 20"
-      oninput="calculateChange()"
+
+      oninput="
+        calculateChange()
+      "
+
     >
+
 
 
     <div class="change-box">
 
 
       <div class="change-label">
+
         Rückgeld
+
       </div>
 
 
+
       <div
+
         class="change"
+
         id="change"
+
       >
+
         0,00 €
+
       </div>
 
 
     </div>
 
 
+
     <div class="modal-buttons">
 
 
       <button
+
         class="cancel"
+
         onclick="
           cashDialog.close()
         "
       >
+
         Abbrechen
+
       </button>
 
 
+
       <button
+
         class="paid"
-        onclick="finishSale()"
+
+        onclick="
+          finishSale()
+        "
       >
+
         BEZAHLT / NEUER GAST
+
       </button>
 
 
@@ -970,339 +1727,661 @@ dialog::backdrop{
 
   </div>
 
+
 </dialog>
+
 
 
 
 <script>
 
-/* ===============================
+
+
+/* ========================================
    PRODUKTE
-   =============================== */
+   ======================================== */
 
 const data = {
 
 
-  /* SEKT */
 
-  sekt:[
+/* ========================================
+   SEKT
+   ======================================== */
 
-    {
-      name:
-        "Fürst von Metternich Riesling",
+sekt:[
 
-      opts:[
-        ["0,1 l",5],
-        ["0,75 l",28]
+
+  {
+
+    name:
+      "Fürst von Metternich Riesling",
+
+    opts:[
+
+      [
+        "0,1 l",
+        5
+      ],
+
+      [
+        "0,75 l",
+        28
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Fürst von Metternich Rosé",
 
-      opts:[
-        ["0,1 l",5],
-        ["0,75 l",28]
+  {
+
+    name:
+      "Fürst von Metternich Rosé",
+
+    opts:[
+
+      [
+        "0,1 l",
+        5
+      ],
+
+      [
+        "0,75 l",
+        28
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Fürst von Metternich Chardonnay",
 
-      opts:[
-        ["0,1 l",5],
-        ["0,75 l",28]
+  {
+
+    name:
+      "Fürst von Metternich Chardonnay",
+
+    opts:[
+
+      [
+        "0,1 l",
+        5
+      ],
+
+      [
+        "0,75 l",
+        28
       ]
-    }
 
-  ],
+    ]
 
-
-
-  /* WEIN */
-
-  wein:[
+  }
 
 
-    {
-      name:
-        "Nr. 1 Riesling Hofgut Laubenheimer Höhe",
+],
 
-      sub:
-        "trocken",
 
-      opts:[
-        ["0,1",4],
-        ["0,2",7],
-        ["0,75",24.5]
+
+/* ========================================
+   WEIN
+   ======================================== */
+
+wein:[
+
+
+  {
+
+    name:
+      "Nr. 1 Riesling Hofgut Laubenheimer Höhe",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        4
+      ],
+
+      [
+        "0,2",
+        7
+      ],
+
+      [
+        "0,75",
+        24.5
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 2 Riesling Gelblack",
 
-      sub:
-        "trocken",
+  {
 
-      opts:[
-        ["0,1",4.5],
-        ["0,2",8],
-        ["0,75",28]
+    name:
+      "Nr. 2 Riesling Gelblack",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        4.5
+      ],
+
+      [
+        "0,2",
+        8
+      ],
+
+      [
+        "0,75",
+        28
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 3 Riesling Gelblack",
 
-      sub:
-        "feinherb",
+  {
 
-      opts:[
-        ["0,1",4.5],
-        ["0,2",8],
-        ["0,75",28]
+    name:
+      "Nr. 3 Riesling Gelblack",
+
+    sub:
+      "feinherb",
+
+    opts:[
+
+      [
+        "0,1",
+        4.5
+      ],
+
+      [
+        "0,2",
+        8
+      ],
+
+      [
+        "0,75",
+        28
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 4 Weißburgunder",
 
-      sub:
-        "trocken",
+  {
 
-      opts:[
-        ["0,1",4.5],
-        ["0,2",8],
-        ["0,75",28]
+    name:
+      "Nr. 4 Weißburgunder",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        4.5
+      ],
+
+      [
+        "0,2",
+        8
+      ],
+
+      [
+        "0,75",
+        28
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 5 Grauburgunder Réserve",
 
-      sub:
-        "trocken",
+  {
 
-      opts:[
-        ["0,1",3.5],
-        ["0,2",6.5],
-        ["0,75",22]
+    name:
+      "Nr. 5 Grauburgunder Réserve",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        3.5
+      ],
+
+      [
+        "0,2",
+        6.5
+      ],
+
+      [
+        "0,75",
+        22
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 6 Chardonnay",
 
-      sub:
-        "trocken",
+  {
 
-      opts:[
-        ["0,1",3.5],
-        ["0,2",6.5],
-        ["0,75",22]
+    name:
+      "Nr. 6 Chardonnay",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        3.5
+      ],
+
+      [
+        "0,2",
+        6.5
+      ],
+
+      [
+        "0,75",
+        22
       ]
-    },
+
+    ]
+
+  },
 
 
-    {
-      name:
-        "Nr. 7 Rosé HASE",
 
-      sub:
-        "trocken",
+  {
 
-      opts:[
-        ["0,1",3.5],
-        ["0,2",6.5],
-        ["0,75",22]
+    name:
+      "Nr. 7 Rosé HASE",
+
+    sub:
+      "trocken",
+
+    opts:[
+
+      [
+        "0,1",
+        3.5
+      ],
+
+      [
+        "0,2",
+        6.5
+      ],
+
+      [
+        "0,75",
+        22
       ]
-    }
 
-  ],
+    ]
 
-
-
-  /* SOFT */
-
-  soft:[
+  }
 
 
-    {
-      name:"Weinschorle",
-      size:"0,4 l",
-      price:4.5
-    },
-
-
-    {
-      name:"Roséschorle",
-      size:"0,4 l",
-      price:4.5
-    },
-
-
-    {
-      name:"Gerolsteiner still",
-      size:"0,5 l",
-      price:4.5
-    },
-
-
-    {
-      name:"Gerolsteiner medium",
-      size:"0,5 l",
-      price:4.5
-    },
-
-
-    {
-      name:"Traubensaftschorle",
-      size:"0,33 l",
-      price:3.5
-    },
-
-
-    {
-      name:"Pepsi",
-      size:"0,33 l",
-      price:4
-    },
-
-
-    {
-      name:"Pepsi Max",
-      size:"0,33 l",
-      price:4
-    },
-
-
-    {
-      name:"SchwipSchwap Orange",
-      size:"0,33 l",
-      price:4
-    }
-
-  ],
+],
 
 
 
-  /* APERITIF */
+/* ========================================
+   SOFT
+   ======================================== */
 
-  aperitif:[
-
-
-    {
-      name:"Aperol Spritz",
-      size:"Glas",
-      price:7.5
-    },
+soft:[
 
 
-    {
-      name:"Hugo",
-      size:"Glas",
-      price:7.5
-    },
+  {
 
+    name:
+      "Weinschorle",
 
-    {
-      name:"Mionetto Aperitivo",
-      size:"Glas",
-      price:7.5
-    },
+    size:
+      "0,4 l",
 
+    price:
+      4.5
 
-    {
-      name:"Solare Spritz",
-      size:"Glas",
-      price:7.5
-    },
-
-
-    {
-      name:"Aperol Spritz alkoholfrei",
-      size:"Glas",
-      price:7.5
-    },
-
-
-    {
-      name:"Hugo alkoholfrei",
-      size:"Glas",
-      price:7.5
-    },
-
-
-    {
-      name:"Mionetto Aperitivo alkoholfrei",
-      size:"Glas",
-      price:7.5
-    },
-
-
-    {
-      name:"Solare Spritz alkoholfrei",
-      size:"Glas",
-      price:7.5
-    },
-
-
-    {
-      name:"Gin Tonic",
-      size:"Glas",
-      price:8.5
-    },
-
-
-    {
-      name:"Wodka Lemon",
-      size:"Glas",
-      price:8.5
-    }
-
-  ],
+  },
 
 
 
-  /* SNACK */
+  {
 
-  snack:[
+    name:
+      "Roséschorle",
 
-    {
-      name:"Brezel",
-      size:"1 Stück",
-      price:2.5
-    }
+    size:
+      "0,4 l",
 
-  ]
+    price:
+      4.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Gerolsteiner still",
+
+    size:
+      "0,5 l",
+
+    price:
+      4.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Gerolsteiner medium",
+
+    size:
+      "0,5 l",
+
+    price:
+      4.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Traubensaftschorle",
+
+    size:
+      "0,33 l",
+
+    price:
+      3.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Pepsi",
+
+    size:
+      "0,33 l",
+
+    price:
+      4
+
+  },
+
+
+
+  {
+
+    name:
+      "Pepsi Max",
+
+    size:
+      "0,33 l",
+
+    price:
+      4
+
+  },
+
+
+
+  {
+
+    name:
+      "SchwipSchwap Orange",
+
+    size:
+      "0,33 l",
+
+    price:
+      4
+
+  }
+
+
+],
+
+
+
+/* ========================================
+   APERITIF
+   ======================================== */
+
+aperitif:[
+
+
+  {
+
+    name:
+      "Aperol Spritz",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Hugo",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Mionetto Aperitivo",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Solare Spritz",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Aperol Spritz alkoholfrei",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Hugo alkoholfrei",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Mionetto Aperitivo alkoholfrei",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Solare Spritz alkoholfrei",
+
+    size:
+      "Glas",
+
+    price:
+      7.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Gin Tonic",
+
+    size:
+      "Glas",
+
+    price:
+      8.5
+
+  },
+
+
+
+  {
+
+    name:
+      "Wodka Lemon",
+
+    size:
+      "Glas",
+
+    price:
+      8.5
+
+  }
+
+
+],
+
+
+
+/* ========================================
+   SNACK
+   ======================================== */
+
+snack:[
+
+
+  {
+
+    name:
+      "Brezel",
+
+    size:
+      "1 Stück",
+
+    price:
+      2.5
+
+  }
+
+
+]
+
 
 };
 
 
 
-/* ===============================
+/* ========================================
    WARENKORB
-   =============================== */
+   ======================================== */
 
 let cart = {};
 
 let history = [];
 
 
+
+/* ========================================
+   EURO FORMAT
+   ======================================== */
 
 const eur = number =>
 
@@ -1324,45 +2403,82 @@ const eur = number =>
 
 
 
+/* ========================================
+   PRODUKT SCHLÜSSEL
+   ======================================== */
+
 function keyFor(
   name,
   size
 ){
 
-  return name + "||" + size;
+  return name +
+    "||" +
+    size;
 
 }
 
 
 
+/* ========================================
+   EINDEUTIGE ID
+   ======================================== */
+
 function safeId(text){
+
 
   let hash = 0;
 
-  for(let i = 0; i < text.length; i++){
+
+  for(
+
+    let i = 0;
+
+    i < text.length;
+
+    i++
+
+  ){
+
 
     hash =
+
       ((hash << 5) - hash) +
+
       text.charCodeAt(i);
+
 
     hash |= 0;
 
   }
 
-  return "q-" +
+
+  return
+
+    "q-" +
+
     Math.abs(hash) +
+
     "-" +
+
     encodeURIComponent(text)
-      .replace(/[^a-zA-Z0-9]/g,"")
-      .slice(-20);
+
+      .replace(
+        /[^a-zA-Z0-9]/g,
+        ""
+      )
+
+      .slice(
+        -20
+      );
 
 }
 
 
 
-/* ===============================
+/* ========================================
    SEKT UND WEIN ANZEIGEN
-   =============================== */
+   ======================================== */
 
 function renderMulti(
   id,
@@ -1408,15 +2524,21 @@ function renderMulti(
 
 
               ${
+
                 item.sub
 
                 ? `
-                  <div class="item-sub">
-                    ${item.sub}
-                  </div>
-                `
+
+                    <div class="item-sub">
+
+                      ${item.sub}
+
+                    </div>
+
+                  `
 
                 : ""
+
               }
 
 
@@ -1478,17 +2600,23 @@ function renderMulti(
 
 
                           <span class="qty">
+
                             0
+
                           </span>
 
 
                           <span class="size">
+
                             ${size}
+
                           </span>
 
 
                           <span class="price">
+
                             ${eur(price)}
+
                           </span>
 
 
@@ -1525,9 +2653,9 @@ function renderMulti(
 
 
 
-/* ===============================
+/* ========================================
    EINZELARTIKEL ANZEIGEN
-   =============================== */
+   ======================================== */
 
 function renderSingle(
   id,
@@ -1600,7 +2728,9 @@ function renderSingle(
 
 
                 <span class="qty">
+
                   0
+
                 </span>
 
 
@@ -1640,9 +2770,9 @@ function renderSingle(
 
 
 
-/* ===============================
-   ALLES AUFBAUEN
-   =============================== */
+/* ========================================
+   MENÜ AUFBAUEN
+   ======================================== */
 
 function renderAll(){
 
@@ -1680,9 +2810,9 @@ function renderAll(){
 
 
 
-/* ===============================
+/* ========================================
    KATEGORIE WECHSELN
-   =============================== */
+   ======================================== */
 
 function showTab(
   id,
@@ -1715,6 +2845,7 @@ function showTab(
     .add(
       "active"
     );
+
 
 
   document
@@ -1754,9 +2885,9 @@ function showTab(
 
 
 
-/* ===============================
-   VERLAUF
-   =============================== */
+/* ========================================
+   VERLAUF SPEICHERN
+   ======================================== */
 
 function snapshot(){
 
@@ -1782,9 +2913,9 @@ function snapshot(){
 
 
 
-/* ===============================
+/* ========================================
    ARTIKEL HINZUFÜGEN
-   =============================== */
+   ======================================== */
 
 function add(
   name,
@@ -1838,9 +2969,9 @@ function add(
 
 
 
-/* ===============================
+/* ========================================
    ZURÜCK
-   =============================== */
+   ======================================== */
 
 function undo(){
 
@@ -1869,9 +3000,9 @@ function undo(){
 
 
 
-/* ===============================
+/* ========================================
    NEUER GAST
-   =============================== */
+   ======================================== */
 
 function resetCart(){
 
@@ -1887,15 +3018,14 @@ function resetCart(){
 
 
 
-/* ===============================
+/* ========================================
    SUMME
-   =============================== */
+   ======================================== */
 
 function getTotal(){
 
 
-  let total =
-    0;
+  let total = 0;
 
 
   for(
@@ -1912,29 +3042,32 @@ function getTotal(){
     total +=
 
       item.price *
-      item.qty;
 
+      item.qty;
 
   }
 
 
-  return Math.round(
-    total * 100
-  ) / 100;
+  return
+
+    Math.round(
+
+      total * 100
+
+    ) / 100;
 
 }
 
 
 
-/* ===============================
+/* ========================================
    ANZAHL
-   =============================== */
+   ======================================== */
 
 function getCount(){
 
 
-  let count =
-    0;
+  let count = 0;
 
 
   for(
@@ -1951,7 +3084,6 @@ function getCount(){
     count +=
       item.qty;
 
-
   }
 
 
@@ -1961,9 +3093,9 @@ function getCount(){
 
 
 
-/* ===============================
+/* ========================================
    ANZEIGE AKTUALISIEREN
-   =============================== */
+   ======================================== */
 
 function update(){
 
@@ -2071,8 +3203,8 @@ function update(){
             ".qty"
           )
           .textContent =
-            item.qty;
 
+            item.qty;
 
       }
 
@@ -2109,9 +3241,9 @@ function update(){
 
 
 
-/* ===============================
-   BARZAHLUNG ÖFFNEN
-   =============================== */
+/* ========================================
+   BARZAHLUNG
+   ======================================== */
 
 function openCash(){
 
@@ -2178,7 +3310,8 @@ function openCash(){
   );
 
 
-  cashDialog.showModal();
+  cashDialog
+    .showModal();
 
 
   setTimeout(
@@ -2203,9 +3336,9 @@ function openCash(){
 
 
 
-/* ===============================
+/* ========================================
    SCHNELLBETRÄGE
-   =============================== */
+   ======================================== */
 
 function createQuickCash(total){
 
@@ -2287,9 +3420,9 @@ function createQuickCash(total){
 
 
 
-/* ===============================
-   GELD SETZEN
-   =============================== */
+/* ========================================
+   GELDBETRAG SETZEN
+   ======================================== */
 
 function setCash(amount){
 
@@ -2309,9 +3442,9 @@ function setCash(amount){
 
 
 
-/* ===============================
-   GELDBETRAG LESEN
-   =============================== */
+/* ========================================
+   KOMMA UND PUNKT LESEN
+   ======================================== */
 
 function parseCashValue(value){
 
@@ -2338,9 +3471,9 @@ function parseCashValue(value){
 
 
 
-/* ===============================
+/* ========================================
    RÜCKGELD
-   =============================== */
+   ======================================== */
 
 function calculateChange(){
 
@@ -2433,9 +3566,9 @@ function calculateChange(){
 
 
 
-/* ===============================
+/* ========================================
    BEZAHLT
-   =============================== */
+   ======================================== */
 
 function finishSale(){
 
@@ -2481,15 +3614,18 @@ function finishSale(){
 
 
 
-/* ===============================
+/* ========================================
    START
-   =============================== */
+   ======================================== */
 
 renderAll();
 
 update();
 
+
 </script>
 
+
 </body>
+
 </html>
