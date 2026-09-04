@@ -21,53 +21,31 @@
 :root{
 
   --bg:#f6f4f1;
-
   --card:#ffffff;
-
   --ink:#252725;
-
   --muted:#747774;
-
   --line:#dedbd6;
 
-
-  /* =========================
-     DUNKLER / KONTRASTREICHER
-     ========================= */
-
   --anthrazit:#424542;
-
   --anthrazit-dark:#292b29;
-
   --anthrazit-soft:#565956;
 
-
-  /* FAVORITE AKZENT */
-
   --pink:#a84f79;
-
   --pink-dark:#8f4167;
-
   --pink-soft:#f0e2e9;
 
-
   --green:#23864e;
-
   --gold:#cbb88e;
 
 }
-
 
 *{
   box-sizing:border-box;
 }
 
-
 html,
 body{
-
   margin:0;
-
   min-height:100%;
 
   font-family:
@@ -79,42 +57,25 @@ body{
     sans-serif;
 
   background:var(--bg);
-
   color:var(--ink);
 
   -webkit-text-size-adjust:100%;
-
   touch-action:manipulation;
-
 }
-
 
 body{
-
-  padding-top:
-    env(safe-area-inset-top);
-
+  padding-top:env(safe-area-inset-top);
 }
-
 
 button,
 input{
-
   font:inherit;
-
 }
-
 
 button{
-
-  -webkit-tap-highlight-color:
-    transparent;
-
-  touch-action:
-    manipulation;
-
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
-
 
 
 /* =========================================================
@@ -122,108 +83,60 @@ button{
    ========================================================= */
 
 header{
-
   position:sticky;
-
   top:0;
-
   z-index:40;
 
-
   background:
-
     linear-gradient(
-
       135deg,
-
       #3b3e3b,
-
       #272927
-
     );
 
-
   color:#fff;
-
 
   padding:
-
     8px
-
     10px
-
     7px;
 
-
   border-bottom:
-
     3px solid
-
     var(--pink);
 
-
   box-shadow:
-
     0 3px 12px
-
     #0005;
-
 }
-
 
 .headrow{
-
   display:flex;
-
   align-items:center;
-
-  justify-content:
-    space-between;
-
+  justify-content:space-between;
   gap:8px;
-
 }
-
 
 .brand-small{
-
   font-size:8px;
-
   font-weight:950;
-
-  letter-spacing:
-    1.4px;
-
+  letter-spacing:1.4px;
   color:#f3dce8;
-
   margin-bottom:2px;
-
 }
-
 
 .title{
-
   font-size:19px;
-
   font-weight:950;
-
   line-height:1;
-
   color:#fff;
-
 }
-
 
 .hint{
-
   font-size:10px;
-
   color:#eeeeee;
-
   margin-top:3px;
-
 }
-
 
 
 /* =========================================================
@@ -231,59 +144,36 @@ header{
    ========================================================= */
 
 .pfand-mini{
-
   display:flex;
-
   gap:6px;
-
 }
 
-
 .pfand-mini button{
-
   border:0;
-
   border-radius:10px;
-
   min-height:38px;
 
   padding:
-
     0
-
     10px;
 
   font-weight:950;
-
   font-size:13px;
 
-
   box-shadow:
-
     0 2px 5px
-
     #0003;
-
 }
-
 
 .pfand-plus{
-
   background:#f6dfb2;
-
   color:#252525;
-
 }
-
 
 .pfand-minus{
-
   background:#dcefe2;
-
   color:#20452b;
-
 }
-
 
 
 /* =========================================================
@@ -291,118 +181,63 @@ header{
    ========================================================= */
 
 .tabs{
-
   position:sticky;
-
   top:62px;
-
   z-index:35;
 
-
   display:grid;
-
-  grid-template-columns:
-
-    repeat(
-      5,
-      1fr
-    );
-
+  grid-template-columns:repeat(5,1fr);
 
   gap:5px;
 
-
   padding:
-
     6px
-
     6px
-
     7px;
 
-
   background:#f6f4f1ee;
-
-
-  backdrop-filter:
-    blur(9px);
-
+  backdrop-filter:blur(9px);
 
   border-bottom:
-
     1px solid
-
     #ddd9d3;
-
 }
-
 
 .tab{
-
   border:
-
     1px solid
-
     #e3dfda;
 
-
   border-radius:10px;
-
-
   min-height:40px;
 
-
   background:#fff;
-
-
-  color:
-
-    var(--anthrazit-dark);
-
+  color:var(--anthrazit-dark);
 
   font-size:12px;
-
   font-weight:950;
 
-
   padding:4px;
-
 }
 
-
 .tab.active{
-
   background:
-
     linear-gradient(
-
       180deg,
-
       #414441,
-
       #292b29
-
     );
-
 
   color:#fff;
 
-
   border:
-
     2px solid
-
     var(--pink);
 
-
   box-shadow:
-
     0 2px 7px
-
     #0004;
-
 }
-
 
 
 /* =========================================================
@@ -410,259 +245,147 @@ header{
    ========================================================= */
 
 main{
-
   max-width:760px;
-
-
-  margin:
-
-    0 auto;
-
+  margin:0 auto;
 
   padding:
-
     6px
-
     7px
-
     calc(
-
       132px +
-
       env(safe-area-inset-bottom)
-
     );
-
 }
-
 
 .section{
-
   display:none;
-
 }
-
 
 .section.active{
-
   display:block;
-
 }
-
 
 
 /* =========================================================
-   FAVORITE LOGO IM SEKT-BEREICH
+   FAVORITE LOGO
    ========================================================= */
 
 #sekt{
-
   position:relative;
-
 }
 
-
 #sekt::before{
-
   content:"";
-
 
   position:absolute;
 
-
   inset:
-
     60px
-
     0
-
     0
-
     0;
 
-
   background:
-
     url("favorite-logo.png")
-
     center 42%
-
     / 78% auto
-
     no-repeat;
-
 
   opacity:.035;
 
-
   pointer-events:none;
-
-
   z-index:0;
-
 }
-
 
 #sekt > *{
-
   position:relative;
-
   z-index:1;
-
 }
 
-
-
-/* =========================================================
-   LOGO-BALKEN
-   ========================================================= */
-
 .sekt-brand{
-
   min-height:58px;
 
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-
   margin:
-
     0
-
     0
-
     7px;
 
-
   padding:
-
     7px
-
     12px;
 
-
   border:
-
     1px solid
-
     #666966;
-
 
   border-radius:13px;
 
-
   background:
-
     linear-gradient(
-
       135deg,
-
       #454845,
-
       #2c2e2c
-
     );
 
-
   box-shadow:
-
     0 3px 9px
-
     #0004;
 
-
   overflow:hidden;
-
 }
 
-
 .sekt-brand img{
-
   display:block;
 
-
   max-width:78%;
-
   max-height:48px;
 
-
   width:auto;
-
   height:auto;
-
 
   object-fit:contain;
 
-
   filter:
-
     brightness(1.8)
-
     contrast(.95);
-
 }
 
-
-
-/* FALLBACK FALLS LOGO NICHT GELADEN WIRD */
-
 .logo-fallback{
-
   display:none;
-
 
   color:#fff;
 
-
   text-align:center;
-
 
   font-weight:950;
 
-
   line-height:1;
-
 }
-
 
 .logo-fallback strong{
-
   display:block;
-
 
   font-family:
-
     Georgia,
-
     "Times New Roman",
-
     serif;
 
-
   font-size:24px;
-
 }
 
-
 .logo-fallback span{
-
   display:block;
-
 
   margin-top:3px;
 
-
   font-size:13px;
 
-
   color:#ead7e1;
-
 }
-
 
 
 /* =========================================================
@@ -670,24 +393,16 @@ main{
    ========================================================= */
 
 .grid{
-
   display:grid;
 
-
   grid-template-columns:
-
     1fr 1fr;
 
-
   gap:6px;
-
 }
 
-
 .item{
-
   background:
-
     rgba(
       255,
       255,
@@ -695,76 +410,43 @@ main{
       .97
     );
 
-
   border:
-
     1px solid
-
     var(--line);
-
 
   border-radius:12px;
 
-
   padding:7px;
 
-
   box-shadow:
-
     0 1px 5px
-
     #00000014;
-
 }
-
 
 .item.full{
-
-  grid-column:
-    1/-1;
-
+  grid-column:1/-1;
 }
 
-
 .item-name{
-
   font-size:14px;
-
-
   font-weight:950;
-
 
   line-height:1.08;
 
-
   margin-bottom:6px;
 
-
   min-height:30px;
-
 }
 
-
 .item-sub{
-
   font-size:10px;
-
-
-  color:
-
-    var(--muted);
-
+  color:var(--muted);
 
   line-height:1.1;
 
-
   margin-top:-2px;
-
-
   margin-bottom:5px;
-
 }
-
 
 
 /* =========================================================
@@ -772,273 +454,162 @@ main{
    ========================================================= */
 
 .options{
-
   display:grid;
 
-
   grid-template-columns:
-
     repeat(
       var(--cols,1),
       1fr
     );
 
-
   gap:5px;
-
 }
 
-
 .option{
-
   position:relative;
 
-
   border:
-
     1px solid
-
     #e0e0e0;
-
 
   border-radius:10px;
 
-
   min-height:49px;
 
-
   padding:
-
     5px
-
     3px;
 
-
   background:
-
     linear-gradient(
-
       180deg,
-
       #f2f2f2,
-
       #e7e7e7
-
     );
-
 
   color:#202020;
 
-
   font-weight:950;
-
 }
-
 
 .option:active{
-
-  transform:
-
-    scale(.98);
-
+  transform:scale(.98);
 }
-
 
 .option .size{
-
   display:block;
-
-
   font-size:12px;
-
 }
 
-
 .option .price{
-
   display:block;
-
 
   font-size:16px;
 
-
   margin-top:2px;
-
 }
 
 
-
 /* =========================================================
-   MENGE / KLEINE ZAHL
+   MENGE
    ========================================================= */
 
 .option .qty{
-
   display:none;
-
 
   position:absolute;
 
-
   top:-7px;
-
   right:-7px;
 
-
   min-width:25px;
-
   height:25px;
 
-
   padding:
-
     0
-
     6px;
-
 
   border-radius:999px;
 
-
   align-items:center;
-
   justify-content:center;
 
-
-  background:
-
-    var(--pink);
-
-
+  background:var(--pink);
   color:#fff;
 
-
   border:
-
     2px solid
-
     #fff;
 
-
   box-shadow:
-
     0 2px 6px
-
     #0004;
 
-
   font-size:12px;
-
   font-weight:950;
 
-
   z-index:3;
-
 }
-
 
 .option.selected{
-
   outline:
-
     2px solid
-
     var(--anthrazit-dark);
 
-
-  background:
-
-    #fff7fb;
-
+  background:#fff7fb;
 
   box-shadow:
-
     0 0 0 2px
-
     #a84f7945;
-
 }
-
 
 .option.selected .qty{
-
   display:flex;
-
 }
-
 
 
 /* =========================================================
-   SOFT / APERITIF / SNACK
+   EINZELARTIKEL
    ========================================================= */
 
 .single-grid{
-
   display:grid;
 
-
   grid-template-columns:
-
     1fr 1fr;
 
-
   gap:6px;
-
 }
 
-
 .single-card{
-
   background:#fff;
 
-
   border:
-
     1px solid
-
     var(--line);
-
 
   border-radius:12px;
 
-
   padding:7px;
 
-
   box-shadow:
-
     0 1px 5px
-
     #00000010;
-
 }
 
-
 .single-name{
-
   font-size:13px;
-
-
   font-weight:950;
-
 
   line-height:1.05;
 
-
   min-height:30px;
-
 }
-
 
 .single-card .option{
-
   width:100%;
-
-
   margin-top:5px;
-
 }
-
 
 
 /* =========================================================
@@ -1046,135 +617,75 @@ main{
    ========================================================= */
 
 .bottom{
-
   position:fixed;
 
-
   left:0;
-
   right:0;
-
   bottom:0;
-
 
   z-index:50;
 
-
   background:#fff;
 
-
   border-top:
-
     3px solid
-
     var(--pink);
 
-
   box-shadow:
-
     0 -7px 24px
-
     #0003;
-
 }
 
-
 .bottom-inner{
-
   max-width:760px;
-
 
   margin:auto;
 
-
   padding:
-
     7px
-
     8px
-
     calc(
-
       7px +
-
       env(safe-area-inset-bottom)
-
     );
-
 }
-
 
 .sumrow{
-
   display:flex;
-
-
   align-items:center;
-
-
   gap:7px;
-
 }
 
-
 .count{
-
-  background:
-
-    var(--anthrazit);
-
+  background:var(--anthrazit);
 
   color:#fff;
 
-
   border-radius:999px;
 
-
   padding:
-
     5px
-
     8px;
 
-
   font-size:11px;
-
-
   font-weight:900;
-
 }
-
 
 .sumlabel{
-
   font-size:16px;
-
-
   font-weight:950;
-
 }
 
-
 .total{
-
   margin-left:auto;
 
-
   font-size:30px;
-
-
   font-weight:1000;
-
 
   letter-spacing:-1px;
 
-
-  color:
-
-    var(--anthrazit-dark);
-
+  color:var(--anthrazit-dark);
 }
-
 
 
 /* =========================================================
@@ -1182,102 +693,58 @@ main{
    ========================================================= */
 
 .controls{
-
   display:grid;
 
-
   grid-template-columns:
-
     .85fr
-
     1fr
-
     1fr;
-
 
   gap:6px;
 
-
   margin-top:6px;
-
 }
 
-
 .controls button{
-
   border:0;
-
-
   border-radius:11px;
-
 
   min-height:44px;
 
-
   font-weight:950;
-
-
   font-size:13px;
-
 }
-
 
 .undo{
-
   background:#eeeeee;
-
-
   color:#353535;
-
 }
-
 
 .cash{
-
   background:
-
     linear-gradient(
-
       180deg,
-
       #2a9659,
-
       #207746
-
     );
 
-
   color:#fff;
-
 }
-
 
 .reset{
-
   background:
-
     linear-gradient(
-
       180deg,
-
       #444744,
-
       #292b29
-
     );
-
 
   color:#fff;
 
-
   box-shadow:
-
     0 2px 6px
-
     #0003;
-
 }
-
 
 
 /* =========================================================
@@ -1285,324 +752,172 @@ main{
    ========================================================= */
 
 dialog{
-
   border:0;
-
-
   padding:0;
-
 
   border-radius:18px;
 
-
   width:
-
     min(
-
       480px,
-
       calc(
         100% - 20px
       )
-
     );
 
-
   box-shadow:
-
     0 25px 80px
-
     #0007;
-
 }
-
 
 dialog::backdrop{
-
   background:#0009;
-
 }
-
 
 .modal{
-
   padding:16px;
-
-
   background:#fff;
-
 }
-
 
 .modal h2{
-
   margin:
-
     0
-
     0
-
     8px;
 
-
-  color:
-
-    var(--anthrazit-dark);
-
+  color:var(--anthrazit-dark);
 
   font-size:23px;
-
 }
-
 
 .to-pay-label{
-
   font-size:13px;
-
-
   color:#666;
-
 }
-
 
 .to-pay{
-
   font-size:36px;
-
-
   font-weight:1000;
 
-
-  color:
-
-    var(--anthrazit-dark);
-
+  color:var(--anthrazit-dark);
 }
 
-
-
-/* =========================================================
-   SCHNELLBETRÄGE
-   ========================================================= */
-
 .quick-cash{
-
   display:grid;
 
-
   grid-template-columns:
-
     repeat(
       4,
       1fr
     );
 
-
   gap:6px;
 
-
   margin:
-
     12px
-
     0
-
     10px;
-
 }
 
-
 .quick-cash button{
-
   min-height:48px;
 
-
   border:
-
     1px solid
-
     #dedede;
-
 
   border-radius:10px;
 
-
   background:#f3f3f3;
 
-
   font-weight:950;
-
 }
-
-
-
-/* =========================================================
-   GAST GIBT
-   ========================================================= */
 
 .cash-label{
-
   display:block;
 
-
   font-size:13px;
-
-
   font-weight:800;
 
-
   margin-bottom:4px;
-
 }
 
-
 #cashInput{
-
   width:100%;
-
 
   padding:11px;
 
-
   border:
-
     2px solid
-
     #aaa;
-
 
   border-radius:11px;
 
-
   font-size:26px;
-
-
   font-weight:900;
 
-
   outline:none;
-
 }
-
 
 #cashInput:focus{
-
-  border-color:
-
-    var(--pink);
-
+  border-color:var(--pink);
 }
 
-
-
-/* =========================================================
-   RÜCKGELD
-   ========================================================= */
-
 .change-box{
-
   margin-top:10px;
-
 
   background:#f3f1f2;
 
-
   border-radius:12px;
 
-
   padding:10px;
-
 }
-
 
 .change-label{
-
   font-size:13px;
-
-
   color:#666;
-
 }
-
 
 .change{
-
   font-size:34px;
-
-
   font-weight:1000;
-
 }
 
-
-
-/* =========================================================
-   MODAL BUTTONS
-   ========================================================= */
-
 .modal-buttons{
-
   display:grid;
 
-
   grid-template-columns:
-
     1fr 1fr;
-
 
   gap:7px;
 
-
   margin-top:12px;
-
 }
-
 
 .modal-buttons button{
-
   min-height:50px;
 
-
   border:0;
-
-
   border-radius:11px;
 
-
   font-weight:950;
-
-
   font-size:14px;
-
 }
-
 
 .cancel{
-
   background:#eee;
-
 }
-
 
 .paid{
-
   background:
-
     linear-gradient(
-
       180deg,
-
       #444744,
-
       #292b29
-
     );
 
-
   color:#fff;
-
 }
-
 
 
 /* =========================================================
@@ -1612,72 +927,43 @@ dialog::backdrop{
 @media(max-width:380px){
 
   .title{
-
     font-size:17px;
-
   }
-
 
   .brand-small{
-
     font-size:7px;
-
   }
-
 
   .pfand-mini button{
-
     padding:
-
       0
-
       8px;
 
-
     font-size:12px;
-
   }
-
 
   .tabs{
-
     top:60px;
-
   }
-
 
   .tab{
-
     font-size:11px;
-
   }
-
 
   .item-name{
-
     font-size:13px;
-
   }
-
 
   .option .price{
-
     font-size:15px;
-
   }
-
 
   .sekt-brand{
-
     min-height:52px;
-
   }
 
-
   .sekt-brand img{
-
     max-height:42px;
-
   }
 
 }
@@ -1689,86 +975,45 @@ dialog::backdrop{
 <body>
 
 
-
-<!-- =========================================================
-     KOPF
-     ========================================================= -->
-
 <header>
 
   <div class="headrow">
 
-
     <div>
 
-
       <div class="brand-small">
-
         FAVORITE PARKHOTEL MAINZ
-
       </div>
-
 
       <div class="title">
-
         Fürst von Metternich
-
       </div>
-
 
       <div class="hint">
-
         🥂 Sektstand · Antippen = Menge +1
-
       </div>
 
-
     </div>
-
 
 
     <div class="pfand-mini">
 
-
       <button
-
         class="pfand-plus"
-
-        onclick="
-          add(
-            'Pfand',
-            3,
-            'pfand-plus'
-          )
-        "
+        onclick="add('Pfand',3,'pfand-plus')"
       >
-
         +3 €
-
       </button>
-
 
 
       <button
-
         class="pfand-minus"
-
-        onclick="
-          add(
-            'Pfandrückgabe',
-            -3,
-            'pfand-minus'
-          )
-        "
+        onclick="add('Pfandrückgabe',-3,'pfand-minus')"
       >
-
         −3 €
-
       </button>
-
 
     </div>
-
 
   </div>
 
@@ -1776,430 +1021,238 @@ dialog::backdrop{
 
 
 
-<!-- =========================================================
-     KATEGORIEN
-     ========================================================= -->
-
 <nav class="tabs">
 
-
   <button
-
     class="tab active"
-
-    onclick="
-      showTab(
-        'sekt',
-        this
-      )
-    "
+    onclick="showTab('sekt',this)"
   >
-
     🥂 Sekt
-
   </button>
 
 
-
   <button
-
     class="tab"
-
-    onclick="
-      showTab(
-        'wein',
-        this
-      )
-    "
+    onclick="showTab('wein',this)"
   >
-
     🍷 Wein
-
   </button>
 
 
-
   <button
-
     class="tab"
-
-    onclick="
-      showTab(
-        'soft',
-        this
-      )
-    "
+    onclick="showTab('soft',this)"
   >
-
     🥤 Soft
-
   </button>
 
 
-
   <button
-
     class="tab"
-
-    onclick="
-      showTab(
-        'aperitif',
-        this
-      )
-    "
+    onclick="showTab('aperitif',this)"
   >
-
     🍹 Aperitif
-
   </button>
-
 
 
   <button
-
     class="tab"
-
-    onclick="
-      showTab(
-        'snack',
-        this
-      )
-    "
+    onclick="showTab('snack',this)"
   >
-
     🥨 Snack
-
   </button>
-
 
 </nav>
 
 
 
-<!-- =========================================================
-     INHALT
-     ========================================================= -->
-
 <main>
 
-
   <section
-
     id="sekt"
-
     class="section active"
-
   ></section>
 
-
-
   <section
-
     id="wein"
-
     class="section"
-
   ></section>
 
-
-
   <section
-
     id="soft"
-
     class="section"
-
   ></section>
 
-
-
   <section
-
     id="aperitif"
-
     class="section"
-
   ></section>
-
-
 
   <section
-
     id="snack"
-
     class="section"
-
   ></section>
-
 
 </main>
 
 
 
-<!-- =========================================================
-     SUMME
-     ========================================================= -->
-
 <div class="bottom">
-
 
   <div class="bottom-inner">
 
-
     <div class="sumrow">
 
-
       <span
-
         class="count"
-
         id="count"
-
       >
-
         0 Artikel
-
       </span>
-
 
 
       <span class="sumlabel">
-
         Summe
-
       </span>
-
 
 
       <span
-
         class="total"
-
         id="total"
-
       >
-
         0,00 €
-
       </span>
 
-
     </div>
-
 
 
     <div class="controls">
 
-
       <button
-
         class="undo"
-
-        onclick="
-          undo()
-        "
+        onclick="undo()"
       >
-
         ↶ Zurück
-
       </button>
 
 
-
       <button
-
         class="cash"
-
-        onclick="
-          openCash()
-        "
+        onclick="openCash()"
       >
-
         💶 BAR
-
       </button>
-
 
 
       <button
-
         class="reset"
-
-        onclick="
-          resetCart()
-        "
+        onclick="resetCart()"
       >
-
         NEUER GAST
-
       </button>
-
 
     </div>
 
-
   </div>
-
 
 </div>
 
 
 
-<!-- =========================================================
-     BARZAHLUNG
-     ========================================================= -->
-
 <dialog id="cashDialog">
-
 
   <div class="modal">
 
-
     <h2>
-
       💶 Barzahlung
-
     </h2>
 
 
-
     <div class="to-pay-label">
-
       Gast muss zahlen
-
     </div>
 
 
-
     <div
-
       class="to-pay"
-
       id="cashTotal"
-
     >
-
       0,00 €
-
     </div>
 
 
-
     <div
-
       class="quick-cash"
-
       id="quickCash"
-
     ></div>
 
 
-
     <label
-
       class="cash-label"
-
       for="cashInput"
-
     >
-
       Gast gibt:
-
     </label>
 
 
-
     <input
-
       id="cashInput"
-
       type="text"
-
       inputmode="decimal"
-
       autocomplete="off"
-
       placeholder="z. B. 20"
-
-      oninput="
-        calculateChange()
-      "
-
+      oninput="calculateChange()"
     >
-
 
 
     <div class="change-box">
 
-
       <div class="change-label">
-
         Rückgeld
-
       </div>
-
 
 
       <div
-
         class="change"
-
         id="change"
-
       >
-
         0,00 €
-
       </div>
 
-
     </div>
-
 
 
     <div class="modal-buttons">
 
-
       <button
-
         class="cancel"
-
         onclick="
-          cashDialog.close()
+          document
+            .getElementById('cashDialog')
+            .close()
         "
       >
-
         Abbrechen
-
       </button>
-
 
 
       <button
-
         class="paid"
-
-        onclick="
-          finishSale()
-        "
+        onclick="finishSale()"
       >
-
         BEZAHLT / NEUER GAST
-
       </button>
-
 
     </div>
 
-
   </div>
-
 
 </dialog>
 
 
 
 <script>
+
 
 /* =========================================================
    PRODUKTE
@@ -2208,626 +1261,269 @@ dialog::backdrop{
 const data = {
 
 
+  /* SEKT */
 
-/* =========================
-   SEKT
-   ========================= */
+  sekt:[
 
-sekt:[
+    {
+      name:"Fürst von Metternich Riesling",
 
-
-  {
-
-    name:
-      "Fürst von Metternich Riesling",
-
-    opts:[
-
-      [
-        "0,1 l",
-        5
-      ],
-
-      [
-        "0,75 l",
-        28
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Fürst von Metternich Rosé",
 
-  {
-
-    name:
-      "Fürst von Metternich Rosé",
-
-    opts:[
-
-      [
-        "0,1 l",
-        5
-      ],
-
-      [
-        "0,75 l",
-        28
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Fürst von Metternich Chardonnay",
 
-  {
-
-    name:
-      "Fürst von Metternich Chardonnay",
-
-    opts:[
-
-      [
-        "0,1 l",
-        5
-      ],
-
-      [
-        "0,75 l",
-        28
+      opts:[
+        ["0,1 l",5],
+        ["0,75 l",28]
       ]
+    }
 
-    ]
-
-  }
-
-
-],
+  ],
 
 
 
-/* =========================
-   WEIN
-   ========================= */
+  /* WEIN */
 
-wein:[
+  wein:[
 
+    {
+      name:"Nr. 1 Riesling Hofgut Laubenheimer Höhe",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 1 Riesling Hofgut Laubenheimer Höhe",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        4
-      ],
-
-      [
-        "0,2",
-        7
-      ],
-
-      [
-        "0,75",
-        24.5
+      opts:[
+        ["0,1",4],
+        ["0,2",7],
+        ["0,75",24.5]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 2 Riesling Gelblack",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 2 Riesling Gelblack",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        4.5
-      ],
-
-      [
-        "0,2",
-        8
-      ],
-
-      [
-        "0,75",
-        28
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 3 Riesling Gelblack",
+      sub:"feinherb",
 
-  {
-
-    name:
-      "Nr. 3 Riesling Gelblack",
-
-    sub:
-      "feinherb",
-
-    opts:[
-
-      [
-        "0,1",
-        4.5
-      ],
-
-      [
-        "0,2",
-        8
-      ],
-
-      [
-        "0,75",
-        28
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 4 Weißburgunder",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 4 Weißburgunder",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        4.5
-      ],
-
-      [
-        "0,2",
-        8
-      ],
-
-      [
-        "0,75",
-        28
+      opts:[
+        ["0,1",4.5],
+        ["0,2",8],
+        ["0,75",28]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 5 Grauburgunder Réserve",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 5 Grauburgunder Réserve",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        3.5
-      ],
-
-      [
-        "0,2",
-        6.5
-      ],
-
-      [
-        "0,75",
-        22
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 6 Chardonnay",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 6 Chardonnay",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        3.5
-      ],
-
-      [
-        "0,2",
-        6.5
-      ],
-
-      [
-        "0,75",
-        22
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
       ]
-
-    ]
-
-  },
+    },
 
 
+    {
+      name:"Nr. 7 Rosé HASE",
+      sub:"trocken",
 
-  {
-
-    name:
-      "Nr. 7 Rosé HASE",
-
-    sub:
-      "trocken",
-
-    opts:[
-
-      [
-        "0,1",
-        3.5
-      ],
-
-      [
-        "0,2",
-        6.5
-      ],
-
-      [
-        "0,75",
-        22
+      opts:[
+        ["0,1",3.5],
+        ["0,2",6.5],
+        ["0,75",22]
       ]
+    }
+
+  ],
+
+
+
+  /* SOFT */
+
+  soft:[
+
+    {
+      name:"Weinschorle",
+      size:"0,4 l",
+      price:4.5
+    },
+
+    {
+      name:"Roséschorle",
+      size:"0,4 l",
+      price:4.5
+    },
+
+    {
+      name:"Gerolsteiner still",
+      size:"0,5 l",
+      price:4.5
+    },
+
+    {
+      name:"Gerolsteiner medium",
+      size:"0,5 l",
+      price:4.5
+    },
+
+    {
+      name:"Traubensaftschorle",
+      size:"0,33 l",
+      price:3.5
+    },
+
+    {
+      name:"Pepsi",
+      size:"0,33 l",
+      price:4
+    },
+
+    {
+      name:"Pepsi Max",
+      size:"0,33 l",
+      price:4
+    },
+
+    {
+      name:"SchwipSchwap Orange",
+      size:"0,33 l",
+      price:4
+    }
+
+  ],
+
+
+
+  /* APERITIF */
+
+  aperitif:[
+
+    {
+      name:"Aperol Spritz",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Hugo",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Mionetto Aperitivo",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Solare Spritz",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Aperol Spritz alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
+
+    {
+      name:"Hugo alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
 
-    ]
+    {
+      name:"Mionetto Aperitivo alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
 
-  }
+    {
+      name:"Solare Spritz alkoholfrei",
+      size:"Glas",
+      price:7.5
+    },
 
+    {
+      name:"Gin Tonic",
+      size:"Glas",
+      price:8.5
+    },
 
-],
+    {
+      name:"Wodka Lemon",
+      size:"Glas",
+      price:8.5
+    }
 
+  ],
 
 
-/* =========================
-   SOFT
-   ========================= */
 
-soft:[
+  /* SNACK */
 
+  snack:[
 
-  {
+    {
+      name:"Brezel",
+      size:"1 Stück",
+      price:2.5
+    }
 
-    name:
-      "Weinschorle",
-
-    size:
-      "0,4 l",
-
-    price:
-      4.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Roséschorle",
-
-    size:
-      "0,4 l",
-
-    price:
-      4.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Gerolsteiner still",
-
-    size:
-      "0,5 l",
-
-    price:
-      4.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Gerolsteiner medium",
-
-    size:
-      "0,5 l",
-
-    price:
-      4.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Traubensaftschorle",
-
-    size:
-      "0,33 l",
-
-    price:
-      3.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Pepsi",
-
-    size:
-      "0,33 l",
-
-    price:
-      4
-
-  },
-
-
-
-  {
-
-    name:
-      "Pepsi Max",
-
-    size:
-      "0,33 l",
-
-    price:
-      4
-
-  },
-
-
-
-  {
-
-    name:
-      "SchwipSchwap Orange",
-
-    size:
-      "0,33 l",
-
-    price:
-      4
-
-  }
-
-
-],
-
-
-
-/* =========================
-   APERITIF
-   ========================= */
-
-aperitif:[
-
-
-  {
-
-    name:
-      "Aperol Spritz",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Hugo",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Mionetto Aperitivo",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Solare Spritz",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Aperol Spritz alkoholfrei",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Hugo alkoholfrei",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Mionetto Aperitivo alkoholfrei",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Solare Spritz alkoholfrei",
-
-    size:
-      "Glas",
-
-    price:
-      7.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Gin Tonic",
-
-    size:
-      "Glas",
-
-    price:
-      8.5
-
-  },
-
-
-
-  {
-
-    name:
-      "Wodka Lemon",
-
-    size:
-      "Glas",
-
-    price:
-      8.5
-
-  }
-
-
-],
-
-
-
-/* =========================
-   SNACK
-   ========================= */
-
-snack:[
-
-
-  {
-
-    name:
-      "Brezel",
-
-    size:
-      "1 Stück",
-
-    price:
-      2.5
-
-  }
-
-
-]
-
+  ]
 
 };
 
@@ -2844,28 +1540,22 @@ let history = [];
 
 
 /* =========================================================
-   EURO FORMAT
+   EURO
    ========================================================= */
 
 function eur(number){
 
-
   const cleanNumber =
-
     Number(number);
 
 
   if(
-
     !Number.isFinite(
       cleanNumber
     )
-
   ){
 
-
     return "0,00 €";
-
 
   }
 
@@ -2875,13 +1565,8 @@ function eur(number){
     "de-DE",
 
     {
-
-      style:
-        "currency",
-
-      currency:
-        "EUR"
-
+      style:"currency",
+      currency:"EUR"
     }
 
   );
@@ -2891,22 +1576,12 @@ function eur(number){
 
 
 /* =========================================================
-   PRODUKT SCHLÜSSEL
+   EINDEUTIGER PRODUKT-SCHLÜSSEL
    ========================================================= */
 
-function keyFor(
-  name,
-  size
-){
+function keyFor(name, size){
 
-
-  return
-
-    String(name) +
-
-    "||" +
-
-    String(size);
+  return String(name) + "||" + String(size);
 
 }
 
@@ -2918,59 +1593,41 @@ function keyFor(
 
 function safeId(text){
 
-
   const value =
-
     String(text);
 
 
   let hash =
-
     2166136261;
 
 
   for(
-
     let i = 0;
-
     i < value.length;
-
     i++
-
   ){
 
-
     hash ^=
-
       value.charCodeAt(i);
 
 
     hash =
-
       Math.imul(
-
         hash,
-
         16777619
-
       );
 
   }
 
 
-  return
-
-    "q-" +
-
-    (hash >>> 0)
-      .toString(36);
+  return "q-" + (hash >>> 0).toString(36);
 
 }
 
 
 
 /* =========================================================
-   SEKT UND WEIN ANZEIGEN
+   SEKT / WEIN
    ========================================================= */
 
 function renderMulti(
@@ -2978,13 +1635,8 @@ function renderMulti(
   items
 ){
 
-
   document
-
-    .getElementById(
-      id
-    )
-
+    .getElementById(id)
     .innerHTML =
 
 
@@ -3038,13 +1690,8 @@ function renderMulti(
 
 
               <div
-
                 class="options"
-
-                style="
-                  --cols:
-                  ${item.opts.length}
-                "
+                style="--cols:${item.opts.length}"
               >
 
 
@@ -3056,13 +1703,9 @@ function renderMulti(
 
 
                       const key =
-
                         keyFor(
-
                           item.name,
-
                           size
-
                         );
 
 
@@ -3075,46 +1718,30 @@ function renderMulti(
 
                           id="${safeId(key)}"
 
-                          onclick='
-
-                            add(
-
-                              ${JSON.stringify(
-                                item.name +
-                                " · " +
-                                size
-                              )},
-
-                              ${Number(price)},
-
-                              ${JSON.stringify(
-                                key
-                              )}
-
-                            )
-
-                          '
+                          onclick='add(
+                            ${JSON.stringify(
+                              item.name +
+                              " · " +
+                              size
+                            )},
+                            ${Number(price)},
+                            ${JSON.stringify(key)}
+                          )'
                         >
 
 
                           <span class="qty">
-
                             0
-
                           </span>
 
 
                           <span class="size">
-
                             ${size}
-
                           </span>
 
 
                           <span class="price">
-
                             ${eur(price)}
-
                           </span>
 
 
@@ -3160,13 +1787,8 @@ function renderSingle(
   items
 ){
 
-
   document
-
-    .getElementById(
-      id
-    )
-
+    .getElementById(id)
     .innerHTML =
 
 
@@ -3179,13 +1801,9 @@ function renderSingle(
 
 
           const key =
-
             keyFor(
-
               item.name,
-
               item.size
-
             );
 
 
@@ -3208,50 +1826,30 @@ function renderSingle(
 
                 id="${safeId(key)}"
 
-                onclick='
-
-                  add(
-
-                    ${JSON.stringify(
-                      item.name +
-                      " · " +
-                      item.size
-                    )},
-
-                    ${Number(
-                      item.price
-                    )},
-
-                    ${JSON.stringify(
-                      key
-                    )}
-
-                  )
-
-                '
+                onclick='add(
+                  ${JSON.stringify(
+                    item.name +
+                    " · " +
+                    item.size
+                  )},
+                  ${Number(item.price)},
+                  ${JSON.stringify(key)}
+                )'
               >
 
 
                 <span class="qty">
-
                   0
-
                 </span>
 
 
                 <span class="size">
-
                   ${item.size}
-
                 </span>
 
 
                 <span class="price">
-
-                  ${eur(
-                    item.price
-                  )}
-
+                  ${eur(item.price)}
                 </span>
 
 
@@ -3276,28 +1874,21 @@ function renderSingle(
 
 
 /* =========================================================
-   ALLES AUFBAUEN
+   MENÜ AUFBAUEN
    ========================================================= */
 
 function renderAll(){
 
-
   renderMulti(
-
     "sekt",
-
     data.sekt
-
   );
 
 
-
   document
-
     .getElementById(
       "sekt"
     )
-
     .insertAdjacentHTML(
 
       "afterbegin",
@@ -3323,20 +1914,13 @@ function renderAll(){
 
           <div class="logo-fallback">
 
-
             <strong>
-
               FAVORITE
-
             </strong>
 
-
             <span>
-
               parkhotel
-
             </span>
-
 
           </div>
 
@@ -3348,43 +1932,27 @@ function renderAll(){
     );
 
 
-
   renderMulti(
-
     "wein",
-
     data.wein
-
   );
 
 
-
   renderSingle(
-
     "soft",
-
     data.soft
-
   );
 
 
-
   renderSingle(
-
     "aperitif",
-
     data.aperitif
-
   );
 
 
-
   renderSingle(
-
     "snack",
-
     data.snack
-
   );
 
 }
@@ -3400,13 +1968,10 @@ function showTab(
   button
 ){
 
-
   document
-
     .querySelectorAll(
       ".section"
     )
-
     .forEach(
 
       section =>
@@ -3420,26 +1985,16 @@ function showTab(
     );
 
 
-
   document
-
-    .getElementById(
-      id
-    )
-
+    .getElementById(id)
     .classList
-    .add(
-      "active"
-    );
-
+    .add("active");
 
 
   document
-
     .querySelectorAll(
       ".tab"
     )
-
     .forEach(
 
       tab =>
@@ -3453,23 +2008,14 @@ function showTab(
     );
 
 
-
   button
-
     .classList
-
-    .add(
-      "active"
-    );
-
+    .add("active");
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"auto"
-
   });
 
 }
@@ -3482,13 +2028,8 @@ function showTab(
 
 function snapshot(){
 
-
   history.push(
-
-    JSON.stringify(
-      cart
-    )
-
+    JSON.stringify(cart)
   );
 
 
@@ -3514,73 +2055,62 @@ function add(
   key
 ){
 
-
   const cleanPrice =
-
     Number(price);
 
 
   if(
-
     !Number.isFinite(
       cleanPrice
     )
-
   ){
-
 
     return;
 
   }
 
 
-
   snapshot();
-
 
 
   if(
     !cart[key]
   ){
 
-
     cart[key] = {
 
+      name:String(name),
 
-      name:
-        String(name),
+      price:cleanPrice,
 
-
-      price:
-        cleanPrice,
-
-
-      qty:
-        0
-
+      qty:0
 
     };
 
   }
 
 
+  const oldQty =
+    Number(
+      cart[key].qty
+    );
+
 
   cart[key].qty =
 
-    Number(
-      cart[key].qty
+    (
+      Number.isFinite(oldQty)
+      ? oldQty
+      : 0
     ) + 1;
-
 
 
   update();
 
 
-
   if(
     navigator.vibrate
   ){
-
 
     navigator.vibrate(
       15
@@ -3598,26 +2128,19 @@ function add(
 
 function undo(){
 
-
   if(
     !history.length
   ){
-
 
     return;
 
   }
 
 
-
   cart =
-
     JSON.parse(
-
       history.pop()
-
     );
-
 
 
   update();
@@ -3632,12 +2155,9 @@ function undo(){
 
 function resetCart(){
 
-
   cart = {};
 
-
   history = [];
-
 
   update();
 
@@ -3651,51 +2171,30 @@ function resetCart(){
 
 function getTotal(){
 
-
   let total =
     0;
 
 
-
   for(
-
     const item
-
-    of Object.values(
-      cart
-    )
-
+    of Object.values(cart)
   ){
 
-
     const price =
-
-      Number(
-        item.price
-      );
+      Number(item.price);
 
 
     const qty =
-
-      Number(
-        item.qty
-      );
-
+      Number(item.qty);
 
 
     if(
-
       Number.isFinite(price)
-
       &&
-
       Number.isFinite(qty)
-
     ){
 
-
       total +=
-
         price * qty;
 
     }
@@ -3703,72 +2202,45 @@ function getTotal(){
   }
 
 
-
   if(
-
-    !Number.isFinite(
-      total
-    )
-
+    !Number.isFinite(total)
   ){
-
 
     return 0;
 
   }
 
 
-
-  return
-
-    Math.round(
-
-      total * 100
-
-    ) / 100;
+  return Math.round(
+    total * 100
+  ) / 100;
 
 }
 
 
 
 /* =========================================================
-   ARTIKELANZAHL
+   ANZAHL
    ========================================================= */
 
 function getCount(){
-
 
   let count =
     0;
 
 
-
   for(
-
     const item
-
-    of Object.values(
-      cart
-    )
-
+    of Object.values(cart)
   ){
 
-
     const qty =
-
-      Number(
-        item.qty
-      );
+      Number(item.qty);
 
 
     if(
-
-      Number.isFinite(
-        qty
-      )
-
+      Number.isFinite(qty)
     ){
-
 
       count +=
         qty;
@@ -3778,7 +2250,6 @@ function getCount(){
   }
 
 
-
   return count;
 
 }
@@ -3786,152 +2257,105 @@ function getCount(){
 
 
 /* =========================================================
-   ANZEIGE AKTUALISIEREN
+   ANZEIGE
    ========================================================= */
 
 function update(){
 
-
   document
-
     .querySelectorAll(
       ".option"
     )
-
     .forEach(
 
       button => {
 
 
         button
-
           .classList
-
           .remove(
             "selected"
           );
 
 
-
-        const quantity =
-
-          button.querySelector(
-            ".qty"
-          );
-
-
-
-        if(
-          quantity
-        ){
-
-
-          quantity.textContent =
-            "0";
-
-        }
-
-
-      }
-
-    );
-
-
-
-  for(
-
-    const [
-      key,
-      item
-    ]
-
-    of Object.entries(
-      cart
-    )
-
-  ){
-
-
-    const qty =
-
-      Number(
-        item.qty
-      );
-
-
-
-    if(
-
-      !Number.isFinite(qty)
-
-      ||
-
-      qty <= 0
-
-    ){
-
-
-      continue;
-
-    }
-
-
-
-    if(
-
-      key !==
-      "pfand-plus"
-
-      &&
-
-      key !==
-      "pfand-minus"
-
-    ){
-
-
-      const button =
-
-        document.getElementById(
-
-          safeId(
-            key
-          )
-
-        );
-
-
-
-      if(
-        button
-      ){
-
-
-        button
-
-          .classList
-
-          .add(
-            "selected"
-          );
-
-
-
         const badge =
-
           button.querySelector(
             ".qty"
           );
-
 
 
         if(
           badge
         ){
 
+          badge.textContent =
+            "0";
+
+        }
+
+      }
+
+    );
+
+
+  for(
+    const [
+      key,
+      item
+    ]
+    of Object.entries(cart)
+  ){
+
+    const qty =
+      Number(item.qty);
+
+
+    if(
+      !Number.isFinite(qty)
+      ||
+      qty <= 0
+    ){
+
+      continue;
+
+    }
+
+
+    if(
+      key !== "pfand-plus"
+      &&
+      key !== "pfand-minus"
+    ){
+
+      const button =
+        document.getElementById(
+          safeId(key)
+        );
+
+
+      if(
+        button
+      ){
+
+        button
+          .classList
+          .add(
+            "selected"
+          );
+
+
+        const badge =
+          button.querySelector(
+            ".qty"
+          );
+
+
+        if(
+          badge
+        ){
 
           badge.textContent =
-            qty;
+            String(qty);
 
         }
 
@@ -3942,27 +2366,20 @@ function update(){
   }
 
 
-
   document
-
     .getElementById(
       "count"
     )
-
     .textContent =
 
       getCount() +
-
       " Artikel";
 
 
-
   document
-
     .getElementById(
       "total"
     )
-
     .textContent =
 
       eur(
@@ -3979,78 +2396,54 @@ function update(){
 
 function openCash(){
 
-
   const total =
-
     getTotal();
-
 
 
   if(
     total <= 0
   ){
 
-
     alert(
       "Bitte zuerst Artikel auswählen."
     );
-
 
     return;
 
   }
 
 
-
   document
-
     .getElementById(
       "cashTotal"
     )
-
     .textContent =
-
-      eur(
-        total
-      );
-
+      eur(total);
 
 
   document
-
     .getElementById(
       "cashInput"
     )
-
     .value =
       "";
 
 
-
   document
-
     .getElementById(
       "change"
     )
-
     .textContent =
-
       "0,00 €";
 
 
-
   document
-
     .getElementById(
       "change"
     )
-
     .style
-
     .color =
-
       "#292b29";
-
 
 
   createQuickCash(
@@ -4058,30 +2451,22 @@ function openCash(){
   );
 
 
-
   document
-
     .getElementById(
       "cashDialog"
     )
-
     .showModal();
-
 
 
   setTimeout(
 
     () => {
 
-
       document
-
         .getElementById(
           "cashInput"
         )
-
         .focus();
-
 
     },
 
@@ -4099,9 +2484,7 @@ function openCash(){
 
 function createQuickCash(total){
 
-
   const standard =
-
     [
       5,
       10,
@@ -4112,32 +2495,24 @@ function createQuickCash(total){
     ];
 
 
-
   let buttons =
 
     standard
-
       .filter(
-
         amount =>
           amount >= total
-
       )
-
       .slice(
         0,
         4
       );
 
 
-
   if(
     buttons.length < 4
   ){
 
-
     buttons =
-
       standard.slice(
         -4
       );
@@ -4145,33 +2520,21 @@ function createQuickCash(total){
   }
 
 
-
   document
-
     .getElementById(
       "quickCash"
     )
-
     .innerHTML =
 
       buttons.map(
 
         amount => `
 
-
           <button
-
-            onclick="
-              setCash(
-                ${amount}
-              )
-            "
+            onclick="setCash(${amount})"
           >
-
             ${amount} €
-
           </button>
-
 
         `
 
@@ -4182,22 +2545,17 @@ function createQuickCash(total){
 
 
 /* =========================================================
-   SCHNELLBETRAG SETZEN
+   SCHNELLBETRAG
    ========================================================= */
 
 function setCash(amount){
 
-
   document
-
     .getElementById(
       "cashInput"
     )
-
     .value =
-
-      amount;
-
+      String(amount);
 
 
   calculateChange();
@@ -4212,20 +2570,16 @@ function setCash(amount){
 
 function parseCashValue(value){
 
-
   const parsed =
 
     Number(
 
       String(value)
-
         .trim()
-
         .replace(
           /\s/g,
           ""
         )
-
         .replace(
           ",",
           "."
@@ -4234,15 +2588,9 @@ function parseCashValue(value){
     );
 
 
-
   return
-
-    Number.isFinite(
-      parsed
-    )
-
+    Number.isFinite(parsed)
     ? parsed
-
     : 0;
 
 }
@@ -4255,103 +2603,69 @@ function parseCashValue(value){
 
 function calculateChange(){
 
-
   const total =
-
     getTotal();
 
 
-
   const given =
-
     parseCashValue(
-
       document
-
         .getElementById(
           "cashInput"
         )
-
         .value
-
     );
 
 
-
   const difference =
-
     Math.round(
-
       (
         given -
         total
       ) * 100
-
     ) / 100;
 
 
-
   const changeElement =
-
-    document
-
-      .getElementById(
-        "change"
-      );
-
+    document.getElementById(
+      "change"
+    );
 
 
   if(
     difference >= 0
   ){
 
-
     changeElement
-
       .textContent =
-
         eur(
           difference
         );
 
 
-
     changeElement
-
       .style
-
       .color =
-
         "#23864e";
 
   }
-
-
   else{
 
-
     changeElement
-
       .textContent =
 
         "Fehlen " +
 
         eur(
-
           Math.abs(
             difference
           )
-
         );
 
 
-
     changeElement
-
       .style
-
       .color =
-
         "#a84f79";
 
   }
@@ -4366,53 +2680,38 @@ function calculateChange(){
 
 function finishSale(){
 
-
   const total =
-
     getTotal();
 
 
-
   const given =
-
     parseCashValue(
-
       document
-
         .getElementById(
           "cashInput"
         )
-
         .value
-
     );
-
 
 
   if(
     given < total
   ){
 
-
     alert(
       "Der Gast hat noch nicht genug gegeben."
     );
-
 
     return;
 
   }
 
 
-
   document
-
     .getElementById(
       "cashDialog"
     )
-
     .close();
-
 
 
   resetCart();
