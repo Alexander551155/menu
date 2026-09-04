@@ -19,7 +19,6 @@
 <style>
 
 :root{
-
   --bg:#f6f4f1;
   --card:#ffffff;
   --ink:#252725;
@@ -35,8 +34,6 @@
   --pink-soft:#f0e2e9;
 
   --green:#23864e;
-  --gold:#cbb88e;
-
 }
 
 *{
@@ -152,17 +149,10 @@ header{
   border:0;
   border-radius:10px;
   min-height:38px;
-
-  padding:
-    0
-    10px;
-
+  padding:0 10px;
   font-weight:950;
   font-size:13px;
-
-  box-shadow:
-    0 2px 5px
-    #0003;
+  box-shadow:0 2px 5px #0003;
 }
 
 .pfand-plus{
@@ -198,17 +188,13 @@ header{
   background:#f6f4f1ee;
   backdrop-filter:blur(9px);
 
-  border-bottom:
-    1px solid
-    #ddd9d3;
+  border-bottom:1px solid #ddd9d3;
 }
 
 .tab{
-  border:
-    1px solid
-    #e3dfda;
-
+  border:1px solid #e3dfda;
   border-radius:10px;
+
   min-height:40px;
 
   background:#fff;
@@ -230,18 +216,14 @@ header{
 
   color:#fff;
 
-  border:
-    2px solid
-    var(--pink);
+  border:2px solid var(--pink);
 
-  box-shadow:
-    0 2px 7px
-    #0004;
+  box-shadow:0 2px 7px #0004;
 }
 
 
 /* =========================================================
-   HAUPTBEREICH
+   INHALT
    ========================================================= */
 
 main{
@@ -294,6 +276,7 @@ main{
   opacity:.035;
 
   pointer-events:none;
+
   z-index:0;
 }
 
@@ -309,18 +292,11 @@ main{
   align-items:center;
   justify-content:center;
 
-  margin:
-    0
-    0
-    7px;
+  margin:0 0 7px;
 
-  padding:
-    7px
-    12px;
+  padding:7px 12px;
 
-  border:
-    1px solid
-    #666966;
+  border:1px solid #666966;
 
   border-radius:13px;
 
@@ -331,9 +307,7 @@ main{
       #2c2e2c
     );
 
-  box-shadow:
-    0 3px 9px
-    #0004;
+  box-shadow:0 3px 9px #0004;
 
   overflow:hidden;
 }
@@ -394,33 +368,20 @@ main{
 
 .grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:6px;
 }
 
 .item{
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .97
-    );
+  background:rgba(255,255,255,.97);
 
-  border:
-    1px solid
-    var(--line);
+  border:1px solid var(--line);
 
   border-radius:12px;
 
   padding:7px;
 
-  box-shadow:
-    0 1px 5px
-    #00000014;
+  box-shadow:0 1px 5px #00000014;
 }
 
 .item.full{
@@ -430,7 +391,6 @@ main{
 .item-name{
   font-size:14px;
   font-weight:950;
-
   line-height:1.08;
 
   margin-bottom:6px;
@@ -468,17 +428,13 @@ main{
 .option{
   position:relative;
 
-  border:
-    1px solid
-    #e0e0e0;
+  border:1px solid #e0e0e0;
 
   border-radius:10px;
 
   min-height:49px;
 
-  padding:
-    5px
-    3px;
+  padding:5px 3px;
 
   background:
     linear-gradient(
@@ -503,9 +459,7 @@ main{
 
 .option .price{
   display:block;
-
   font-size:16px;
-
   margin-top:2px;
 }
 
@@ -525,9 +479,7 @@ main{
   min-width:25px;
   height:25px;
 
-  padding:
-    0
-    6px;
+  padding:0 6px;
 
   border-radius:999px;
 
@@ -537,13 +489,9 @@ main{
   background:var(--pink);
   color:#fff;
 
-  border:
-    2px solid
-    #fff;
+  border:2px solid #fff;
 
-  box-shadow:
-    0 2px 6px
-    #0004;
+  box-shadow:0 2px 6px #0004;
 
   font-size:12px;
   font-weight:950;
@@ -552,9 +500,7 @@ main{
 }
 
 .option.selected{
-  outline:
-    2px solid
-    var(--anthrazit-dark);
+  outline:2px solid var(--anthrazit-dark);
 
   background:#fff7fb;
 
@@ -569,32 +515,25 @@ main{
 
 
 /* =========================================================
-   EINZELARTIKEL
+   SOFT / APERITIF / SNACK
    ========================================================= */
 
 .single-grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:6px;
 }
 
 .single-card{
   background:#fff;
 
-  border:
-    1px solid
-    var(--line);
+  border:1px solid var(--line);
 
   border-radius:12px;
 
   padding:7px;
 
-  box-shadow:
-    0 1px 5px
-    #00000010;
+  box-shadow:0 1px 5px #00000010;
 }
 
 .single-name{
@@ -613,7 +552,7 @@ main{
 
 
 /* =========================================================
-   SUMME UNTEN
+   UNTERE LEISTE
    ========================================================= */
 
 .bottom{
@@ -627,9 +566,7 @@ main{
 
   background:#fff;
 
-  border-top:
-    3px solid
-    var(--pink);
+  border-top:3px solid var(--pink);
 
   box-shadow:
     0 -7px 24px
@@ -658,14 +595,11 @@ main{
 
 .count{
   background:var(--anthrazit);
-
   color:#fff;
 
   border-radius:999px;
 
-  padding:
-    5px
-    8px;
+  padding:5px 8px;
 
   font-size:11px;
   font-weight:900;
@@ -741,9 +675,7 @@ main{
 
   color:#fff;
 
-  box-shadow:
-    0 2px 6px
-    #0003;
+  box-shadow:0 2px 6px #0003;
 }
 
 
@@ -780,10 +712,7 @@ dialog::backdrop{
 }
 
 .modal h2{
-  margin:
-    0
-    0
-    8px;
+  margin:0 0 8px;
 
   color:var(--anthrazit-dark);
 
@@ -802,36 +731,38 @@ dialog::backdrop{
   color:var(--anthrazit-dark);
 }
 
+
+/* =========================================================
+   SCHNELLBETRÄGE
+   ========================================================= */
+
 .quick-cash{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      1fr
-    );
+  grid-template-columns:repeat(4,1fr);
 
   gap:6px;
 
-  margin:
-    12px
-    0
-    10px;
+  margin:12px 0 10px;
 }
 
 .quick-cash button{
   min-height:48px;
 
-  border:
-    1px solid
-    #dedede;
+  border:1px solid #dedede;
 
   border-radius:10px;
 
   background:#f3f3f3;
 
   font-weight:950;
+
+  color:#0879e8;
 }
+
+
+/* =========================================================
+   GELDEINGABE
+   ========================================================= */
 
 .cash-label{
   display:block;
@@ -847,9 +778,7 @@ dialog::backdrop{
 
   padding:11px;
 
-  border:
-    2px solid
-    #aaa;
+  border:2px solid #aaa;
 
   border-radius:11px;
 
@@ -862,6 +791,11 @@ dialog::backdrop{
 #cashInput:focus{
   border-color:var(--pink);
 }
+
+
+/* =========================================================
+   RÜCKGELD
+   ========================================================= */
 
 .change-box{
   margin-top:10px;
@@ -883,11 +817,14 @@ dialog::backdrop{
   font-weight:1000;
 }
 
+
+/* =========================================================
+   MODAL BUTTONS
+   ========================================================= */
+
 .modal-buttons{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:7px;
 
@@ -906,6 +843,7 @@ dialog::backdrop{
 
 .cancel{
   background:#eee;
+  color:#0879e8;
 }
 
 .paid{
@@ -935,10 +873,7 @@ dialog::backdrop{
   }
 
   .pfand-mini button{
-    padding:
-      0
-      8px;
-
+    padding:0 8px;
     font-size:12px;
   }
 
@@ -975,6 +910,10 @@ dialog::backdrop{
 <body>
 
 
+<!-- =========================================================
+     KOPF
+     ========================================================= -->
+
 <header>
 
   <div class="headrow">
@@ -1005,7 +944,6 @@ dialog::backdrop{
         +3 €
       </button>
 
-
       <button
         class="pfand-minus"
         onclick="add('Pfandrückgabe',-3,'pfand-minus')"
@@ -1021,6 +959,10 @@ dialog::backdrop{
 
 
 
+<!-- =========================================================
+     KATEGORIEN
+     ========================================================= -->
+
 <nav class="tabs">
 
   <button
@@ -1030,14 +972,12 @@ dialog::backdrop{
     🥂 Sekt
   </button>
 
-
   <button
     class="tab"
     onclick="showTab('wein',this)"
   >
     🍷 Wein
   </button>
-
 
   <button
     class="tab"
@@ -1046,14 +986,12 @@ dialog::backdrop{
     🥤 Soft
   </button>
 
-
   <button
     class="tab"
     onclick="showTab('aperitif',this)"
   >
     🍹 Aperitif
   </button>
-
 
   <button
     class="tab"
@@ -1065,6 +1003,10 @@ dialog::backdrop{
 </nav>
 
 
+
+<!-- =========================================================
+     INHALT
+     ========================================================= -->
 
 <main>
 
@@ -1097,6 +1039,10 @@ dialog::backdrop{
 
 
 
+<!-- =========================================================
+     UNTERE LEISTE
+     ========================================================= -->
+
 <div class="bottom">
 
   <div class="bottom-inner">
@@ -1110,11 +1056,9 @@ dialog::backdrop{
         0 Artikel
       </span>
 
-
       <span class="sumlabel">
         Summe
       </span>
-
 
       <span
         class="total"
@@ -1135,14 +1079,12 @@ dialog::backdrop{
         ↶ Zurück
       </button>
 
-
       <button
         class="cash"
         onclick="openCash()"
       >
         💶 BAR
       </button>
-
 
       <button
         class="reset"
@@ -1159,6 +1101,10 @@ dialog::backdrop{
 
 
 
+<!-- =========================================================
+     BARZAHLUNG
+     ========================================================= -->
+
 <dialog id="cashDialog">
 
   <div class="modal">
@@ -1167,11 +1113,9 @@ dialog::backdrop{
       💶 Barzahlung
     </h2>
 
-
     <div class="to-pay-label">
       Gast muss zahlen
     </div>
-
 
     <div
       class="to-pay"
@@ -1200,7 +1144,7 @@ dialog::backdrop{
       type="text"
       inputmode="decimal"
       autocomplete="off"
-      placeholder="z. B. 20"
+      placeholder="z. B. 50"
       oninput="calculateChange()"
     >
 
@@ -1210,7 +1154,6 @@ dialog::backdrop{
       <div class="change-label">
         Rückgeld
       </div>
-
 
       <div
         class="change"
@@ -1226,15 +1169,10 @@ dialog::backdrop{
 
       <button
         class="cancel"
-        onclick="
-          document
-            .getElementById('cashDialog')
-            .close()
-        "
+        onclick="closeCash()"
       >
         Abbrechen
       </button>
-
 
       <button
         class="paid"
@@ -1274,7 +1212,6 @@ const data = {
       ]
     },
 
-
     {
       name:"Fürst von Metternich Rosé",
 
@@ -1283,7 +1220,6 @@ const data = {
         ["0,75 l",28]
       ]
     },
-
 
     {
       name:"Fürst von Metternich Chardonnay",
@@ -1313,7 +1249,6 @@ const data = {
       ]
     },
 
-
     {
       name:"Nr. 2 Riesling Gelblack",
       sub:"trocken",
@@ -1324,7 +1259,6 @@ const data = {
         ["0,75",28]
       ]
     },
-
 
     {
       name:"Nr. 3 Riesling Gelblack",
@@ -1337,7 +1271,6 @@ const data = {
       ]
     },
 
-
     {
       name:"Nr. 4 Weißburgunder",
       sub:"trocken",
@@ -1348,7 +1281,6 @@ const data = {
         ["0,75",28]
       ]
     },
-
 
     {
       name:"Nr. 5 Grauburgunder Réserve",
@@ -1361,7 +1293,6 @@ const data = {
       ]
     },
 
-
     {
       name:"Nr. 6 Chardonnay",
       sub:"trocken",
@@ -1372,7 +1303,6 @@ const data = {
         ["0,75",22]
       ]
     },
-
 
     {
       name:"Nr. 7 Rosé HASE",
@@ -1543,32 +1473,20 @@ let history = [];
    EURO
    ========================================================= */
 
-function eur(number){
+function eur(value){
 
-  const cleanNumber =
-    Number(number);
+  const number = Number(value);
 
-
-  if(
-    !Number.isFinite(
-      cleanNumber
-    )
-  ){
-
+  if(!Number.isFinite(number)){
     return "0,00 €";
-
   }
 
-
-  return cleanNumber.toLocaleString(
-
+  return number.toLocaleString(
     "de-DE",
-
     {
       style:"currency",
       currency:"EUR"
     }
-
   );
 
 }
@@ -1576,10 +1494,10 @@ function eur(number){
 
 
 /* =========================================================
-   EINDEUTIGER PRODUKT-SCHLÜSSEL
+   PRODUKT-SCHLÜSSEL
    ========================================================= */
 
-function keyFor(name, size){
+function keyFor(name,size){
 
   return String(name) + "||" + String(size);
 
@@ -1588,37 +1506,25 @@ function keyFor(name, size){
 
 
 /* =========================================================
-   EINDEUTIGE BUTTON-ID
+   BUTTON ID
    ========================================================= */
 
 function safeId(text){
 
-  const value =
-    String(text);
+  const value = String(text);
 
+  let hash = 2166136261;
 
-  let hash =
-    2166136261;
+  for(let i = 0; i < value.length; i++){
 
+    hash ^= value.charCodeAt(i);
 
-  for(
-    let i = 0;
-    i < value.length;
-    i++
-  ){
-
-    hash ^=
-      value.charCodeAt(i);
-
-
-    hash =
-      Math.imul(
-        hash,
-        16777619
-      );
+    hash = Math.imul(
+      hash,
+      16777619
+    );
 
   }
-
 
   return "q-" + (hash >>> 0).toString(36);
 
@@ -1627,152 +1533,106 @@ function safeId(text){
 
 
 /* =========================================================
-   SEKT / WEIN
+   SEKT / WEIN ANZEIGEN
    ========================================================= */
 
-function renderMulti(
-  id,
-  items
-){
+function renderMulti(id,items){
 
-  document
-    .getElementById(id)
-    .innerHTML =
+  const container =
+    document.getElementById(id);
 
 
-      `<div class="grid">` +
+  container.innerHTML =
 
+    `<div class="grid">`
 
-      items.map(
+    +
 
-        item => {
+    items.map(item => {
 
 
-          const full =
+      const full =
+        item.opts.length === 3
+        ? " full"
+        : "";
 
-            item.opts.length === 3
 
-            ? " full"
+      return `
 
-            : "";
+        <div class="item${full}">
 
+          <div class="item-name">
+            ${item.name}
+          </div>
 
-          return `
+          ${
+            item.sub
+            ? `<div class="item-sub">${item.sub}</div>`
+            : ""
+          }
 
+          <div
+            class="options"
+            style="--cols:${item.opts.length}"
+          >
 
-            <div class="item${full}">
+            ${
 
+              item.opts.map(([size,price]) => {
 
-              <div class="item-name">
 
-                ${item.name}
+                const key =
+                  keyFor(
+                    item.name,
+                    size
+                  );
 
-              </div>
 
+                return `
 
-              ${
+                  <button
+                    class="option"
 
-                item.sub
+                    id="${safeId(key)}"
 
-                ? `
+                    onclick='add(
+                      ${JSON.stringify(item.name + " · " + size)},
+                      ${Number(price)},
+                      ${JSON.stringify(key)}
+                    )'
+                  >
 
-                    <div class="item-sub">
+                    <span class="qty">
+                      0
+                    </span>
 
-                      ${item.sub}
+                    <span class="size">
+                      ${size}
+                    </span>
 
-                    </div>
+                    <span class="price">
+                      ${eur(price)}
+                    </span>
 
-                  `
+                  </button>
 
-                : ""
+                `;
 
-              }
+              }).join("")
 
+            }
 
-              <div
-                class="options"
-                style="--cols:${item.opts.length}"
-              >
+          </div>
 
+        </div>
 
-                ${
+      `;
 
-                  item.opts.map(
+    }).join("")
 
-                    ([size,price]) => {
+    +
 
-
-                      const key =
-                        keyFor(
-                          item.name,
-                          size
-                        );
-
-
-                      return `
-
-
-                        <button
-
-                          class="option"
-
-                          id="${safeId(key)}"
-
-                          onclick='add(
-                            ${JSON.stringify(
-                              item.name +
-                              " · " +
-                              size
-                            )},
-                            ${Number(price)},
-                            ${JSON.stringify(key)}
-                          )'
-                        >
-
-
-                          <span class="qty">
-                            0
-                          </span>
-
-
-                          <span class="size">
-                            ${size}
-                          </span>
-
-
-                          <span class="price">
-                            ${eur(price)}
-                          </span>
-
-
-                        </button>
-
-
-                      `;
-
-
-                    }
-
-                  ).join("")
-
-                }
-
-
-              </div>
-
-
-            </div>
-
-
-          `;
-
-
-        }
-
-      ).join("") +
-
-
-      `</div>`;
+    `</div>`;
 
 }
 
@@ -1782,99 +1642,78 @@ function renderMulti(
    EINZELARTIKEL
    ========================================================= */
 
-function renderSingle(
-  id,
-  items
-){
+function renderSingle(id,items){
 
-  document
-    .getElementById(id)
-    .innerHTML =
+  const container =
+    document.getElementById(id);
 
 
-      `<div class="single-grid">` +
+  container.innerHTML =
+
+    `<div class="single-grid">`
+
+    +
+
+    items.map(item => {
 
 
-      items.map(
-
-        item => {
-
-
-          const key =
-            keyFor(
-              item.name,
-              item.size
-            );
+      const key =
+        keyFor(
+          item.name,
+          item.size
+        );
 
 
-          return `
+      return `
 
+        <div class="single-card">
 
-            <div class="single-card">
+          <div class="single-name">
+            ${item.name}
+          </div>
 
+          <button
+            class="option"
 
-              <div class="single-name">
+            id="${safeId(key)}"
 
-                ${item.name}
+            onclick='add(
+              ${JSON.stringify(item.name + " · " + item.size)},
+              ${Number(item.price)},
+              ${JSON.stringify(key)}
+            )'
+          >
 
-              </div>
+            <span class="qty">
+              0
+            </span>
 
+            <span class="size">
+              ${item.size}
+            </span>
 
-              <button
+            <span class="price">
+              ${eur(item.price)}
+            </span>
 
-                class="option"
+          </button>
 
-                id="${safeId(key)}"
+        </div>
 
-                onclick='add(
-                  ${JSON.stringify(
-                    item.name +
-                    " · " +
-                    item.size
-                  )},
-                  ${Number(item.price)},
-                  ${JSON.stringify(key)}
-                )'
-              >
+      `;
 
+    }).join("")
 
-                <span class="qty">
-                  0
-                </span>
+    +
 
-
-                <span class="size">
-                  ${item.size}
-                </span>
-
-
-                <span class="price">
-                  ${eur(item.price)}
-                </span>
-
-
-              </button>
-
-
-            </div>
-
-
-          `;
-
-
-        }
-
-      ).join("") +
-
-
-      `</div>`;
+    `</div>`;
 
 }
 
 
 
 /* =========================================================
-   MENÜ AUFBAUEN
+   ALLES AUFBAUEN
    ========================================================= */
 
 function renderAll(){
@@ -1886,9 +1725,7 @@ function renderAll(){
 
 
   document
-    .getElementById(
-      "sekt"
-    )
+    .getElementById("sekt")
     .insertAdjacentHTML(
 
       "afterbegin",
@@ -1897,20 +1734,15 @@ function renderAll(){
 
         <div class="sekt-brand">
 
-
           <img
-
             src="favorite-logo.png"
-
             alt="FAVORITE Parkhotel Mainz"
 
             onerror="
               this.style.display='none';
               this.nextElementSibling.style.display='block';
             "
-
           >
-
 
           <div class="logo-fallback">
 
@@ -1923,7 +1755,6 @@ function renderAll(){
             </span>
 
           </div>
-
 
         </div>
 
@@ -1960,29 +1791,20 @@ function renderAll(){
 
 
 /* =========================================================
-   KATEGORIE WECHSELN
+   TAB WECHSELN
    ========================================================= */
 
-function showTab(
-  id,
-  button
-){
+function showTab(id,button){
 
   document
-    .querySelectorAll(
-      ".section"
-    )
-    .forEach(
+    .querySelectorAll(".section")
+    .forEach(section => {
 
-      section =>
+      section
+        .classList
+        .remove("active");
 
-        section
-          .classList
-          .remove(
-            "active"
-          )
-
-    );
+    });
 
 
   document
@@ -1992,20 +1814,14 @@ function showTab(
 
 
   document
-    .querySelectorAll(
-      ".tab"
-    )
-    .forEach(
+    .querySelectorAll(".tab")
+    .forEach(tab => {
 
-      tab =>
+      tab
+        .classList
+        .remove("active");
 
-        tab
-          .classList
-          .remove(
-            "active"
-          )
-
-    );
+    });
 
 
   button
@@ -2033,9 +1849,7 @@ function snapshot(){
   );
 
 
-  if(
-    history.length > 50
-  ){
+  if(history.length > 50){
 
     history.shift();
 
@@ -2049,33 +1863,21 @@ function snapshot(){
    ARTIKEL HINZUFÜGEN
    ========================================================= */
 
-function add(
-  name,
-  price,
-  key
-){
+function add(name,price,key){
 
   const cleanPrice =
     Number(price);
 
 
-  if(
-    !Number.isFinite(
-      cleanPrice
-    )
-  ){
-
+  if(!Number.isFinite(cleanPrice)){
     return;
-
   }
 
 
   snapshot();
 
 
-  if(
-    !cart[key]
-  ){
+  if(!cart[key]){
 
     cart[key] = {
 
@@ -2090,17 +1892,14 @@ function add(
   }
 
 
-  const oldQty =
-    Number(
-      cart[key].qty
-    );
+  const currentQty =
+    Number(cart[key].qty);
 
 
   cart[key].qty =
-
     (
-      Number.isFinite(oldQty)
-      ? oldQty
+      Number.isFinite(currentQty)
+      ? currentQty
       : 0
     ) + 1;
 
@@ -2108,13 +1907,9 @@ function add(
   update();
 
 
-  if(
-    navigator.vibrate
-  ){
+  if(navigator.vibrate){
 
-    navigator.vibrate(
-      15
-    );
+    navigator.vibrate(15);
 
   }
 
@@ -2128,12 +1923,8 @@ function add(
 
 function undo(){
 
-  if(
-    !history.length
-  ){
-
+  if(history.length === 0){
     return;
-
   }
 
 
@@ -2171,18 +1962,13 @@ function resetCart(){
 
 function getTotal(){
 
-  let total =
-    0;
+  let total = 0;
 
 
-  for(
-    const item
-    of Object.values(cart)
-  ){
+  for(const item of Object.values(cart)){
 
     const price =
       Number(item.price);
-
 
     const qty =
       Number(item.qty);
@@ -2202,18 +1988,12 @@ function getTotal(){
   }
 
 
-  if(
-    !Number.isFinite(total)
-  ){
-
+  if(!Number.isFinite(total)){
     return 0;
-
   }
 
 
-  return Math.round(
-    total * 100
-  ) / 100;
+  return Math.round(total * 100) / 100;
 
 }
 
@@ -2225,25 +2005,18 @@ function getTotal(){
 
 function getCount(){
 
-  let count =
-    0;
+  let count = 0;
 
 
-  for(
-    const item
-    of Object.values(cart)
-  ){
+  for(const item of Object.values(cart)){
 
     const qty =
       Number(item.qty);
 
 
-    if(
-      Number.isFinite(qty)
-    ){
+    if(Number.isFinite(qty)){
 
-      count +=
-        qty;
+      count += qty;
 
     }
 
@@ -2257,54 +2030,35 @@ function getCount(){
 
 
 /* =========================================================
-   ANZEIGE
+   ANZEIGE AKTUALISIEREN
    ========================================================= */
 
 function update(){
 
   document
-    .querySelectorAll(
-      ".option"
-    )
-    .forEach(
+    .querySelectorAll(".option")
+    .forEach(button => {
 
-      button => {
-
-
-        button
-          .classList
-          .remove(
-            "selected"
-          );
+      button
+        .classList
+        .remove("selected");
 
 
-        const badge =
-          button.querySelector(
-            ".qty"
-          );
+      const badge =
+        button.querySelector(".qty");
 
 
-        if(
-          badge
-        ){
+      if(badge){
 
-          badge.textContent =
-            "0";
-
-        }
+        badge.textContent = "0";
 
       }
 
-    );
+    });
 
 
-  for(
-    const [
-      key,
-      item
-    ]
-    of Object.entries(cart)
-  ){
+
+  for(const [key,item] of Object.entries(cart)){
 
     const qty =
       Number(item.qty);
@@ -2333,26 +2087,18 @@ function update(){
         );
 
 
-      if(
-        button
-      ){
+      if(button){
 
         button
           .classList
-          .add(
-            "selected"
-          );
+          .add("selected");
 
 
         const badge =
-          button.querySelector(
-            ".qty"
-          );
+          button.querySelector(".qty");
 
 
-        if(
-          badge
-        ){
+        if(badge){
 
           badge.textContent =
             String(qty);
@@ -2367,31 +2113,22 @@ function update(){
 
 
   document
-    .getElementById(
-      "count"
-    )
+    .getElementById("count")
     .textContent =
-
-      getCount() +
-      " Artikel";
+      getCount() + " Artikel";
 
 
   document
-    .getElementById(
-      "total"
-    )
+    .getElementById("total")
     .textContent =
-
-      eur(
-        getTotal()
-      );
+      eur(getTotal());
 
 }
 
 
 
 /* =========================================================
-   BARZAHLUNG
+   BARZAHLUNG ÖFFNEN
    ========================================================= */
 
 function openCash(){
@@ -2400,9 +2137,7 @@ function openCash(){
     getTotal();
 
 
-  if(
-    total <= 0
-  ){
+  if(total <= 0){
 
     alert(
       "Bitte zuerst Artikel auswählen."
@@ -2414,65 +2149,58 @@ function openCash(){
 
 
   document
-    .getElementById(
-      "cashTotal"
-    )
+    .getElementById("cashTotal")
     .textContent =
       eur(total);
 
 
   document
-    .getElementById(
-      "cashInput"
-    )
+    .getElementById("cashInput")
     .value =
       "";
 
 
-  document
-    .getElementById(
-      "change"
-    )
-    .textContent =
-      "0,00 €";
+  const change =
+    document.getElementById("change");
+
+
+  change.textContent =
+    "0,00 €";
+
+
+  change.style.color =
+    "#292b29";
+
+
+  createQuickCash(total);
 
 
   document
-    .getElementById(
-      "change"
-    )
-    .style
-    .color =
-      "#292b29";
-
-
-  createQuickCash(
-    total
-  );
-
-
-  document
-    .getElementById(
-      "cashDialog"
-    )
+    .getElementById("cashDialog")
     .showModal();
 
 
-  setTimeout(
+  setTimeout(() => {
 
-    () => {
+    document
+      .getElementById("cashInput")
+      .focus();
 
-      document
-        .getElementById(
-          "cashInput"
-        )
-        .focus();
+  },100);
 
-    },
+}
 
-    100
 
-  );
+
+/* =========================================================
+   BARZAHLUNG SCHLIESSEN
+   ========================================================= */
+
+function closeCash(){
+
+  document
+    .getElementById("cashDialog")
+    .close();
 
 }
 
@@ -2484,78 +2212,118 @@ function openCash(){
 
 function createQuickCash(total){
 
-  const standard =
-    [
-      5,
-      10,
-      20,
-      50,
-      100,
-      200
-    ];
+  const amounts = [];
 
 
-  let buttons =
+  function addAmount(value){
 
-    standard
-      .filter(
-        amount =>
-          amount >= total
-      )
-      .slice(
-        0,
-        4
-      );
+    const clean =
+      Math.round(
+        Number(value) * 100
+      ) / 100;
 
 
-  if(
-    buttons.length < 4
-  ){
+    if(
+      Number.isFinite(clean)
+      &&
+      clean >= total
+      &&
+      !amounts.includes(clean)
+    ){
 
-    buttons =
-      standard.slice(
-        -4
-      );
+      amounts.push(clean);
+
+    }
 
   }
 
 
+  addAmount(total);
+
+  addAmount(
+    Math.ceil(total / 5) * 5
+  );
+
+  addAmount(
+    Math.ceil(total / 10) * 10
+  );
+
+  addAmount(20);
+
+  addAmount(30);
+
+  addAmount(40);
+
+  addAmount(50);
+
+  addAmount(100);
+
+  addAmount(200);
+
+
+  const buttons =
+    amounts.slice(0,4);
+
+
   document
-    .getElementById(
-      "quickCash"
-    )
+    .getElementById("quickCash")
     .innerHTML =
 
-      buttons.map(
+      buttons.map(amount => {
 
-        amount => `
+
+        const text =
+          Number.isInteger(amount)
+
+          ? amount + " €"
+
+          : amount.toLocaleString(
+              "de-DE",
+              {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+              }
+            ) + " €";
+
+
+        return `
 
           <button
+            type="button"
             onclick="setCash(${amount})"
           >
-            ${amount} €
+            ${text}
           </button>
 
-        `
+        `;
 
-      ).join("");
+      }).join("");
 
 }
 
 
 
 /* =========================================================
-   SCHNELLBETRAG
+   SCHNELLBETRAG SETZEN
    ========================================================= */
 
 function setCash(amount){
 
+  const clean =
+    Number(amount);
+
+
+  if(!Number.isFinite(clean)){
+    return;
+  }
+
+
   document
-    .getElementById(
-      "cashInput"
-    )
+    .getElementById("cashInput")
     .value =
-      String(amount);
+      clean
+        .toString()
+        .replace(".",",");
 
 
   calculateChange();
@@ -2565,33 +2333,53 @@ function setCash(amount){
 
 
 /* =========================================================
-   KOMMA / PUNKT
+   GELDBETRAG LESEN
    ========================================================= */
 
 function parseCashValue(value){
 
-  const parsed =
-
-    Number(
-
-      String(value)
-        .trim()
-        .replace(
-          /\s/g,
-          ""
-        )
-        .replace(
-          ",",
-          "."
-        )
-
-    );
+  let text =
+    String(value)
+      .trim()
+      .replace(/\s/g,"")
+      .replace(/€/g,"");
 
 
-  return
-    Number.isFinite(parsed)
-    ? parsed
-    : 0;
+  if(text === ""){
+    return 0;
+  }
+
+
+  if(
+    text.includes(",")
+    &&
+    text.includes(".")
+  ){
+
+    text =
+      text
+        .replace(/\./g,"")
+        .replace(",", ".");
+
+  }
+  else{
+
+    text =
+      text.replace(",", ".");
+
+  }
+
+
+  const number =
+    Number(text);
+
+
+  if(!Number.isFinite(number)){
+    return 0;
+  }
+
+
+  return number;
 
 }
 
@@ -2607,23 +2395,16 @@ function calculateChange(){
     getTotal();
 
 
-  const given =
-    parseCashValue(
-      document
-        .getElementById(
-          "cashInput"
-        )
-        .value
+  const cashInput =
+    document.getElementById(
+      "cashInput"
     );
 
 
-  const difference =
-    Math.round(
-      (
-        given -
-        total
-      ) * 100
-    ) / 100;
+  const given =
+    parseCashValue(
+      cashInput.value
+    );
 
 
   const changeElement =
@@ -2632,41 +2413,43 @@ function calculateChange(){
     );
 
 
-  if(
-    difference >= 0
-  ){
+  if(given >= total){
 
-    changeElement
-      .textContent =
-        eur(
-          difference
-        );
+    const change =
+      Math.round(
+        (
+          given -
+          total
+        ) * 100
+      ) / 100;
 
 
-    changeElement
-      .style
-      .color =
-        "#23864e";
+    changeElement.textContent =
+      eur(change);
+
+
+    changeElement.style.color =
+      "#23864e";
 
   }
   else{
 
-    changeElement
-      .textContent =
-
-        "Fehlen " +
-
-        eur(
-          Math.abs(
-            difference
-          )
-        );
+    const missing =
+      Math.round(
+        (
+          total -
+          given
+        ) * 100
+      ) / 100;
 
 
-    changeElement
-      .style
-      .color =
-        "#a84f79";
+    changeElement.textContent =
+      "Fehlen " +
+      eur(missing);
+
+
+    changeElement.style.color =
+      "#a84f79";
 
   }
 
@@ -2686,17 +2469,15 @@ function finishSale(){
 
   const given =
     parseCashValue(
+
       document
-        .getElementById(
-          "cashInput"
-        )
+        .getElementById("cashInput")
         .value
+
     );
 
 
-  if(
-    given < total
-  ){
+  if(given < total){
 
     alert(
       "Der Gast hat noch nicht genug gegeben."
@@ -2707,12 +2488,7 @@ function finishSale(){
   }
 
 
-  document
-    .getElementById(
-      "cashDialog"
-    )
-    .close();
-
+  closeCash();
 
   resetCart();
 
